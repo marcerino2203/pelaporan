@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LaporLur.go</title>
+  <title>LaporCah.go</title>
 
   <!-- Google Font: Source Sans Pro -->
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> -->
@@ -35,7 +35,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="container">
       <div class="navbar-brand">
         <img src="<?php echo base_url() ?>assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">LaporLur.go</span>
+        <span class="brand-text font-weight-light">LaporCah.go</span>
       </div>
 
       <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,9 +64,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div>
       </li>
       <li class="nav nav-item">
-        <div class="nav-link">
-          Login
-        </div>
+        <a href="#">
+          <div class="nav-link" data-toggle="modal" data-target="#modal-login">
+            Login
+          </div>
+
+        </a>
       </li>
     </ul>
   </nav>
@@ -110,6 +113,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <label for="lokasi">Lokasi</label>
                     <input type="text" class="form-control" id="lokasi">
                   </div>
+                  <div class="form-group">
+                    <label for="keterangan">Keterangan</label>
+                    <textarea id="keterangan"class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                  </div>
                 </form>
               </div>
             </div>
@@ -135,6 +142,50 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
+<div class="modal fade" id="modal-login" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex justify-content-center">
+              <p class="text-black">Login</p>
+            </div>
+            <form action="<?php echo base_url() ?>index.php/login_controler/cek_log" method="post">
+              <div class="input-group mb-3">
+                <input type="text" name="username" class="form-control" placeholder="Username">
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-user"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="input-group mb-3">
+                <input type="password" name="password" class="form-control" placeholder="Password">
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <!-- /.col -->
+                <div class="col-sm">
+                  <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                </div>
+                <div class="col-sm">
+                    <button type="button" class="btn btn-primary btn-block" data-dismiss="modal" >Cancel</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
 
 <!-- jQuery -->
 <script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
