@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LaporCah.go</title>
+  <title>LaporCah.go || Daftar</title>
 
   <!-- Google Font: Source Sans Pro -->
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> -->
@@ -63,7 +63,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="nav-link">
             Daftar
           </div>
-      
         </a>
       </li>
       <li class="nav nav-item">
@@ -93,34 +92,51 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="content">
       <div class="container overflow-auto">
         <div class="row">
-          <div class="col-lg-8">
-          </div>
-          <div class="col-lg-4 float-right">
+          <!-- <div class="col-lg-8">
+          </div> -->
+          <div class="col float-center">
             <div class="card">
               <div class="card-header">
                 <div class="d-flex justify-content-center">
-                  Lapor Kerusakan
+                  Daftar
                 </div>
               </div>
               <div class="card-body">
-                <form>
+                <form id="daftar" action="<?php echo base_url() ?>index.php/daftar_controler/add_data" method="post">
                   <div class="form-group">
-                    <label for="nama">Nama</label>
-                    <input type="text" class="form-control" id="nama">
+                    <label for="nama">NIK</label>
+                    <input type="text" class="form-control" name="nik">
+                  </div>
+                  <div class="form-group">
+                    <label for="nama">Nama Lengkap</label>
+                    <input type="text" class="form-control" name="nama">
+                  </div>
+                  <div class="form-group">
+                    <label for="nama">Alamat</label>
+                    <input type="text" class="form-control" name="alamat">
                   </div>
                   <div class="form-group">
                     <label for="nomor_telepon">Nomor Telepon</label>
-                    <input type="text" class="form-control" id="nomor_telepon">
+                    <input type="text" class="form-control" name="nomor_telepon">
                   </div>
                   <div class="form-group">
-                    <label for="lokasi">Lokasi</label>
-                    <input type="text" class="form-control" id="lokasi">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" name="username">
                   </div>
                   <div class="form-group">
-                    <label for="keterangan">Keterangan</label>
-                    <textarea id="keterangan"class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password">
+                    <!-- <textarea id="keterangan"class="form-control" rows="3" placeholder="Enter ..."></textarea> -->
                   </div>
                 </form>
+              </div>
+              <div class="card-footer">
+                <div class="float-right">
+                  <button type="submit" form="daftar" class="btn btn-primary btn-block">Simpan</button>
+                </div>
+                <div class="float-left">
+                    <!-- <button type="button" class="btn btn-primary btn-block" data-dismiss="modal" >Save</button> -->
+                </div>
               </div>
             </div>
           </div>
