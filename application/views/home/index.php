@@ -154,7 +154,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="d-flex justify-content-center">
               <p class="text-black">Login</p>
             </div>
-            <form action="<?php echo base_url() ?>index.php/login_controler/cek_log" method="post">
+            <form id="login" action="<?php echo base_url() ?>index.php/login_controler/cek_log" method="post">
               <div class="input-group mb-3">
                 <input type="text" name="username" class="form-control" placeholder="Username">
                 <div class="input-group-append">
@@ -174,7 +174,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="row">
                 <!-- /.col -->
                 <div class="col-sm">
-                  <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                  <button type="submit" for="login" class="btn btn-primary btn-block">Sign In</button>
                 </div>
                 <div class="col-sm">
                     <button type="button" class="btn btn-primary btn-block" data-dismiss="modal" >Cancel</button>
