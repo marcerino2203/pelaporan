@@ -45,14 +45,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="collapse navbar-collapse order-3" id="navbarCollapse">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <div class="nav-link">
-              Home
-            </div>
+            <a href="<?php echo base_url() ?>index.php">
+              <div class="nav-link">
+                Home
+              </div>
+            </a>
           </li>
           <li class="nav-item">
-            <div class="nav-link">
-              Tentang Kami
-            </div>
+            <a href="<?php echo base_url() ?>aduan.php">
+              <div class="nav-link">
+                Aduan Masuk
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo base_url() ?>tentang_kami.php">
+              <div class="nav-link">
+                Tentang Kami
+              </div>
+            </a>
           </li>
         </ul>
       </div>      
@@ -117,9 +128,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <input type="text" class="form-control" id="lokasi">
                   </div>
                   <div class="form-group">
+                    <label for="gambar">Pilih Gambar</label>
+                    <input type="file" class="form-control" id="gambar" accept="image/png, image/jpeg">
+                  </div>
+                  <div class="form-group">
                     <label for="keterangan">Keterangan</label>
                     <textarea id="keterangan"class="form-control" rows="3" placeholder="Enter ..."></textarea>
                   </div>
+                  <div class="card-footer">
+                <div class="float-right">
+                  <button type="submit" form="kirim" class="btn btn-primary btn-block">Kirim</button>
+                </div>
+                <div class="float-left">
+                    <!-- <button type="button" class="btn btn-primary btn-block" data-dismiss="modal" >Save</button> -->
+                </div>
+              </div>
                 </form>
               </div>
             </div>
