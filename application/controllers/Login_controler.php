@@ -19,7 +19,7 @@ class Login_controler extends CI_Controller
 			'username' => $this->input->post('username'),
 			'password' => $this->input->post('password')
 		);
-		$status = $this->login_model->cek_login($data);
+		$status = $this->login_model->cek_login_masyarakat($data);
 		if ($status != FALSE) {
 			foreach ($status as $apps) {
 				$session_data = array(
@@ -31,7 +31,20 @@ class Login_controler extends CI_Controller
 			// print_r($session_data);
 			redirect('dashboard_controler');
 		} else {
-			redirect('home_controler');
+			$status = $this->login_model->cek_login_pegawai($data);
+			if ($status != FALSE) {
+				foreach ($status as $apps) {
+					$session_data = array(
+						'id' => $apps->id_pegawai,
+						'akses' => $apps->nama,
+						'instansi' => $apps->id_instansi
+					);
+					$this->session->set_userdata($session_data);
+				}
+				redirect('dashboard_pegawai_controler');
+			} else {
+				redirect('home_controler');
+			}
 		}
 		///////////////////////////////////
 		// if($status!=FALSE){

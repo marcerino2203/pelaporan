@@ -1,12 +1,14 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Daftar_controler extends CI_Controller {
+class Daftar_controler extends CI_Controller
+{
 
-	public function __construct(){
+	public function __construct()
+	{
 		parent::__construct();
 		$this->load->model('daftar_model');
-    }
+	}
 	public function index()
 	{
 		$this->load->view('daftar/index');
@@ -14,8 +16,7 @@ class Daftar_controler extends CI_Controller {
 	public function add_data()
 	{
 		echo $this->input->post('nik');
-		echo "halo";
-		$data=array(
+		$data = array(
 			'nik' => $this->input->post('nik'),
 			'nama' => $this->input->post('nama'),
 			'alamat' => $this->input->post('alamat'),
@@ -23,7 +24,7 @@ class Daftar_controler extends CI_Controller {
 			'username' => $this->input->post('username'),
 			'password' => $this->input->post('password')
 		);
-		if($this->daftar_model->add($data)){
+		if ($this->daftar_model->add($data)) {
 			redirect('home_controler');
 		}
 		// $this->daftar_model->add($data);
