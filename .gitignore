@@ -9,7 +9,7 @@ application/logs/*
 !application/*/.htaccess
 
 composer.lock
-application/config/
+tests/mocks/database/ci_test.sqlite
 
 user_guide_src/build/*
 user_guide_src/cilexer/build/*
