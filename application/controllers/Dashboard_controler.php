@@ -15,9 +15,11 @@ class Dashboard_controler extends CI_Controller
 		$data['last_code'] = $this->dashboard_model->get_code();
 		$this->load->view('dashboard/index', $data);
 	}
-	public function detail()
+	public function detail($id)
 	{
-		$this->load->view('dashboard/detail');
+		$data['laporan'] = $this->dashboard_model->get_detail_laporan($id);
+		$data['status'] = $this->dashboard_model->get_status_laporan($id);
+		$this->load->view('dashboard/detail', $data);
 	}
 	public function buat_laporan()
 	{

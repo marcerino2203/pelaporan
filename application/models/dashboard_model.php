@@ -32,4 +32,22 @@ class Dashboard_model extends CI_MODEL
         $this->db->delete('aduan');
         return true;
     }
+    function get_detail_laporan($id_aduan)
+    {
+        $this->db->select('*');
+        $this->db->from('aduan');
+        $this->db->where('aduan.id_aduan', $id_aduan);
+        $data = $this->db->get();
+        return $data;
+    }
+    function get_status_laporan($id_aduan)
+    {
+        $this->db->select('*');
+        $this->db->from('aduan');
+        $this->db->join('status_aduan', 'status_aduan.id_aduan=aduan.id_aduan');
+        $this->db->join('keterangan_status', 'keterangan_status.id_keterangan_status=status_aduan.id_keterangan_status');
+        $this->db->where('aduan.id_aduan', $id_aduan);
+        $data = $this->db->get();
+        return $data;
+    }
 }
