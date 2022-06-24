@@ -23,12 +23,18 @@ class Dashboard_controler extends CI_Controller
 	}
 	public function buat_laporan()
 	{
-		$data = array(
+		date_default_timezone_set('Asia/Jakarta');
+		$data['aduan'] = array(
 			'nomor_aduan' => $this->input->post('nomor_aduan'),
 			'tanggal' => date('Y-m-d'),
 			'id_masyarakat' => $this->session->userdata('id'),
 			'lokasi' => $this->input->post('lokasi'),
 			'isi' => $this->input->post('keterangan')
+		);
+		$data['status'] = array(
+			'tanggal' => date('Y-m-d'),
+			'id_keterangan_status' => 1,
+			'waktu' => date("H:i")
 		);
 		if ($this->dashboard_model->add_laporan($data)) {
 			redirect('dashboard_controler');

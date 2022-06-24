@@ -6,7 +6,12 @@ class Dashboard_model extends CI_MODEL
     }
     function add_laporan($data)
     {
-        if ($this->db->insert('aduan', $data)) {
+        if ($this->db->insert('aduan', $data['aduan'])) {
+            $data['status'] += array('id_aduan' => $this->db->insert_id());
+            if ($this->db->insert('status_aduan', $data['status'])) {
+            } else {
+                return false;
+            }
             return true;
         } else {
             return false;

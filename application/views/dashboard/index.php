@@ -157,7 +157,7 @@
                       <td><?= $data_laporan['nomor_aduan'] ?></td>
                       <td><?= $data_laporan['tanggal'] ?></td>
                       <td><?= $data_laporan['lokasi'] ?></td>
-                      <td></td>
+                      <td><?= date('l, d-m-Y  H:i:s a'); ?></td>
                       <td>Terkirim</td>
                       <th>
                         <a href="<?php echo base_url() ?>index.php/dashboard_controler/detail/<?= $data_laporan['id_aduan'] ?>" class="">
