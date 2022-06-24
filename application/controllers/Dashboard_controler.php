@@ -38,6 +38,8 @@ class Dashboard_controler extends CI_Controller
 	{
 		if ($this->dashboard_model->delete_laporan($id)) {
 			redirect('dashboard_controler');
+		} else {
+			redirect('dashboard_controler');
 		}
 	}
 }

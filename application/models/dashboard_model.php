@@ -26,11 +26,23 @@ class Dashboard_model extends CI_MODEL
     {
         return $this->db->query("SELECT nomor_aduan FROM aduan ORDER BY nomor_aduan DESC LIMIT 1");
     }
-    function delete_laporan($id)
+    function delete_laporan($id_aduan)
     {
-        $this->db->where('id_aduan', $id);
-        $this->db->delete('aduan');
-        return true;
+        $this->db->select('*');
+        $this->db->from('aduan');
+        $this->db->join('status_aduan', 'status_aduan.id_aduan=aduan.id_aduan');
+        $this->db->where('aduan.id_aduan', $id_aduan);
+        $result = $this->db->count_all_results();
+        if ($result <= 1) {
+            $this->db->where('id_aduan', $id_aduan);
+            $this->db->delete('status_aduan');
+
+            $this->db->where('id_aduan', $id_aduan);
+            $this->db->delete('aduan');
+            return true;
+        } else {
+            return false;
+        }
     }
     function get_detail_laporan($id_aduan)
     {
