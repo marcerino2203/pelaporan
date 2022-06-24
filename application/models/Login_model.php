@@ -5,6 +5,7 @@ class Login_model extends CI_MODEL
     {
         $this->db->select('*');
         $this->db->from('masyarakat');
+        $this->db->join('akses', 'akses.id_akses=masyarakat.id_akses');
         $this->db->where($data);
         $this->db->limit(1);
         $query = $this->db->get();
@@ -18,6 +19,7 @@ class Login_model extends CI_MODEL
     {
         $this->db->select('*');
         $this->db->from('pegawai');
+        $this->db->join('akses', 'akses.id_akses=pegawai.id_akses');
         $this->db->where($data);
         $this->db->limit(1);
         $query = $this->db->get();

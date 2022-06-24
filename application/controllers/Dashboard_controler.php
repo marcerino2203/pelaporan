@@ -8,6 +8,9 @@ class Dashboard_controler extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('dashboard_model');
+		if ($this->session->userdata('akses') != "warga" && $this->session->userdata('akses') != "master") {
+			redirect('login_controler');
+		};
 	}
 	public function index()
 	{

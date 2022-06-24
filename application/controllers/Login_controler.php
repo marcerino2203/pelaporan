@@ -11,7 +11,17 @@ class Login_controler extends CI_Controller
 	}
 	public function index()
 	{
-		$this->load->view('home/index');
+		// $this->load->view('home/index');
+		// redirect('home_controler');
+		if ($this->session->userdata('akses') == "warga") {
+			redirect('dashboard_controler');
+		} else if ($this->session->userdata('akses') == "pegawai") {
+			redirect('dashboard_pegawai_controler');
+		} else if ($this->session->userdata('akses') == "admin") {
+			redirect('dashboard_pegawai_controler');
+		} else {
+			redirect('home_controler');
+		};
 	}
 	public function cek_log()
 	{
@@ -24,7 +34,7 @@ class Login_controler extends CI_Controller
 			foreach ($status as $apps) {
 				$session_data = array(
 					'id' => $apps->id_masyarakat,
-					'akses' => $apps->nama
+					'akses' => $apps->akses
 				);
 				$this->session->set_userdata($session_data);
 			}
@@ -36,7 +46,7 @@ class Login_controler extends CI_Controller
 				foreach ($status as $apps) {
 					$session_data = array(
 						'id' => $apps->id_pegawai,
-						'akses' => $apps->nama,
+						'akses' => $apps->akses,
 						'instansi' => $apps->id_instansi
 					);
 					$this->session->set_userdata($session_data);
