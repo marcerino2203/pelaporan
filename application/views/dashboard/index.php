@@ -216,7 +216,7 @@
         <div class="modal-body">
           <div class="card">
             <div class="card-body">
-              <form id="laporan" action="<?php echo base_url() ?>index.php/dashboard_controler/buat_laporan" method="POST">
+              <?php echo form_open_multipart('dashboard_controler/buat_laporan'); ?>
                 <div class="form-group">
                   <label for="lokasi">Nomor Aduan</label>
                   <input type="text" class="form-control" name="nomor_aduan" id="nomor_aduan" value="<?= $nomor_aduan ?>" readonly>
@@ -229,7 +229,11 @@
                   <label for="keterangan">Keterangan</label>
                   <textarea name="keterangan" id="keterangan" class="form-control" rows="3" placeholder="Enter ..."></textarea>
                 </div>
-              </form>
+                <div class="form-group">
+                    <label for="gambar">Pilih Gambar</label>
+                    <input type="file" class="form-control" id="gambar">
+                </div>
+              
             </div>
           </div>
         </div>
@@ -246,6 +250,7 @@
     </div>
     <!-- /.modal-dialog -->
   </div>
+  <?php echo form_close(); ?>
 
   <!-- jQuery -->
   <script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js"></script>

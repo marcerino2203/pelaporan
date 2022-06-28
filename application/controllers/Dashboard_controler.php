@@ -34,6 +34,21 @@ class Dashboard_controler extends CI_Controller
 			'lokasi' => $this->input->post('lokasi'),
 			'isi' => $this->input->post('keterangan')
 		);
+		$gambar = $_FILES['gambar'];
+		if ($gambar='') {} else {
+			$config['upload_path'] = './assets/gambar';
+			$config['allowed_types'] = 'jpg|png|jpeg';
+
+			$this->load->library('upload',$config);
+			if (!$this->upload->do_upload('gambar')) {
+				echo "Upload Gagal"; die();
+			}else{
+				$gambar=$this->upload->data('file_name');
+			}
+		}
+		$data['gambar'] = array (
+			'gambar' => $gambar
+		);
 		$data['status'] = array(
 			'tanggal' => date('Y-m-d'),
 			'id_keterangan_status' => 1,

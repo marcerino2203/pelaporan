@@ -114,7 +114,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
               </div>
               <div class="card-body">
-                <?<?php echo form_open_multipart('dashboard_controler/buat_laporan'); ?>
+                <?php echo form_open_multipart('dashboard_controler/buat_laporan'); ?>
                   <div class="form-group">
                     <label for="nama">Nama</label>
                     <input type="text" class="form-control" id="nama">
@@ -143,7 +143,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- <button type="button" class="btn btn-primary btn-block" data-dismiss="modal" >Save</button> -->
                 </div>
               </div>
-                <<?php echo form_close(); ?>
+                <?php echo form_close(); ?>
               </div>
             </div>
           </div>
