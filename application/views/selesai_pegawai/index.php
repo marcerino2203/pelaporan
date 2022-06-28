@@ -86,7 +86,7 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item active">
-              <a href="<?php echo base_url() ?>index.php/dashboard_controler" class="nav-link active">
+              <a href="<?php echo base_url() ?>index.php/dashboard_controler" class="nav-link">
                 <i class="fas fa-circle nav-icon"></i>
                 <p>Aduan Masuk</p>
               </a>
@@ -98,7 +98,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo base_url() ?>index.php/selesai_controler" class="nav-link">
+              <a href="<?php echo base_url() ?>index.php/selesai_controler" class="nav-link active">
                 <i class="fas fa-circle nav-icon"></i>
                 <p>Aduan Selesai</p>
               </a>
@@ -113,7 +113,7 @@
           <div class="row mb-2">
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-left">
-                <li class="breadcrumb-item">Aduan Masuk</li>
+                <li class="breadcrumb-item">Aduan Selesai</li>
                 <!-- <li class="breadcrumb-item active">Dashboard v3</li> -->
               </ol>
             </div>
@@ -172,7 +172,7 @@
                       <td><?= date('l, d-m-Y  H:i:s a'); ?></td>
                       <td>Terkirim</td>
                       <th>
-                        <a href="<?php echo base_url() ?>index.php/dashboard_pegawai_controler/detail/<?= $data_laporan['id_aduan'] ?>" class="">
+                        <a href="<?php echo base_url() ?>index.php/selesai_controler/detail/<?= $data_laporan['id_aduan'] ?>" class="">
                           <button type="button" class="btn btn-primary">
                             <i class="fa fa-eye" aria-hidden="true"></i>
                             Lihat

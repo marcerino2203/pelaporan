@@ -32,7 +32,8 @@ class Dashboard_controler extends CI_Controller
 			'tanggal' => date('Y-m-d'),
 			'id_masyarakat' => $this->session->userdata('id'),
 			'lokasi' => $this->input->post('lokasi'),
-			'isi' => $this->input->post('keterangan')
+			'isi' => $this->input->post('keterangan'),
+			'id_keterangan_status' => 1
 		);
 		$data['status'] = array(
 			'tanggal' => date('Y-m-d'),

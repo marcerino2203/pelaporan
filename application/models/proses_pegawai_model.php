@@ -1,5 +1,5 @@
 <?php
-class Dashboard_pegawai_model extends CI_MODEL
+class Proses_pegawai_model extends CI_MODEL
 {
     function get_laporan($data)
     {
@@ -8,7 +8,7 @@ class Dashboard_pegawai_model extends CI_MODEL
         $this->db->join('instansi', 'instansi.id_instansi=pegawai.id_instansi');
         $this->db->join('aduan', 'aduan.id_instansi=instansi.id_instansi');
         $this->db->where('pegawai.id_pegawai', $data);
-        $this->db->where('aduan.id_keterangan_status', 1);
+        $this->db->where('aduan.id_keterangan_status', 3);
         $data = $this->db->get();
         return $data;
     }
@@ -30,50 +30,13 @@ class Dashboard_pegawai_model extends CI_MODEL
         $data = $this->db->get();
         return $data;
     }
-    function proses($data, $id)
+    function selesai($data, $id)
     {
         if ($this->db->insert('status_aduan', $data['status'])) {
 
             $this->db->where('id_aduan', $id);
             $this->db->update('aduan', $data['new_status']);
 
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-
-    function add_laporan($data)
-    {
-        if ($this->db->insert('aduan', $data['aduan'])) {
-            $data['status'] += array('id_aduan' => $this->db->insert_id());
-            if ($this->db->insert('status_aduan', $data['status'])) {
-            } else {
-                return false;
-            }
-            return true;
-        } else {
-            return false;
-        }
-    }
-    function get_code()
-    {
-        return $this->db->query("SELECT nomor_aduan FROM aduan ORDER BY nomor_aduan DESC LIMIT 1");
-    }
-    function delete_laporan($id_aduan)
-    {
-        $this->db->select('*');
-        $this->db->from('aduan');
-        $this->db->join('status_aduan', 'status_aduan.id_aduan=aduan.id_aduan');
-        $this->db->where('aduan.id_aduan', $id_aduan);
-        $result = $this->db->count_all_results();
-        if ($result <= 1) {
-            $this->db->where('id_aduan', $id_aduan);
-            $this->db->delete('status_aduan');
-
-            $this->db->where('id_aduan', $id_aduan);
-            $this->db->delete('aduan');
             return true;
         } else {
             return false;
