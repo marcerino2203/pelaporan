@@ -114,7 +114,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
               </div>
               <div class="card-body">
+<<<<<<< HEAD
                 <?php echo form_open_multipart('dashboard_controler/buat_laporan'); ?>
+=======
+                <form>
+>>>>>>> parent of b682cab (edit hom index)
                   <div class="form-group">
                     <label for="nama">Nama</label>
                     <input type="text" class="form-control" id="nama">
@@ -128,12 +132,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <input type="text" class="form-control" id="lokasi">
                   </div>
                   <div class="form-group">
-                    <label for="keterangan">Keterangan</label>
-                    <textarea id="keterangan"class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                    <label for="gambar">Pilih Gambar</label>
+                    <input type="file" class="form-control" id="gambar" accept="image/png, image/jpeg">
                   </div>
                   <div class="form-group">
-                    <label for="gambar">Pilih Gambar</label>
-                    <input type="file" class="form-control" id="gambar">
+                    <label for="keterangan">Keterangan</label>
+                    <textarea id="keterangan"class="form-control" rows="3" placeholder="Enter ..."></textarea>
                   </div>
                   <div class="card-footer">
                 <div class="float-right">
@@ -143,7 +147,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- <button type="button" class="btn btn-primary btn-block" data-dismiss="modal" >Save</button> -->
                 </div>
               </div>
+<<<<<<< HEAD
                 <?php echo form_close(); ?>
+=======
+                </form>
+>>>>>>> parent of b682cab (edit hom index)
               </div>
             </div>
           </div>

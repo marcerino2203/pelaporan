@@ -52,5 +52,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'home_controler';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-$route['image-upload'] = 'ImageUpload';
-$route['image-upload/post']['post'] = "ImageUpload/uploadImage";
