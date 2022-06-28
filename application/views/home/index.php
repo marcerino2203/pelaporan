@@ -114,7 +114,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
               </div>
               <div class="card-body">
-                <form>
+                <?<?php echo form_open_multipart('dashboard_controler/buat_laporan'); ?>
                   <div class="form-group">
                     <label for="nama">Nama</label>
                     <input type="text" class="form-control" id="nama">
@@ -128,12 +128,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <input type="text" class="form-control" id="lokasi">
                   </div>
                   <div class="form-group">
-                    <label for="gambar">Pilih Gambar</label>
-                    <input type="file" class="form-control" id="gambar" accept="image/png, image/jpeg">
-                  </div>
-                  <div class="form-group">
                     <label for="keterangan">Keterangan</label>
                     <textarea id="keterangan"class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="gambar">Pilih Gambar</label>
+                    <input type="file" class="form-control" id="gambar">
                   </div>
                   <div class="card-footer">
                 <div class="float-right">
@@ -143,7 +143,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- <button type="button" class="btn btn-primary btn-block" data-dismiss="modal" >Save</button> -->
                 </div>
               </div>
-                </form>
+                <<?php echo form_close(); ?>
               </div>
             </div>
           </div>
