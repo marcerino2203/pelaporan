@@ -86,13 +86,13 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item active">
-              <a href="<?php echo base_url() ?>index.php/dashboard_controler" class="nav-link">
+              <a href="<?php echo base_url() ?>index.php/dashboard_controler" class="nav-link active">
                 <i class="fas fa-circle nav-icon"></i>
                 <p>Aduan Masuk</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo base_url() ?>index.php/proses_controler" class="nav-link active">
+              <a href="<?php echo base_url() ?>index.php/proses_controler" class="nav-link">
                 <i class="fas fa-circle nav-icon"></i>
                 <p>Aduan Proses</p>
               </a>
@@ -103,9 +103,15 @@
                 <p>Aduan Selesai</p>
               </a>
             </li>
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-database"></i>
+            <!-- <li class="nav-item">
+              <a href="<?php echo base_url() ?>index.php/pengaturan_controler" class="nav-link">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Pengaturan</p>
+              </a>
+            </li> -->
+            <li class="nav-item has-treeview menu-open">
+              <a href="#" class="nav-link active">
+                <i class="nav-icon fas fa-cog"></i>
                 <p>
                   Pengaturan
                   <i class="right fas fa-angle-left"></i>
@@ -130,7 +136,7 @@
           <div class="row mb-2">
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-left">
-                <li class="breadcrumb-item">Aduan Proses</li>
+                <li class="breadcrumb-item">Aduan</li>
                 <li class="breadcrumb-item active">Detail</li>
               </ol>
             </div>
@@ -155,7 +161,6 @@
                       $gambar = $data_laporan['gambar'];
                       $isi = $data_laporan['isi'];
                       $id_aduan = $data_laporan['id_aduan'];
-                      $keterangan = $data_laporan['keterangan'];
                     }
 
                     ?>
@@ -171,10 +176,6 @@
                       <div class="row">
                         <div class="col-sm-2">Lokasi</div>
                         <div class="col-sm-2">: <?= $lokasi ?></div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-2">Keterangan</div>
-                        <div class="col-sm-2">: <?= $keterangan ?></div>
                       </div>
                       <div class="row">
                         <div class="col-sm-2">isi</div>
@@ -199,10 +200,10 @@
                   </div>
                 </div>
                 <div class="card-footer">
-                  <a href="<?php echo base_url() ?>index.php/proses_controler/laporan_selesai/<?= $id_aduan ?>" class="">
-                    <button type="button" class="btn btn-primary">Laporan Selesai</button>
+                  <a href="<?php echo base_url() ?>index.php/dashboard_pegawai_controler/proses/<?= $id_aduan ?>" class="">
+                    <button type="button" class="btn btn-primary">Proses</button>
                   </a>
-                  <a href="<?php echo base_url() ?>index.php/proses_controler/batal_proses/<?= $id_aduan ?>" class="">
+                  <a href="<?php echo base_url() ?>index.php/dashboard_pegawai_controler/batal_proses/<?= $id_aduan ?>" class="">
                     <button type="button" class="btn btn-danger">Batalkan Proses</button>
                   </a>
                 </div>

@@ -6,7 +6,8 @@ class Dashboard_pegawai_model extends CI_MODEL
         $this->db->select('*');
         $this->db->from('pegawai');
         $this->db->join('instansi', 'instansi.id_instansi=pegawai.id_instansi');
-        $this->db->join('aduan', 'aduan.id_instansi=instansi.id_instansi');
+        $this->db->join('jenis_aduan', 'jenis_aduan.id_instansi=instansi.id_instansi');
+        $this->db->join('aduan', 'aduan.id_jenis_aduan=jenis_aduan.id_jenis_aduan');
         $this->db->where('pegawai.id_pegawai', $data);
         $this->db->where('aduan.id_keterangan_status', 1);
         $data = $this->db->get();
@@ -16,6 +17,7 @@ class Dashboard_pegawai_model extends CI_MODEL
     {
         $this->db->select('*');
         $this->db->from('aduan');
+        $this->db->join('jenis_aduan', 'aduan.id_jenis_aduan=jenis_aduan.id_jenis_aduan');
         $this->db->where($data['id_aduan']);
         $data = $this->db->get();
         return $data;

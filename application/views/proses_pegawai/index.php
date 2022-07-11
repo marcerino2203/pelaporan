@@ -103,6 +103,23 @@
                 <p>Aduan Selesai</p>
               </a>
             </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-database"></i>
+                <p>
+                  Pengaturan
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="<?php echo base_url() ?>index.php/keterangan_controler" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Keterangan Laporan</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
           </ul>
         </nav>
       </div>
