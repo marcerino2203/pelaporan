@@ -142,10 +142,10 @@
           <div class="card">
             <div class="card-header">
               <!-- <div class="card-title">Laporan</div> -->
-              <div class="card-tools" data-toggle="modal" data-target="#modal-lapor">
-                <!-- <button type="button" class="btn btn-primary">Buat Laporan</button> -->
+              <div class="card-tools" data-toggle="modal" data-target="#modal-jenis-laporan">
+                <button type="button" class="btn btn-primary">Buat Jenis Laporan</button>
               </div>
-              Laporan
+              Jenis Laporan
             </div>
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
@@ -195,6 +195,43 @@
         <b>Version</b> 1.0.0
       </div>
     </footer>
+  </div>
+
+  <div class="modal fade" id="modal-jenis-laporan" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title">
+            <!-- Lapor -->
+          </div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="card">
+            <div class="card-body">
+              <form id="jenis-laporan" action="<?php echo base_url() ?>index.php/jenis_aduan_controler/buat_jenis_laporan" method="POST">
+                <div class="form-group">
+                  <label for="lokasi">Keterangan Aduan</label>
+                  <input type="text" class="form-control" name="keterangan" id="keterangan">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="float-right">
+            <button type="submit" form="jenis-laporan" class="btn btn-primary btn-block">Simpan</button>
+          </div>
+          <div class="float-left">
+            <!-- <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">bat</button> -->
+          </div>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
   </div>
   <!-- jQuery -->
   <script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js"></script>

@@ -21,8 +21,16 @@ class Jenis_aduan_controler extends CI_Controller
 	public function detail($id)
 	{
 	}
-	public function buat_jenis_aduan()
+	public function buat_jenis_laporan()
 	{
+		$data['jenis_laporan'] = array(
+			'keterangan' => $this->input->post('keterangan'),
+			'id_instansi' => $this->session->userdata('instansi')
+		);
+
+		if ($this->jenis_aduan_pegawai_model->add_jenis_laporan($data)) {
+			redirect('jenis_aduan_controler');
+		}
 	}
 	public function hapus_jenis_aduan($id)
 	{

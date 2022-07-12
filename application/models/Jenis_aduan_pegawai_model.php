@@ -14,4 +14,12 @@ class Jenis_aduan_pegawai_model extends CI_MODEL
     {
         return $this->db->query("SELECT nomor_aduan FROM aduan ORDER BY nomor_aduan DESC LIMIT 1");
     }
+    function add_jenis_laporan($data)
+    {
+        if ($this->db->insert('jenis_aduan', $data['jenis_laporan'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
