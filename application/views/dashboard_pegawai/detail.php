@@ -169,6 +169,10 @@
                         <div class="col-sm-2">: <?= $tanggal ?></div>
                       </div>
                       <div class="row">
+                        <div class="col-sm-2">Pelapor</div>
+                        <div class="col-sm-2">: <?= "-" ?></div>
+                      </div>
+                      <div class="row">
                         <div class="col-sm-2">Lokasi</div>
                         <div class="col-sm-2">: <?= $lokasi ?></div>
                       </div>

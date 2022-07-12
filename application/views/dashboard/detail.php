@@ -87,7 +87,7 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item active">
               <a href="<?php echo base_url() ?>index.php/dashboard_controler" class="nav-link active">
-                <i class="fas fa-circle nav-icon"></i>
+                <i class="fas fa-flag nav-icon"></i>
                 <p>Aduan</p>
               </a>
             </li>

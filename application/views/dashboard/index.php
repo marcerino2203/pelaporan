@@ -44,7 +44,7 @@
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
             <i class="far fa-bell"></i>
             <span class="badge badge-warning navbar-badge">15</span>
@@ -69,7 +69,7 @@
             <div class="dropdown-divider"></div>
             <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
           </div>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link" href="<?php echo base_url() ?>index.php/login_controler/log_out" role="button">
             <i class="fas fa-power-off"></i>
@@ -87,7 +87,7 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item active">
               <a href="<?php echo base_url() ?>index.php/dashboard_controler" class="nav-link active">
-                <i class="fas fa-circle nav-icon"></i>
+                <i class="fas fa-flag nav-icon"></i>
                 <p>Aduan</p>
               </a>
             </li>
@@ -224,6 +224,20 @@
                 <div class="form-group">
                   <label for="lokasi">Lokasi</label>
                   <input type="text" class="form-control" name="lokasi" id="lokasi">
+                </div>
+                <div class="form-group">
+                  <label for="keterangan">Jenis Aduan</label>
+                  <select class="form-control" aria-label="Default select example" name="jenis_aduan" id="jenis_aduan">
+                    <option selected></option>
+                    <?php
+                    foreach ($jenis_aduan->result_array() as $data_jenis_aduan) :
+                      $nomor++;
+                    ?>
+                      <option value="<?= $data_jenis_aduan['id_jenis_aduan'] ?>"><?= $data_jenis_aduan['keterangan'] ?></option>
+                    <?php
+                    endforeach
+                    ?>
+                  </select>
                 </div>
                 <div class="form-group">
                   <label for="keterangan">Keterangan</label>

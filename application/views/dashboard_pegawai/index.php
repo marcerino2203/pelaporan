@@ -155,28 +155,12 @@
                     <th>Nomor Aduan</th>
                     <th>Tanggal</th>
                     <th>Lokasi</th>
-                    <th>Gambar</th>
                     <th>Status</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php
-                  // if ($last_code->result_array() == null) {
-                  //   $nomor_aduan = "AD/001";
-                  // } else {
-                  //   foreach ($last_code->result_array() as $last_code) :
-                  //     if ($last_code['nomor_aduan'] != null) {
-                  //       $explode_kode = explode("/", $last_code['nomor_aduan']);
-                  //       $last_explode_kode = end($explode_kode) + 1;
-                  //       $last_explode_kode = sprintf("%03s", ($last_explode_kode));
-                  //       $nomor_aduan = "AD/" . $last_explode_kode;
-                  //     } else {
-                  //       $nomor_aduan = "AD/001";
-                  //     }
-                  //   endforeach;
-                  // }
-                  // print_r($laporan);
                   $nomor = 0;
                   foreach ($laporan->result_array() as $data_laporan) :
                     $nomor++;
@@ -186,8 +170,7 @@
                       <td><?= $data_laporan['nomor_aduan'] ?></td>
                       <td><?= $data_laporan['tanggal'] ?></td>
                       <td><?= $data_laporan['lokasi'] ?></td>
-                      <td><?= date('l, d-m-Y  H:i:s a'); ?></td>
-                      <td>Terkirim</td>
+                      <td>-</td>
                       <th>
                         <a href="<?php echo base_url() ?>index.php/dashboard_pegawai_controler/detail/<?= $data_laporan['id_aduan'] ?>" class="">
                           <button type="button" class="btn btn-primary">

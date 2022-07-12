@@ -16,6 +16,7 @@ class Dashboard_controler extends CI_Controller
 	{
 		$data['laporan'] = $this->dashboard_model->get_laporan($this->session->userdata('id'));
 		$data['last_code'] = $this->dashboard_model->get_code();
+		$data['jenis_aduan'] = $this->dashboard_model->get_jenis_aduan();
 		$this->load->view('dashboard/index', $data);
 	}
 	public function detail($id)
@@ -33,6 +34,7 @@ class Dashboard_controler extends CI_Controller
 			'id_masyarakat' => $this->session->userdata('id'),
 			'lokasi' => $this->input->post('lokasi'),
 			'isi' => $this->input->post('keterangan'),
+			'id_jenis_aduan' => $this->input->post('jenis_aduan'),
 			'id_keterangan_status' => 1
 		);
 		$data['status'] = array(

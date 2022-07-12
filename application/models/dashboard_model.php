@@ -67,4 +67,11 @@ class Dashboard_model extends CI_MODEL
         $data = $this->db->get();
         return $data;
     }
+    function get_jenis_aduan()
+    {
+        $this->db->select('*');
+        $this->db->from('jenis_aduan');
+        $data = $this->db->get();
+        return $data;
+    }
 }
