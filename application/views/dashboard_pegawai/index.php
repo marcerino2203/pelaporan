@@ -113,9 +113,9 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="<?php echo base_url() ?>index.php/keterangan_controler" class="nav-link">
+                  <a href="<?php echo base_url() ?>index.php/jenis_aduan_controler" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Keterangan Laporan</p>
+                    <p>Jenis Laporan</p>
                   </a>
                 </li>
               </ul>

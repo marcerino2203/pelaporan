@@ -103,12 +103,6 @@
                 <p>Aduan Selesai</p>
               </a>
             </li>
-            <!-- <li class="nav-item">
-              <a href="<?php echo base_url() ?>index.php/pengaturan_controler" class="nav-link">
-                <i class="fas fa-circle nav-icon"></i>
-                <p>Pengaturan</p>
-              </a>
-            </li> -->
             <li class="nav-item has-treeview menu-open">
               <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-cog"></i>
@@ -119,9 +113,9 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="<?php echo base_url() ?>index.php/keterangan_controler" class="nav-link">
+                  <a href="<?php echo base_url() ?>index.php/jenis_aduan_controler" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Keterangan Laporan</p>
+                    <p>Jenis Laporan</p>
                   </a>
                 </li>
               </ul>
@@ -161,6 +155,7 @@
                       $gambar = $data_laporan['gambar'];
                       $isi = $data_laporan['isi'];
                       $id_aduan = $data_laporan['id_aduan'];
+                      $keterangan = $data_laporan['keterangan'];
                     }
 
                     ?>
@@ -176,6 +171,10 @@
                       <div class="row">
                         <div class="col-sm-2">Lokasi</div>
                         <div class="col-sm-2">: <?= $lokasi ?></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-2">Keterangan</div>
+                        <div class="col-sm-2">: <?= $keterangan ?></div>
                       </div>
                       <div class="row">
                         <div class="col-sm-2">isi</div>

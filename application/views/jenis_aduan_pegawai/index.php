@@ -85,8 +85,8 @@
       <div class="sidebar">
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item active">
-              <a href="<?php echo base_url() ?>index.php/dashboard_controler" class="nav-link active">
+            <li class="nav-item">
+              <a href="<?php echo base_url() ?>index.php/dashboard_controler" class="nav-link">
                 <i class="fas fa-circle nav-icon"></i>
                 <p>Aduan Masuk</p>
               </a>
@@ -113,9 +113,9 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="<?php echo base_url() ?>index.php/keterangan_controler" class="nav-link">
+                  <a href="<?php echo base_url() ?>index.php/jenis_aduan_controler" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Keterangan Laporan</p>
+                    <p>Jenis Laporan</p>
                   </a>
                 </li>
               </ul>
@@ -152,49 +152,29 @@
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Nomor Aduan</th>
-                    <th>Tanggal</th>
-                    <th>Lokasi</th>
-                    <th>Gambar</th>
+                    <th>Jenis Aduan</th>
                     <th>Status</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php
-                  // if ($last_code->result_array() == null) {
-                  //   $nomor_aduan = "AD/001";
-                  // } else {
-                  //   foreach ($last_code->result_array() as $last_code) :
-                  //     if ($last_code['nomor_aduan'] != null) {
-                  //       $explode_kode = explode("/", $last_code['nomor_aduan']);
-                  //       $last_explode_kode = end($explode_kode) + 1;
-                  //       $last_explode_kode = sprintf("%03s", ($last_explode_kode));
-                  //       $nomor_aduan = "AD/" . $last_explode_kode;
-                  //     } else {
-                  //       $nomor_aduan = "AD/001";
-                  //     }
-                  //   endforeach;
-                  // }
-                  // print_r($laporan);
                   $nomor = 0;
-                  foreach ($laporan->result_array() as $data_laporan) :
+                  foreach ($jenis_aduan->result_array() as $data_jenis_aduan) :
                     $nomor++;
+                    $Keterangan = $data_jenis_aduan['keterangan'];
                   ?>
                     <tr>
                       <td><?= $nomor ?></td>
-                      <td><?= $data_laporan['nomor_aduan'] ?></td>
-                      <td><?= $data_laporan['tanggal'] ?></td>
-                      <td><?= $data_laporan['lokasi'] ?></td>
-                      <td><?= date('l, d-m-Y  H:i:s a'); ?></td>
-                      <td>Terkirim</td>
+                      <td><?= $Keterangan ?></td>
+                      <td></td>
                       <th>
-                        <a href="<?php echo base_url() ?>index.php/dashboard_pegawai_controler/detail/<?= $data_laporan['id_aduan'] ?>" class="">
+                        <!-- <a href="<?php echo base_url() ?>index.php/jenis_aduan_pegawai_controler/detail/<?= $data_jenis_aduan['id_jenis_aduan'] ?>" class="">
                           <button type="button" class="btn btn-primary">
                             <i class="fa fa-eye" aria-hidden="true"></i>
                             Lihat
                           </button>
-                        </a>
+                        </a> -->
                       </th>
                     </tr>
                   <?php

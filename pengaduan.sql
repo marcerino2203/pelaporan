@@ -27,25 +27,25 @@ CREATE TABLE `aduan` (
   `lokasi` varchar(50) DEFAULT NULL,
   `isi` text DEFAULT NULL,
   `gambar` varchar(255) DEFAULT NULL,
-  `id_instansi` int(11) DEFAULT NULL,
   `id_masyarakat` int(11) DEFAULT NULL,
   `id_keterangan_status` int(11) DEFAULT NULL,
+  `id_jenis_aduan` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_aduan`),
-  KEY `id_instanse` (`id_instansi`),
   KEY `id_masyarakat` (`id_masyarakat`),
   KEY `keterangan_status` (`id_keterangan_status`),
-  CONSTRAINT `id_instanse` FOREIGN KEY (`id_instansi`) REFERENCES `instansi` (`id_instansi`),
+  KEY `id_keterangan_aduan_aduan` (`id_jenis_aduan`),
+  CONSTRAINT `id_keterangan_aduan_aduan` FOREIGN KEY (`id_jenis_aduan`) REFERENCES `jenis_aduan` (`id_jenis_aduan`),
   CONSTRAINT `id_masyarakat` FOREIGN KEY (`id_masyarakat`) REFERENCES `masyarakat` (`id_masyarakat`),
   CONSTRAINT `keterangan_status` FOREIGN KEY (`id_keterangan_status`) REFERENCES `keterangan_status` (`id_keterangan_status`)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `aduan` */
 
-insert  into `aduan`(`id_aduan`,`nomor_aduan`,`tanggal`,`lokasi`,`isi`,`gambar`,`id_instansi`,`id_masyarakat`,`id_keterangan_status`) values 
-(20,'AD/001','2022-06-28','fsdfsf','sdfsdf',NULL,1,2,4),
-(21,'AD/002','2022-06-28','lakdown','lkwjfw\r\n',NULL,1,2,1),
-(22,'AD/003','2022-06-28','test','test',NULL,1,2,3),
-(23,'AD/004','2022-06-28','sfsdf','sdfsf',NULL,NULL,2,1);
+insert  into `aduan`(`id_aduan`,`nomor_aduan`,`tanggal`,`lokasi`,`isi`,`gambar`,`id_masyarakat`,`id_keterangan_status`,`id_jenis_aduan`) values 
+(20,'AD/001','2022-06-28','fsdfsf','sdfsdf',NULL,2,4,1),
+(21,'AD/002','2022-06-28','lakdown','lkwjfw\r\n',NULL,2,1,1),
+(22,'AD/003','2022-06-28','test','test',NULL,2,3,1),
+(23,'AD/004','2022-06-28','sfsdf','sdfsf',NULL,2,1,1);
 
 /*Table structure for table `akses` */
 
@@ -96,6 +96,24 @@ CREATE TABLE `instansi` (
 
 insert  into `instansi`(`id_instansi`,`nama`,`alamat`,`telp`) values 
 (1,'Dinas Lingkungan Hidup',NULL,'089988');
+
+/*Table structure for table `jenis_aduan` */
+
+DROP TABLE IF EXISTS `jenis_aduan`;
+
+CREATE TABLE `jenis_aduan` (
+  `id_jenis_aduan` int(11) NOT NULL AUTO_INCREMENT,
+  `id_instansi` int(11) DEFAULT NULL,
+  `keterangan` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id_jenis_aduan`),
+  KEY `keterangan_aduan_instansi` (`id_instansi`),
+  CONSTRAINT `keterangan_aduan_instansi` FOREIGN KEY (`id_instansi`) REFERENCES `instansi` (`id_instansi`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `jenis_aduan` */
+
+insert  into `jenis_aduan`(`id_jenis_aduan`,`id_instansi`,`keterangan`) values 
+(1,1,'Pohon Tubang');
 
 /*Table structure for table `keterangan_status` */
 
