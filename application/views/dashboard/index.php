@@ -126,7 +126,6 @@
                     <th>Nomor Aduan</th>
                     <th>Tanggal</th>
                     <th>Lokasi</th>
-                    <th>Gambar</th>
                     <th>Status</th>
                     <th></th>
                   </tr>
@@ -157,27 +156,28 @@
                       <td><?= $data_laporan['nomor_aduan'] ?></td>
                       <td><?= $data_laporan['tanggal'] ?></td>
                       <td><?= $data_laporan['lokasi'] ?></td>
-                      <td><?= date('l, d-m-Y  H:i:s a'); ?></td>
                       <td>Terkirim</td>
                       <th>
-                        <a href="<?php echo base_url() ?>index.php/dashboard_controler/detail/<?= $data_laporan['id_aduan'] ?>" class="">
-                          <button type="button" class="btn btn-primary">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                            Detail
-                          </button>
-                        </a>
-                        <a href="<?php echo base_url() ?>index.php/dashboard_controler/hapus_laporan/<?= $data_laporan['id_aduan'] ?>" class="">
-                          <button type="button" class="btn btn-danger">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                            Hapus
-                          </button>
-                        </a>
-                        <a href="<?php echo base_url() ?>index.php/dashboard_controler/edit/<?= $data_laporan['id_aduan'] ?>" class="">
-                          <button type="button" class="btn btn-primary">
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                            edit
-                          </button>
-                        </a>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                          <a href="<?php echo base_url() ?>index.php/dashboard_controler/detail/<?= $data_laporan['id_aduan'] ?>" class="">
+                            <button type="button" class="btn btn-info">
+                              <i class="fa fa-search" aria-hidden="true"></i>
+                              <!-- Detail -->
+                            </button>
+                          </a>
+                          <a href="<?php echo base_url() ?>index.php/dashboard_controler/edit/<?= $data_laporan['id_aduan'] ?>" class="">
+                            <button type="button" class="btn btn-secondary">
+                              <i class="fa fa-pencil" aria-hidden="true"></i>
+                              edit
+                            </button>
+                          </a>
+                          <div class="card-tools" data-toggle="modal" data-target="#modal-hapus">
+                            <button type="button" class="btn btn-danger">
+                              <i class="fa fa-trash" aria-hidden="true"></i>
+                              <!-- Hapus -->
+                            </button>
+                          </div>
+                        </div>
                       </th>
                     </tr>
 
@@ -253,6 +253,35 @@
           </div>
           <div class="float-left">
             <!-- <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">bat</button> -->
+          </div>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <div class="modal fade" id="modal-hapus" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title">
+            Perhatian
+          </div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Apakah anda yakin ingin menghapus laporan anda ?
+        </div>
+        <div class="card-footer">
+          <div class="float-right">
+            <a href="<?php echo base_url() ?>index.php/dashboard_controler/hapus_laporan/<?= $data_laporan['id_aduan'] ?>" class="">
+              <button type="button" form="laporan" class="btn btn-danger btn-block">Ya</button>
+            </a>
+          </div>
+          <div class="float-left">
+            <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Tidak</button>
           </div>
         </div>
       </div>
