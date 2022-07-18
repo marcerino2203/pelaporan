@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2022 at 03:30 AM
+-- Generation Time: Jul 18, 2022 at 05:39 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -44,13 +44,10 @@ CREATE TABLE `aduan` (
 --
 
 INSERT INTO `aduan` (`id_aduan`, `nomor_aduan`, `tanggal`, `lokasi`, `isi`, `gambar`, `id_masyarakat`, `id_keterangan_status`, `id_jenis_aduan`) VALUES
-(20, 'AD/001', '2022-06-28', 'fsdfsf', 'sdfsdf', NULL, 2, 4, 1),
-(21, 'AD/002', '2022-06-28', 'lakdown', 'lkwjfw\r\n', NULL, 2, 1, 1),
-(22, 'AD/003', '2022-06-28', 'test', 'test', NULL, 2, 3, 1),
-(23, 'AD/004', '2022-06-28', 'sfsdf', 'sdfsf', NULL, 2, 1, 1),
 (24, 'AD/005', '2022-07-14', 'Desa Gabru', 'Pohon mahoni tumbang menutupi akses jalan dan merusak kabel', NULL, 2, 4, 1),
 (26, 'AD/006', '2022-07-14', 'Ponggok', 'Jalan berlubang membahayakan pengendara', NULL, 3, 1, 2),
-(27, 'AD/007', '2022-07-14', 'Bence, Garum', 'Beberapa lampu penerangan jalan mati ', NULL, 3, 1, 4);
+(27, 'AD/007', '2022-07-14', 'Bence, Garum', 'Beberapa lampu penerangan jalan mati ', NULL, 3, 1, 4),
+(28, 'AD/008', '2022-07-18', 'Kademangan', 'Kerusakan bangku ruang tunggu di terminal kademangan', NULL, 2, 1, 5);
 
 -- --------------------------------------------------------
 
@@ -93,7 +90,7 @@ CREATE TABLE `gambar` (
 
 CREATE TABLE `instansi` (
   `id_instansi` int(11) NOT NULL,
-  `nama` varchar(30) DEFAULT NULL,
+  `nama` varchar(50) DEFAULT NULL,
   `alamat` varchar(100) DEFAULT NULL,
   `telp` varchar(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -103,9 +100,10 @@ CREATE TABLE `instansi` (
 --
 
 INSERT INTO `instansi` (`id_instansi`, `nama`, `alamat`, `telp`) VALUES
-(1, 'Dinas Lingkungan Hidup', 'Jl. Manukwari No.25, Glondong, Satreyan, Kec. Kanigoro, Kabupaten Blitar', '801590'),
+(1, 'Dinas Komunikasi dan Informatika', 'Jl. S. Supriadi No.17, Bendogerit, Kec. Sananwetan, Kota Blitar', '555955'),
 (2, 'Dinas Perhubungan Kabupaten Bl', 'Jl. Raya Dandong No.53, Dandong, Kec. Srengat, Kabupaten Blitar', '555330'),
-(3, 'Dinas Pekerjaan Umum dan Penat', 'Jl. Sudanco Supriyadi No.86, Kec. Sananwetan, Kota Blitar', '808897');
+(3, 'Dinas Pekerjaan Umum dan Penat', 'Jl. Sudanco Supriyadi No.86, Kec. Sananwetan, Kota Blitar', '808897'),
+(4, 'Dinas Lingkungan Hidup', 'Jl. Manukwari No.25, Glondong, Satreyan, Kec. Kanigoro, Kabupaten Blitar', '801590');
 
 -- --------------------------------------------------------
 
@@ -198,7 +196,8 @@ CREATE TABLE `pegawai` (
 --
 
 INSERT INTO `pegawai` (`id_pegawai`, `nama`, `alamat`, `no_pegawai`, `username`, `password`, `id_instansi`, `id_akses`) VALUES
-(1, 'pegawai', NULL, NULL, 'pegawai', 'pegawai', 1, 2);
+(1, 'pegawai', NULL, NULL, 'pegawai', 'pegawai', 1, 2),
+(2, 'Suryadi', 'Jl. Manukwari No. 25', NULL, 'suryadi', 'suryadi', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -221,18 +220,7 @@ CREATE TABLE `status_aduan` (
 --
 
 INSERT INTO `status_aduan` (`id_status`, `tanggal`, `waktu`, `id_keterangan_status`, `id_aduan`, `catatan`, `id_pegawai`) VALUES
-(24, '2022-06-28', '14:11:00', 1, 20, NULL, NULL),
-(25, '2022-06-28', '14:14:00', 1, 21, NULL, NULL),
-(26, '2022-06-28', '14:26:00', 3, 20, NULL, NULL),
-(27, '2022-06-28', '15:00:00', 1, 22, NULL, NULL),
-(28, '2022-06-28', '16:12:00', 4, 20, NULL, NULL),
-(29, '2022-06-28', '16:27:00', 3, 22, NULL, NULL),
-(30, '2022-06-28', '17:46:00', 1, 23, NULL, NULL),
-(31, '2022-07-14', '22:47:00', 1, 24, NULL, NULL),
-(32, '2022-07-14', '22:48:00', 3, 24, NULL, NULL),
-(33, '2022-07-14', '22:49:00', 4, 24, NULL, NULL),
-(35, '2022-07-14', '23:50:00', 1, 26, NULL, NULL),
-(36, '2022-07-14', '23:50:00', 1, 27, NULL, NULL);
+(37, '2022-07-18', '10:31:00', 1, 28, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -311,7 +299,7 @@ ALTER TABLE `status_aduan`
 -- AUTO_INCREMENT for table `aduan`
 --
 ALTER TABLE `aduan`
-  MODIFY `id_aduan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_aduan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `akses`
@@ -329,7 +317,7 @@ ALTER TABLE `gambar`
 -- AUTO_INCREMENT for table `instansi`
 --
 ALTER TABLE `instansi`
-  MODIFY `id_instansi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_instansi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `jenis_aduan`
@@ -353,13 +341,13 @@ ALTER TABLE `masyarakat`
 -- AUTO_INCREMENT for table `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `status_aduan`
 --
 ALTER TABLE `status_aduan`
-  MODIFY `id_status` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_status` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- Constraints for dumped tables
