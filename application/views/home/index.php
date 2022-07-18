@@ -89,73 +89,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </nav>
   <!-- /.navbar -->
 
-  <!-- Content Wrapper. Contains page content -->
+ <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container">
-        <div class="row mb-2">
-          
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-    <!-- Main content -->
-    <div class="content">
-      <div class="container overflow-auto">
-        <div class="row">
-          <div class="col-lg-8">
-          </div>
-          <div class="col-lg-4 float-right">
-            <div class="card">
-              <div class="card-header">
-                <div class="d-flex justify-content-center">
-                  Lapor Kerusakan
-                </div>
-              </div>
-              <div class="card-body">
-                <form>
-                  <div class="form-group">
-                    <label for="nama">Nama</label>
-                    <input type="text" class="form-control" id="nama">
-                  </div>
-                  <div class="form-group">
-                    <label for="nomor_telepon">Nomor Telepon</label>
-                    <input type="text" class="form-control" id="nomor_telepon">
-                  </div>
-                  <div class="form-group">
-                    <label for="lokasi">Lokasi</label>
-                    <input type="text" class="form-control" id="lokasi">
-                  </div>
-                  <div class="form-group">
-                    <label for="gambar">Pilih Gambar</label>
-                    <input type="file" class="form-control" id="gambar" accept="image/png, image/jpeg">
-                  </div>
-                  <div class="form-group">
-                    <label for="keterangan">Keterangan</label>
-                    <textarea id="keterangan"class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                  </div>
-                  <div class="card-footer">
-                <div class="float-right">
-                  <button type="submit" form="kirim" class="btn btn-primary btn-block">Kirim</button>
-                </div>
-                <div class="float-left">
-                    <!-- <button type="button" class="btn btn-primary btn-block" data-dismiss="modal" >Save</button> -->
-                </div>
-              </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
+    
         <!-- /.row -->
-      </div><!-- /.container-fluid -->
+  </div><!-- /.container-fluid -->
       
     </div>
     <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
-
+  <!-- /.content-wrapper --> 
+ -->
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
