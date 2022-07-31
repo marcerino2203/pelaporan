@@ -18,7 +18,7 @@ class Login_controler extends CI_Controller
 		} else if ($this->session->userdata('akses') == "pegawai") {
 			redirect('dashboard_pegawai_controler');
 		} else if ($this->session->userdata('akses') == "admin") {
-			redirect('dashboard_pegawai_controler');
+			redirect('dashboard_admin_controler');
 		} else {
 			redirect('home_controler');
 		};
@@ -52,7 +52,7 @@ class Login_controler extends CI_Controller
 					$this->session->set_userdata($session_data);
 				}
 				if ($session_data['akses'] == 'admin') {
-					redirect('admin_controler');
+					redirect('dashboard_admin_controler');
 				} else {
 					redirect('dashboard_pegawai_controler');
 				}

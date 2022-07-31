@@ -19,7 +19,7 @@ class Home_controler extends CI_Controller
 		} else if ($this->session->userdata('akses') == "pegawai") {
 			redirect('dashboard_pegawai_controler');
 		} else if ($this->session->userdata('akses') == "admin") {
-			redirect('dashboard_pegawai_controler');
+			redirect('dashboard_admin_controler');
 		} else {
 			$this->load->view('home/index');
 		};

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Admin_controler extends CI_Controller
+class Dashboard_admin_controler extends CI_Controller
 {
 
 	public function __construct()
@@ -14,6 +14,6 @@ class Admin_controler extends CI_Controller
 	}
 	public function index()
 	{
-		echo "heloo admin";
+		$this->load->view('admin/index');
 	}
 }
