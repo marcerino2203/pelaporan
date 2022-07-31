@@ -52,7 +52,7 @@ class Login_controler extends CI_Controller
 					$this->session->set_userdata($session_data);
 				}
 				if ($session_data['akses'] == 'admin') {
-					echo "halo admin";
+					redirect('admin_controler');
 				} else {
 					redirect('dashboard_pegawai_controler');
 				}
