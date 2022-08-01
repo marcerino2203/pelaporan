@@ -65,7 +65,40 @@
                 <p>Dashboard</p>
               </a>
             </li>
-            <!-- <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa fa-book"></i>
+                <p>
+                  Laporan
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="<?php echo base_url() ?>index.php/user_admin_controler" class="nav-link">
+                    <i class="nav-icon fa fa-tasks"></i>
+                    <p>Laporan Proses</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="<?php echo base_url() ?>index.php/instansi_admin_controler" class="nav-link">
+                    <i class="nav-icon fa fa-ban"></i>
+                    <p>Laporan Ditangguhkan</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="<?php echo base_url() ?>index.php/instansi_admin_controler" class="nav-link">
+                    <i class="nav-icon fa fa-check"></i>
+                    <p>Laporan selesai</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-cog"></i>
                 <p>
@@ -75,13 +108,21 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="<?php echo base_url() ?>index.php/jenis_aduan_controler" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Jenis Laporan</p>
+                  <a href="<?php echo base_url() ?>index.php/user_admin_controler" class="nav-link">
+                    <i class="nav-icon far fa-user"></i>
+                    <p>User</p>
                   </a>
                 </li>
               </ul>
-            </li> -->
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="<?php echo base_url() ?>index.php/instansi_admin_controler" class="nav-link">
+                    <i class="nav-icon fa fa-building"></i>
+                    <p>Instansi</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
           </ul>
         </nav>
       </div>
@@ -203,7 +244,7 @@
     </footer>
   </div>
   <!-- ChartJS -->
-  <script src="<?php echo base_url() ?>plugins/chart.js/Chart.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/chart.js/Chart.min.js"></script>
   <!-- jQuery -->
   <script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap -->
@@ -217,6 +258,9 @@
   <script src="<?php echo base_url() ?>assets/dist/js/demo.js"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="<?php echo base_url() ?>assets/dist/js/pages/dashboard3.js"></script>
+
+
+
 </body>
 
 </html>
