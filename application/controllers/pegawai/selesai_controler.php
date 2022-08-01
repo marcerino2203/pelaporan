@@ -15,7 +15,7 @@ class Selesai_controler extends CI_Controller
 	public function index()
 	{
 		$data['laporan'] = $this->selesai_pegawai_model->get_laporan($this->session->userdata('id'));
-		$this->load->view('selesai_pegawai/index', $data);
+		$this->load->view('pegawai/selesai/index', $data);
 	}
 	public function detail($id)
 	{
@@ -30,7 +30,7 @@ class Selesai_controler extends CI_Controller
 		);
 		$data['laporan'] = $this->selesai_pegawai_model->get_detail_laporan($data);
 		$data['status'] = $this->selesai_pegawai_model->get_status_laporan($data);
-		$this->load->view('selesai_pegawai/detail', $data);
+		$this->load->view('pegawai/selesai/detail', $data);
 	}
 	public function laporan_selesai($id)
 	{
@@ -47,6 +47,6 @@ class Selesai_controler extends CI_Controller
 		);
 		$data['status'] = $this->selesai_pegawai_model->selesai($data, $id);
 		// $this->load->view('dashboard_pegawai/index');
-		redirect('proses_controler');
+		redirect('pegawai/proses_controler');
 	}
 }

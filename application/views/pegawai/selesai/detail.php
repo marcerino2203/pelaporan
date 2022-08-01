@@ -71,7 +71,7 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url() ?>index.php/login_controler/log_out" role="button">
+          <a class="nav-link" href="#" role="button">
             <i class="fas fa-power-off"></i>
           </a>
         </li>
@@ -86,26 +86,26 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item active">
-              <a href="<?php echo base_url() ?>index.php/dashboard_controler" class="nav-link">
+              <a href="<?php echo base_url() ?>index.php/pegawai/dashboard_controler" class="nav-link">
                 <i class="fas fa-circle nav-icon"></i>
                 <p>Aduan Masuk</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo base_url() ?>index.php/proses_controler" class="nav-link active">
+              <a href="<?php echo base_url() ?>index.php/pegawai/proses_controler" class="nav-link">
                 <i class="fas fa-circle nav-icon"></i>
                 <p>Aduan Proses</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo base_url() ?>index.php/selesai_controler" class="nav-link">
+              <a href="<?php echo base_url() ?>index.php/pegawai/selesai_controler" class="nav-link active">
                 <i class="fas fa-circle nav-icon"></i>
                 <p>Aduan Selesai</p>
               </a>
             </li>
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-database"></i>
+                <i class="nav-icon fas fa-cog"></i>
                 <p>
                   Pengaturan
                   <i class="right fas fa-angle-left"></i>
@@ -113,7 +113,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="<?php echo base_url() ?>index.php/jenis_aduan_controler" class="nav-link">
+                  <a href="<?php echo base_url() ?>index.php/pegawai/jenis_aduan_controler" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Jenis Laporan</p>
                   </a>
@@ -130,8 +130,8 @@
           <div class="row mb-2">
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-left">
-                <li class="breadcrumb-item">Aduan Proses</li>
-                <!-- <li class="breadcrumb-item active">Dashboard v3</li> -->
+                <li class="breadcrumb-item">Aduan Selesai</li>
+                <li class="breadcrumb-item active">Detail</li>
               </ol>
             </div>
           </div>
@@ -141,67 +141,64 @@
         <div class="container-fluid">
           <div class="card">
             <div class="card-header">
-              <!-- <div class="card-title">Laporan</div> -->
-              <div class="card-tools" data-toggle="modal" data-target="#modal-lapor">
-                <!-- <button type="button" class="btn btn-primary">Buat Laporan</button> -->
-              </div>
-              Laporan
+              Detail Laporan
             </div>
             <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                  <tr>
-                    <th>No</th>
-                    <th>Nomor Aduan</th>
-                    <th>Tanggal</th>
-                    <th>Lokasi</th>
-                    <th>Gambar</th>
-                    <th>Status</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  // if ($last_code->result_array() == null) {
-                  //   $nomor_aduan = "AD/001";
-                  // } else {
-                  //   foreach ($last_code->result_array() as $last_code) :
-                  //     if ($last_code['nomor_aduan'] != null) {
-                  //       $explode_kode = explode("/", $last_code['nomor_aduan']);
-                  //       $last_explode_kode = end($explode_kode) + 1;
-                  //       $last_explode_kode = sprintf("%03s", ($last_explode_kode));
-                  //       $nomor_aduan = "AD/" . $last_explode_kode;
-                  //     } else {
-                  //       $nomor_aduan = "AD/001";
-                  //     }
-                  //   endforeach;
-                  // }
-                  // print_r($laporan);
-                  $nomor = 0;
-                  foreach ($laporan->result_array() as $data_laporan) :
-                    $nomor++;
-                  ?>
-                    <tr>
-                      <td><?= $nomor ?></td>
-                      <td><?= $data_laporan['nomor_aduan'] ?></td>
-                      <td><?= $data_laporan['tanggal'] ?></td>
-                      <td><?= $data_laporan['lokasi'] ?></td>
-                      <td><?= date('l, d-m-Y  H:i:s a'); ?></td>
-                      <td>Terkirim</td>
-                      <th>
-                        <a href="<?php echo base_url() ?>index.php/proses_controler/detail/<?= $data_laporan['id_aduan'] ?>" class="">
-                          <button type="button" class="btn btn-primary">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                            Lihat
-                          </button>
-                        </a>
-                      </th>
-                    </tr>
-                  <?php
-                  endforeach
-                  ?>
-                </tbody>
-              </table>
+              <div class="card">
+                <div class="card-body">
+                  <div class="card">
+                    <?php
+                    foreach ($laporan->result_array() as $data_laporan) {
+                      $nomor_laporan = $data_laporan['nomor_aduan'];
+                      $tanggal = $data_laporan['tanggal'];
+                      $lokasi = $data_laporan['lokasi'];
+                      $gambar = $data_laporan['gambar'];
+                      $isi = $data_laporan['isi'];
+                      $id_aduan = $data_laporan['id_aduan'];
+                      $keterangan = $data_laporan['keterangan'];
+                    }
+
+                    ?>
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-sm-2">Nomor Laporan</div>
+                        <div class="col-sm-2">: <?= $nomor_laporan ?></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-2">tanggal</div>
+                        <div class="col-sm-2">: <?= $tanggal ?></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-2">Lokasi</div>
+                        <div class="col-sm-2">: <?= $lokasi ?></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-2">Keterangan</div>
+                        <div class="col-sm-2">: <?= $keterangan ?></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-2">isi</div>
+                        <div class="col-sm-2">: <?= $isi ?></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-2">Status</div>
+                        <div class="col-sm-2">:</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="card">
+                        <div class="card-body">
+                          Ini Gambar
+                          <div class="timeline">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -216,6 +213,7 @@
       </div>
     </footer>
   </div>
+
   <!-- jQuery -->
   <script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap -->

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LaporCah.go || Pegawai</title>
+  <title>LaporCah.go || Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -44,7 +44,7 @@
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
             <i class="far fa-bell"></i>
             <span class="badge badge-warning navbar-badge">15</span>
@@ -69,7 +69,7 @@
             <div class="dropdown-divider"></div>
             <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
           </div>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link" href="<?php echo base_url() ?>index.php/login_controler/log_out" role="button">
             <i class="fas fa-power-off"></i>
@@ -86,39 +86,10 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item active">
-              <a href="<?php echo base_url() ?>index.php/dashboard_controler" class="nav-link">
-                <i class="fas fa-circle nav-icon"></i>
-                <p>Aduan Masuk</p>
+              <a href="<?php echo base_url() ?>index.php/warga/dashboard_controler" class="nav-link active">
+                <i class="fas fa-flag nav-icon"></i>
+                <p>Aduan</p>
               </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url() ?>index.php/proses_controler" class="nav-link">
-                <i class="fas fa-circle nav-icon"></i>
-                <p>Aduan Proses</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url() ?>index.php/selesai_controler" class="nav-link active">
-                <i class="fas fa-circle nav-icon"></i>
-                <p>Aduan Selesai</p>
-              </a>
-            </li>
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-database"></i>
-                <p>
-                  Pengaturan
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="<?php echo base_url() ?>index.php/jenis_aduan_controler" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Jenis Laporan</p>
-                  </a>
-                </li>
-              </ul>
             </li>
           </ul>
         </nav>
@@ -130,7 +101,7 @@
           <div class="row mb-2">
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-left">
-                <li class="breadcrumb-item">Aduan Selesai</li>
+                <li class="breadcrumb-item">Aduan</li>
                 <!-- <li class="breadcrumb-item active">Dashboard v3</li> -->
               </ol>
             </div>
@@ -143,7 +114,7 @@
             <div class="card-header">
               <!-- <div class="card-title">Laporan</div> -->
               <div class="card-tools" data-toggle="modal" data-target="#modal-lapor">
-                <!-- <button type="button" class="btn btn-primary">Buat Laporan</button> -->
+                <button type="button" class="btn btn-primary">Buat Laporan</button>
               </div>
               Laporan
             </div>
@@ -155,27 +126,26 @@
                     <th>Nomor Aduan</th>
                     <th>Tanggal</th>
                     <th>Lokasi</th>
-                    <th>Gambar</th>
                     <th>Status</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php
-                  // if ($last_code->result_array() == null) {
-                  //   $nomor_aduan = "AD/001";
-                  // } else {
-                  //   foreach ($last_code->result_array() as $last_code) :
-                  //     if ($last_code['nomor_aduan'] != null) {
-                  //       $explode_kode = explode("/", $last_code['nomor_aduan']);
-                  //       $last_explode_kode = end($explode_kode) + 1;
-                  //       $last_explode_kode = sprintf("%03s", ($last_explode_kode));
-                  //       $nomor_aduan = "AD/" . $last_explode_kode;
-                  //     } else {
-                  //       $nomor_aduan = "AD/001";
-                  //     }
-                  //   endforeach;
-                  // }
+                  if ($last_code->result_array() == null) {
+                    $nomor_aduan = "AD/001";
+                  } else {
+                    foreach ($last_code->result_array() as $last_code) :
+                      if ($last_code['nomor_aduan'] != null) {
+                        $explode_kode = explode("/", $last_code['nomor_aduan']);
+                        $last_explode_kode = end($explode_kode) + 1;
+                        $last_explode_kode = sprintf("%03s", ($last_explode_kode));
+                        $nomor_aduan = "AD/" . $last_explode_kode;
+                      } else {
+                        $nomor_aduan = "AD/001";
+                      }
+                    endforeach;
+                  }
                   // print_r($laporan);
                   $nomor = 0;
                   foreach ($laporan->result_array() as $data_laporan) :
@@ -186,20 +156,35 @@
                       <td><?= $data_laporan['nomor_aduan'] ?></td>
                       <td><?= $data_laporan['tanggal'] ?></td>
                       <td><?= $data_laporan['lokasi'] ?></td>
-                      <td><?= date('l, d-m-Y  H:i:s a'); ?></td>
                       <td>Terkirim</td>
                       <th>
-                        <a href="<?php echo base_url() ?>index.php/selesai_controler/detail/<?= $data_laporan['id_aduan'] ?>" class="">
-                          <button type="button" class="btn btn-primary">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                            Lihat
-                          </button>
-                        </a>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                          <a href="<?php echo base_url() ?>index.php/warga/dashboard_controler/detail/<?= $data_laporan['id_aduan'] ?>" class="">
+                            <button type="button" class="btn btn-info">
+                              <i class="fa fa-search" aria-hidden="true"></i>
+                              <!-- Detail -->
+                            </button>
+                          </a>
+                          <a href="<?php echo base_url() ?>index.php/warga/dashboard_controler/edit/<?= $data_laporan['id_aduan'] ?>" class="">
+                            <button type="button" class="btn btn-secondary">
+                              <i class="fa fa-pencil" aria-hidden="true"></i>
+                              edit
+                            </button>
+                          </a>
+                          <div class="card-tools" data-toggle="modal" data-target="#modal-hapus">
+                            <button type="button" class="btn btn-danger">
+                              <i class="fa fa-trash" aria-hidden="true"></i>
+                              <!-- Hapus -->
+                            </button>
+                          </div>
+                        </div>
                       </th>
                     </tr>
+
                   <?php
                   endforeach
                   ?>
+
                 </tbody>
               </table>
             </div>
@@ -216,6 +201,95 @@
       </div>
     </footer>
   </div>
+
+  <div class="modal fade" id="modal-lapor" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title">
+            Lapor
+          </div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="card">
+            <div class="card-body">
+              <form id="laporan" action="<?php echo base_url() ?>index.php/warga/dashboard_controler/buat_laporan" method="POST">
+                <div class="form-group">
+                  <label for="lokasi">Nomor Aduan</label>
+                  <input type="text" class="form-control" name="nomor_aduan" id="nomor_aduan" value="<?= $nomor_aduan ?>" readonly>
+                </div>
+                <div class="form-group">
+                  <label for="lokasi">Lokasi</label>
+                  <input type="text" class="form-control" name="lokasi" id="lokasi">
+                </div>
+                <div class="form-group">
+                  <label for="keterangan">Jenis Aduan</label>
+                  <select class="form-control" aria-label="Default select example" name="jenis_aduan" id="jenis_aduan">
+                    <option selected></option>
+                    <?php
+                    foreach ($jenis_aduan->result_array() as $data_jenis_aduan) :
+                      $nomor++;
+                    ?>
+                      <option value="<?= $data_jenis_aduan['id_jenis_aduan'] ?>"><?= $data_jenis_aduan['keterangan'] ?></option>
+                    <?php
+                    endforeach
+                    ?>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="keterangan">Keterangan</label>
+                  <textarea name="keterangan" id="keterangan" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="float-right">
+            <button type="submit" form="laporan" class="btn btn-primary btn-block">Simpan</button>
+          </div>
+          <div class="float-left">
+            <!-- <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">bat</button> -->
+          </div>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <div class="modal fade" id="modal-hapus" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title">
+            Perhatian
+          </div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Apakah anda yakin ingin menghapus laporan anda ?
+        </div>
+        <div class="card-footer">
+          <div class="float-right">
+            <a href="<?php echo base_url() ?>index.php/warga/dashboard_controler/hapus_laporan/<?= $data_laporan['id_aduan'] ?>" class="">
+              <button type="button" form="laporan" class="btn btn-danger btn-block">Ya</button>
+            </a>
+          </div>
+          <div class="float-left">
+            <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Tidak</button>
+          </div>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+
   <!-- jQuery -->
   <script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap -->

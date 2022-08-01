@@ -17,13 +17,13 @@ class Dashboard_controler extends CI_Controller
 		$data['laporan'] = $this->dashboard_model->get_laporan($this->session->userdata('id'));
 		$data['last_code'] = $this->dashboard_model->get_code();
 		$data['jenis_aduan'] = $this->dashboard_model->get_jenis_aduan();
-		$this->load->view('dashboard/index', $data);
+		$this->load->view('warga/dashboard/index', $data);
 	}
 	public function detail($id)
 	{
 		$data['laporan'] = $this->dashboard_model->get_detail_laporan($id);
 		$data['status'] = $this->dashboard_model->get_status_laporan($id);
-		$this->load->view('dashboard/detail', $data);
+		$this->load->view('warga/dashboard/detail', $data);
 	}
 	public function buat_laporan()
 	{
@@ -43,15 +43,15 @@ class Dashboard_controler extends CI_Controller
 			'waktu' => date("H:i")
 		);
 		if ($this->dashboard_model->add_laporan($data)) {
-			redirect('dashboard_controler');
+			redirect('warga/dashboard_controler');
 		}
 	}
 	public function hapus_laporan($id)
 	{
 		if ($this->dashboard_model->delete_laporan($id)) {
-			redirect('dashboard_controler');
+			redirect('warga/dashboard_controler');
 		} else {
-			redirect('dashboard_controler');
+			redirect('warga/dashboard_controler');
 		}
 	}
 }

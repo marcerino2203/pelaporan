@@ -15,11 +15,11 @@ class Home_controler extends CI_Controller
 	public function index()
 	{
 		if ($this->session->userdata('akses') == "warga") {
-			redirect('dashboard_controler');
+			redirect('warga/dashboard_controler');
 		} else if ($this->session->userdata('akses') == "pegawai") {
-			redirect('dashboard_pegawai_controler');
+			redirect('pegawai/dashboard_controler');
 		} else if ($this->session->userdata('akses') == "admin") {
-			redirect('dashboard_admin_controler');
+			redirect('admin/dashboard_controler');
 		} else {
 			$this->load->view('home/index');
 		};

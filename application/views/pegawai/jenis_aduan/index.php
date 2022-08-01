@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LaporCah.go || Detail</title>
+  <title>LaporCah.go || Pegawai</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -34,12 +34,12 @@
         <li class="nav-item">
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
+        <!-- <li class="nav-item d-none d-sm-inline-block">
           <a href="index3.html" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link">Contact</a>
-        </li>
+        </li> -->
       </ul>
 
       <!-- Right navbar links -->
@@ -71,7 +71,7 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" role="button">
+          <a class="nav-link" href="<?php echo base_url() ?>index.php/login_controler/log_out" role="button">
             <i class="fas fa-power-off"></i>
           </a>
         </li>
@@ -85,11 +85,40 @@
       <div class="sidebar">
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item active">
-              <a href="<?php echo base_url() ?>index.php/dashboard_controler" class="nav-link active">
-                <i class="fas fa-flag nav-icon"></i>
-                <p>Aduan</p>
+            <li class="nav-item">
+              <a href="<?php echo base_url() ?>index.php/pegawai/dashboard_controler" class="nav-link">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Aduan Masuk</p>
               </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo base_url() ?>index.php/pegawai/proses_controler" class="nav-link">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Aduan Proses</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo base_url() ?>index.php/pegawai/selesai_controler" class="nav-link">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Aduan Selesai</p>
+              </a>
+            </li>
+            <li class="nav-item has-treeview menu-open">
+              <a href="#" class="nav-link active">
+                <i class="nav-icon fas fa-cog"></i>
+                <p>
+                  Pengaturan
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="<?php echo base_url() ?>index.php/pegawai/jenis_aduan_controler" class="nav-link active">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Jenis Laporan</p>
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
         </nav>
@@ -101,8 +130,8 @@
           <div class="row mb-2">
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-left">
-                <li class="breadcrumb-item">Aduan</li>
-                <li class="breadcrumb-item active">Detail</li>
+                <li class="breadcrumb-item">Aduan Masuk</li>
+                <!-- <li class="breadcrumb-item active">Dashboard v3</li> -->
               </ol>
             </div>
           </div>
@@ -112,75 +141,47 @@
         <div class="container-fluid">
           <div class="card">
             <div class="card-header">
-              Detail Laporan
+              <!-- <div class="card-title">Laporan</div> -->
+              <div class="card-tools" data-toggle="modal" data-target="#modal-jenis-laporan">
+                <button type="button" class="btn btn-primary">Buat Jenis Laporan</button>
+              </div>
+              Jenis Laporan
             </div>
             <div class="card-body">
-              <div class="card">
-                <div class="card-body">
-                  <div class="card">
-                    <?php
-                    foreach ($laporan->result_array() as $data_laporan) {
-                      $nomor_laporan = $data_laporan['nomor_aduan'];
-                      $tanggal = $data_laporan['tanggal'];
-                      $lokasi = $data_laporan['lokasi'];
-                      $gambar = $data_laporan['gambar'];
-                      // $status = $data_laporan['status'];
-                    }
-
-                    ?>
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-sm-2">Nomor Laporan</div>
-                        <div class="col-sm-2">: <?= $nomor_laporan ?></div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-2">tanggal</div>
-                        <div class="col-sm-2">: <?= $tanggal ?></div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-2">Lokasi</div>
-                        <div class="col-sm-2">: <?= $lokasi ?></div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-2">Gambar</div>
-                        <div class="col-sm-2">: <?= $gambar ?></div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-2">Status</div>
-                        <div class="col-sm-2">:</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col">
-                      <div class="card">
-                        <div class="card-body">
-                          <div class="timeline">
-                            <?php
-                            if ($status->result_array() != null) {
-                              foreach ($status->result_array() as $data_status) {
-                            ?>
-                                <div>
-                                  <i class="fas fa-envelope bg-blue"></i>
-                                  <div class="timeline-item">
-                                    <span class="time"><i class="fas fa-clock"></i> <?= $data_status["tanggal"] ?> <b> | </b> <?= $data_status["waktu"] ?></span>
-                                    <h3 class="timeline-header"><a href="#">Laporan Anda Telah <?= $data_status["keterangan"] ?></a></h3>
-                                  </div>
-                                </div>
-                            <?php
-                              }
-                            } else {
-                              echo 'Laporan anda tidak terdapat status';
-                            }
-
-                            ?>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Jenis Aduan</th>
+                    <th>Status</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  $nomor = 0;
+                  foreach ($jenis_aduan->result_array() as $data_jenis_aduan) :
+                    $nomor++;
+                    $Keterangan = $data_jenis_aduan['keterangan'];
+                  ?>
+                    <tr>
+                      <td><?= $nomor ?></td>
+                      <td><?= $Keterangan ?></td>
+                      <td></td>
+                      <th>
+                        <!-- <a href="<?php echo base_url() ?>index.php/jenis_aduan_pegawai_controler/detail/<?= $data_jenis_aduan['id_jenis_aduan'] ?>" class="">
+                          <button type="button" class="btn btn-primary">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                            Lihat
+                          </button>
+                        </a> -->
+                      </th>
+                    </tr>
+                  <?php
+                  endforeach
+                  ?>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -196,6 +197,42 @@
     </footer>
   </div>
 
+  <div class="modal fade" id="modal-jenis-laporan" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title">
+            <!-- Lapor -->
+          </div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="card">
+            <div class="card-body">
+              <form id="jenis-laporan" action="<?php echo base_url() ?>index.php/pegawai/jenis_aduan_controler/buat_jenis_laporan" method="POST">
+                <div class="form-group">
+                  <label for="lokasi">Keterangan Aduan</label>
+                  <input type="text" class="form-control" name="keterangan" id="keterangan">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="float-right">
+            <button type="submit" form="jenis-laporan" class="btn btn-primary btn-block">Simpan</button>
+          </div>
+          <div class="float-left">
+            <!-- <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">bat</button> -->
+          </div>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
   <!-- jQuery -->
   <script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap -->

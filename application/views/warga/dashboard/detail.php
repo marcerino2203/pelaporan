@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LaporCah.go || Pegawai</title>
+  <title>LaporCah.go || Detail</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -34,12 +34,12 @@
         <li class="nav-item">
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
-        <!-- <li class="nav-item d-none d-sm-inline-block">
+        <li class="nav-item d-none d-sm-inline-block">
           <a href="index3.html" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link">Contact</a>
-        </li> -->
+        </li>
       </ul>
 
       <!-- Right navbar links -->
@@ -86,39 +86,10 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item active">
-              <a href="<?php echo base_url() ?>index.php/dashboard_controler" class="nav-link active">
-                <i class="fas fa-circle nav-icon"></i>
-                <p>Aduan Masuk</p>
+              <a href="<?php echo base_url() ?>index.php/warga/dashboard_controler" class="nav-link active">
+                <i class="fas fa-flag nav-icon"></i>
+                <p>Aduan</p>
               </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url() ?>index.php/proses_controler" class="nav-link">
-                <i class="fas fa-circle nav-icon"></i>
-                <p>Aduan Proses</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url() ?>index.php/selesai_controler" class="nav-link">
-                <i class="fas fa-circle nav-icon"></i>
-                <p>Aduan Selesai</p>
-              </a>
-            </li>
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-cog"></i>
-                <p>
-                  Pengaturan
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="<?php echo base_url() ?>index.php/jenis_aduan_controler" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Jenis Laporan</p>
-                  </a>
-                </li>
-              </ul>
             </li>
           </ul>
         </nav>
@@ -153,9 +124,7 @@
                       $tanggal = $data_laporan['tanggal'];
                       $lokasi = $data_laporan['lokasi'];
                       $gambar = $data_laporan['gambar'];
-                      $isi = $data_laporan['isi'];
-                      $id_aduan = $data_laporan['id_aduan'];
-                      $keterangan = $data_laporan['keterangan'];
+                      // $status = $data_laporan['status'];
                     }
 
                     ?>
@@ -169,20 +138,12 @@
                         <div class="col-sm-2">: <?= $tanggal ?></div>
                       </div>
                       <div class="row">
-                        <div class="col-sm-2">Pelapor</div>
-                        <div class="col-sm-2">: <?= "-" ?></div>
-                      </div>
-                      <div class="row">
                         <div class="col-sm-2">Lokasi</div>
                         <div class="col-sm-2">: <?= $lokasi ?></div>
                       </div>
                       <div class="row">
-                        <div class="col-sm-2">Keterangan</div>
-                        <div class="col-sm-2">: <?= $keterangan ?></div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-2">isi</div>
-                        <div class="col-sm-2">: <?= $isi ?></div>
+                        <div class="col-sm-2">Gambar</div>
+                        <div class="col-sm-2">: <?= $gambar ?></div>
                       </div>
                       <div class="row">
                         <div class="col-sm-2">Status</div>
@@ -194,21 +155,30 @@
                     <div class="col">
                       <div class="card">
                         <div class="card-body">
-                          Ini Gambar
                           <div class="timeline">
+                            <?php
+                            if ($status->result_array() != null) {
+                              foreach ($status->result_array() as $data_status) {
+                            ?>
+                                <div>
+                                  <i class="fas fa-envelope bg-blue"></i>
+                                  <div class="timeline-item">
+                                    <span class="time"><i class="fas fa-clock"></i> <?= $data_status["tanggal"] ?> <b> | </b> <?= $data_status["waktu"] ?></span>
+                                    <h3 class="timeline-header"><a href="#">Laporan Anda Telah <?= $data_status["keterangan"] ?></a></h3>
+                                  </div>
+                                </div>
+                            <?php
+                              }
+                            } else {
+                              echo 'Laporan anda tidak terdapat status';
+                            }
+
+                            ?>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="card-footer">
-                  <a href="<?php echo base_url() ?>index.php/dashboard_pegawai_controler/proses/<?= $id_aduan ?>" class="">
-                    <button type="button" class="btn btn-primary">Proses</button>
-                  </a>
-                  <a href="<?php echo base_url() ?>index.php/dashboard_pegawai_controler/batal_proses/<?= $id_aduan ?>" class="">
-                    <button type="button" class="btn btn-danger">Batalkan Proses</button>
-                  </a>
                 </div>
               </div>
             </div>

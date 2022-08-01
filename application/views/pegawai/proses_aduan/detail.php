@@ -86,26 +86,26 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item active">
-              <a href="<?php echo base_url() ?>index.php/dashboard_controler" class="nav-link">
+              <a href="<?php echo base_url() ?>index.php/pegawai/dashboard_controler" class="nav-link">
                 <i class="fas fa-circle nav-icon"></i>
                 <p>Aduan Masuk</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo base_url() ?>index.php/proses_controler" class="nav-link">
+              <a href="<?php echo base_url() ?>index.php/pegawai/proses_controler" class="nav-link active">
                 <i class="fas fa-circle nav-icon"></i>
                 <p>Aduan Proses</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo base_url() ?>index.php/selesai_controler" class="nav-link active">
+              <a href="<?php echo base_url() ?>index.php/pegawai/selesai_controler" class="nav-link">
                 <i class="fas fa-circle nav-icon"></i>
                 <p>Aduan Selesai</p>
               </a>
             </li>
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-cog"></i>
+                <i class="nav-icon fas fa-database"></i>
                 <p>
                   Pengaturan
                   <i class="right fas fa-angle-left"></i>
@@ -113,7 +113,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="<?php echo base_url() ?>index.php/jenis_aduan_controler" class="nav-link">
+                  <a href="<?php echo base_url() ?>index.php/pegawai/jenis_aduan_controler" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Jenis Laporan</p>
                   </a>
@@ -130,7 +130,7 @@
           <div class="row mb-2">
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-left">
-                <li class="breadcrumb-item">Aduan Selesai</li>
+                <li class="breadcrumb-item">Aduan Proses</li>
                 <li class="breadcrumb-item active">Detail</li>
               </ol>
             </div>
@@ -197,6 +197,14 @@
                       </div>
                     </div>
                   </div>
+                </div>
+                <div class="card-footer">
+                  <a href="<?php echo base_url() ?>index.php/pegawai/proses_controler/laporan_selesai/<?= $id_aduan ?>" class="">
+                    <button type="button" class="btn btn-primary">Laporan Selesai</button>
+                  </a>
+                  <a href="<?php echo base_url() ?>index.php//pegawai/proses_controler/batal_proses/<?= $id_aduan ?>" class="">
+                    <button type="button" class="btn btn-danger">Batalkan Proses</button>
+                  </a>
                 </div>
               </div>
             </div>

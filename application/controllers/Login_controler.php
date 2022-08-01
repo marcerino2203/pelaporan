@@ -14,11 +14,11 @@ class Login_controler extends CI_Controller
 		// $this->load->view('home/index');
 		// redirect('home_controler');
 		if ($this->session->userdata('akses') == "warga") {
-			redirect('dashboard_controler');
+			redirect('warga/dashboard_controler');
 		} else if ($this->session->userdata('akses') == "pegawai") {
-			redirect('dashboard_pegawai_controler');
+			redirect('pegawai/dashboard_controler');
 		} else if ($this->session->userdata('akses') == "admin") {
-			redirect('dashboard_admin_controler');
+			redirect('admin/dashboard_controler');
 		} else {
 			redirect('home_controler');
 		};
@@ -39,7 +39,7 @@ class Login_controler extends CI_Controller
 				$this->session->set_userdata($session_data);
 			}
 			// print_r($session_data);
-			redirect('dashboard_controler');
+			redirect('warga/dashboard_controler');
 		} else {
 			$status = $this->login_model->cek_login_pegawai($data);
 			if ($status != FALSE) {
@@ -52,9 +52,9 @@ class Login_controler extends CI_Controller
 					$this->session->set_userdata($session_data);
 				}
 				if ($session_data['akses'] == 'admin') {
-					redirect('dashboard_admin_controler');
+					redirect('admin/dashboard_controler');
 				} else {
-					redirect('dashboard_pegawai_controler');
+					redirect('pegawai/dashboard_controler');
 				}
 			} else {
 				redirect('home_controler');

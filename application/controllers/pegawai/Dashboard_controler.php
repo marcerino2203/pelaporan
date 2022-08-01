@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Dashboard_pegawai_controler extends CI_Controller
+class Dashboard_controler extends CI_Controller
 {
 
 	public function __construct()
@@ -15,7 +15,7 @@ class Dashboard_pegawai_controler extends CI_Controller
 	public function index()
 	{
 		$data['laporan'] = $this->dashboard_pegawai_model->get_laporan($this->session->userdata('id'));
-		$this->load->view('dashboard_pegawai/index', $data);
+		$this->load->view('pegawai/aduan_masuk/index', $data);
 	}
 	public function detail($id)
 	{
@@ -31,7 +31,7 @@ class Dashboard_pegawai_controler extends CI_Controller
 
 		$data['laporan'] = $this->dashboard_pegawai_model->get_detail_laporan($data);
 		$data['status'] = $this->dashboard_pegawai_model->get_status_laporan($data);
-		$this->load->view('dashboard_pegawai/detail', $data);
+		$this->load->view('pegawai/aduan_masuk/detail', $data);
 	}
 	public function proses($id)
 	{
@@ -53,7 +53,7 @@ class Dashboard_pegawai_controler extends CI_Controller
 
 		$data['status'] = $this->dashboard_pegawai_model->proses($data, $id);
 		// $this->load->view('dashboard_pegawai/index');
-		redirect('dashboard_pegawai_controler');
+		redirect('pegawai/dashboard_controler');
 	}
 	// public function hapus_laporan($id)
 	// {

@@ -86,19 +86,19 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item active">
-              <a href="<?php echo base_url() ?>index.php/dashboard_controler" class="nav-link active">
+              <a href="<?php echo base_url() ?>index.php/pegawai/dashboard_controler" class="nav-link active">
                 <i class="fas fa-circle nav-icon"></i>
                 <p>Aduan Masuk</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo base_url() ?>index.php/proses_controler" class="nav-link">
+              <a href="<?php echo base_url() ?>index.php/pegawai/proses_controler" class="nav-link">
                 <i class="fas fa-circle nav-icon"></i>
                 <p>Aduan Proses</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo base_url() ?>index.php/selesai_controler" class="nav-link">
+              <a href="<?php echo base_url() ?>index.php/pegawai/selesai_controler" class="nav-link">
                 <i class="fas fa-circle nav-icon"></i>
                 <p>Aduan Selesai</p>
               </a>
@@ -113,7 +113,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="<?php echo base_url() ?>index.php/jenis_aduan_controler" class="nav-link">
+                  <a href="<?php echo base_url() ?>index.php/pegawai/jenis_aduan_controler" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Jenis Laporan</p>
                   </a>
@@ -172,7 +172,7 @@
                       <td><?= $data_laporan['lokasi'] ?></td>
                       <td>-</td>
                       <th>
-                        <a href="<?php echo base_url() ?>index.php/dashboard_pegawai_controler/detail/<?= $data_laporan['id_aduan'] ?>" class="">
+                        <a href="<?php echo base_url() ?>index.php/pegawai/dashboard_controler/detail/<?= $data_laporan['id_aduan'] ?>" class="">
                           <button type="button" class="btn btn-primary">
                             <i class="fa fa-eye" aria-hidden="true"></i>
                             Lihat

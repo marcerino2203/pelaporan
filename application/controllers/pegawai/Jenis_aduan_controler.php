@@ -16,7 +16,7 @@ class Jenis_aduan_controler extends CI_Controller
 	{
 		$data['jenis_aduan'] = $this->jenis_aduan_pegawai_model->get_jenis_aduan($this->session->userdata('id'));
 		$data['last_code'] = $this->jenis_aduan_pegawai_model->get_code();
-		$this->load->view('jenis_aduan_pegawai/index', $data);
+		$this->load->view('pegawai/jenis_aduan/index', $data);
 	}
 	public function detail($id)
 	{
@@ -29,7 +29,7 @@ class Jenis_aduan_controler extends CI_Controller
 		);
 
 		if ($this->jenis_aduan_pegawai_model->add_jenis_laporan($data)) {
-			redirect('jenis_aduan_controler');
+			redirect('pegawai/jenis_aduan_controler');
 		}
 	}
 	public function hapus_jenis_aduan($id)
