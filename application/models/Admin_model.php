@@ -8,6 +8,20 @@ class Admin_model extends CI_MODEL
         $data = $this->db->get();
         return $data;
     }
+    function get_warga()
+    {
+        $this->db->select('*');
+        $this->db->from('masyarakat');
+        $data = $this->db->get();
+        return $data;
+    }
+    function get_pegawai()
+    {
+        $this->db->select('*');
+        $this->db->from('Pegawai');
+        $data = $this->db->get();
+        return $data;
+    }
     function get_count()
     {
         $this->db->select('instansi.id_instansi,count(nomor_aduan) as jumlah');

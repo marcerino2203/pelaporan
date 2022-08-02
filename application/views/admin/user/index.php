@@ -133,23 +133,100 @@
           <div class="row mb-2">
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-left">
-                <li class="breadcrumb-item">Laporan Proses</li>
+                <li class="breadcrumb-item">User</li>
                 <!-- <li class="breadcrumb-item active">Dashboard v3</li> -->
               </ol>
             </div>
           </div>
         </div>
       </div>
-
       <div class="content">
         <div class="container-fluid">
-          <div class="card">
-            <div class="card-header">
-              <div class="card-tools" data-toggle="modal" data-target="#modal-lapor">
-              </div>
+          <div class="card card-primary card-tabs">
+            <div class="card-header p-0 pt-1">
+              <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
+                <li class="pt-2 px-3">
+                  <h3 class="card-title">User Aduan</h3>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Warga</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="custom-tabs-two-profile-tab" data-toggle="pill" href="#custom-tabs-two-profile" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false">Pegawai</a>
+                </li>
+              </ul>
             </div>
             <div class="card-body">
+              <div class="tab-content" id="custom-tabs-two-tabContent">
+                <div class="tab-pane fade show active" id="custom-tabs-two-home" role="tabpanel" aria-labelledby="custom-tabs-two-home-tab">
+                  <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th>Nama</th>
+                        <th>Alamat</th>
+                        <th>Nomor Telepon</th>
+                        <th>Akses</th>
+                        <th>Laporan Dibuat</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                      foreach ($warga->result_array() as $data_warga) :
+
+                      ?>
+                        <tr>
+                          <td><?= $data_warga['nama'] ?></td>
+                          <td><?= $data_warga['alamat'] ?></td>
+                          <td><?= $data_warga['no_telp'] ?></td>
+                          <td><?= $data_warga['id_akses'] ?></td>
+                          <td>-</td>
+                          <td>
+                            <a href="<?php echo base_url() ?>index.php/admin/user_controler/detail/<?= $data_warga['id_masyarakat'] ?>">
+                              <button type="button" class="btn btn-primary"><i class="fas fa-eye"></i> Detail</button>
+                            </a>
+                          </td>
+                        </tr>
+                      <?php
+                      endforeach
+                      ?>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="tab-pane fade" id="custom-tabs-two-profile" role="tabpanel" aria-labelledby="custom-tabs-two-profile-tab">
+                  <table id="example2" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th>Nama</th>
+                        <th>Alamat</th>
+                        <th>Nomor Pegawai</th>
+                        <th>Instansi</th>
+                        <th>Akses</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                      foreach ($pegawai->result_array() as $data_pegawai) :
+
+                      ?>
+                        <tr>
+                          <td><?= $data_pegawai['nama'] ?></td>
+                          <td><?= $data_pegawai['alamat'] ?></td>
+                          <td><?= $data_pegawai['no_pegawai'] ?></td>
+                          <td><?= $data_pegawai['id_instansi'] ?></td>
+                          <td><?= $data_pegawai['id_akses'] ?></td>
+                          <td>-</td>
+                        </tr>
+                      <?php
+                      endforeach
+                      ?>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
+            <!-- /.card -->
           </div>
         </div>
       </div>
@@ -167,6 +244,19 @@
   <script src="<?php echo base_url() ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- AdminLTE -->
   <script src="<?php echo base_url() ?>assets/dist/js/adminlte.js"></script>
+  <!-- DataTables  & Plugins -->
+  <script src="<?php echo base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/jszip/jszip.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/pdfmake/pdfmake.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/pdfmake/vfs_fonts.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
   <!-- OPTIONAL SCRIPTS -->
   <script src="<?php echo base_url() ?>assets/plugins/chart.js/Chart.min.js"></script>
@@ -175,6 +265,20 @@
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="<?php echo base_url() ?>assets/dist/js/pages/dashboard3.js"></script>
 
+  <script>
+    $(function() {
+      $("#example1").DataTable({
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+      $('#example2').DataTable({
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');;
+    });
+  </script>
 
 
 </body>
