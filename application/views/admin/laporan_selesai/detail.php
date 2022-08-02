@@ -83,7 +83,7 @@
               </ul>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="<?php echo base_url() ?>index.php/admin/laporan_ditangguhkan_controler" class="nav-link active">
+                  <a href="<?php echo base_url() ?>index.php/admin/laporan_ditangguhkan_controler" class="nav-link">
                     <i class="nav-icon fa fa-ban"></i>
                     <p>Laporan Ditangguhkan</p>
                   </a>
@@ -91,7 +91,7 @@
               </ul>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="<?php echo base_url() ?>index.php/admin/laporan_selesai_controler" class="nav-link">
+                  <a href="<?php echo base_url() ?>index.php/admin/laporan_selesai_controler" class="nav-link active">
                     <i class="nav-icon fa fa-check"></i>
                     <p>Laporan selesai</p>
                   </a>
@@ -133,8 +133,12 @@
           <div class="row mb-2">
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-left">
-                <li class="breadcrumb-item">Laporan Ditangguhkan</li>
-                <!-- <li class="breadcrumb-item active">Dashboard v3</li> -->
+                <li class="breadcrumb-item">
+                  <a href="<?php echo base_url() ?>index.php/admin/laporan_ditangguhkan_controler/">
+                    Laporan Selesai
+                  </a>
+                </li>
+                <li class="breadcrumb-item active">Detail</li>
               </ol>
             </div>
           </div>
@@ -145,54 +149,71 @@
         <div class="container-fluid">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Laporan Instansi Dalam Proses</h3>
+              <h3 class="card-title">Laporan Selesai</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
+              <div class="card">
+                <div class="card-body">
+                  <?php
+                  foreach ($instansi->result_array() as $data_instansi) :
+                  ?>
+                    <div class="row">
+                      <div class="col-sm-1">
+                        Instansi
+                      </div>
+                      <div class="col-sm">
+                        : <?= $data_instansi['nama'] ?>
+                      </div>
+                      <div class="col-sm-1">
+                        Alamat
+                      </div>
+                      <div class="col-sm">
+                        : <?= $data_instansi['alamat'] ?>
+                      </div>
+                      <div class="col-sm-1">
+                        Telepon
+                      </div>
+                      <div class="col-sm">
+                        : <?= $data_instansi['telp'] ?>
+                      </div>
+                    </div>
+                  <?php
+                  endforeach
+                  ?>
+                </div>
+              </div>
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th>Instansi</th>
-                    <th>Nomor Telepon</th>
-                    <th>Alamat</th>
-                    <th>Laporan Masuk</th>
-                    <th>Laporan Proses</th>
+                    <th>Nomor Aduan</th>
+                    <th>Tanggal</th>
+                    <th>Lokasi</th>
+                    <th>isi</th>
+                    <th>Keterangan</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php
-                  foreach ($instansi->result_array() as $data_instansi) :
-
+                  if ($laporan != null) {
+                    foreach ($laporan->result_array() as $data_laporan) :
                   ?>
-                    <tr>
-                      <td><?= $data_instansi['nama'] ?></td>
-                      <td><?= $data_instansi['telp'] ?></td>
-                      <td><?= $data_instansi['alamat'] ?></td>
-                      <td>
-                        <?php
-                        foreach ($count->result_array() as $data_count) :
-                          if ($data_count['id_instansi'] == $data_instansi['id_instansi']) {
-                            $jumlah = TRUE;
-                          }
-                        endforeach;
-                        if ($jumlah != True) {
-                          echo '0';
-                        } else {
-                          echo $data_count['jumlah'];
-                        }
-                        $jumlah = FALSE;
-                        ?>
-                      </td>
-                      <td>-</td>
-                      <td>
-                        <a href="<?php echo base_url() ?>index.php/admin/laporan_ditangguhkan_controler/detail/<?= $data_instansi['id_instansi'] ?>">
-                          <button type="button" class="btn btn-primary"><i class="fas fa-eye"></i> Detail</button>
-                        </a>
-                      </td>
-                    </tr>
+                      <tr>
+                        <td><?= $data_laporan['nomor_aduan'] ?></td>
+                        <td><?= $data_laporan['tanggal'] ?></td>
+                        <td><?= $data_laporan['lokasi'] ?></td>
+                        <td><?= $data_laporan['isi'] ?></td>
+                        <td><?= $data_laporan['keterangan'] ?></td>
+                        <td>
+                          <a href="<?php echo base_url() ?>index.php/admin/laporan_selesai_controler/detail_laporan/<?= $data_laporan['id_aduan'] ?>">
+                            <button type="button" class="btn btn-primary"><i class="fas fa-eye"></i> Detail</button>
+                          </a>
+                        </td>
+                      </tr>
                   <?php
-                  endforeach
+                    endforeach;
+                  }
                   ?>
                 </tbody>
               </table>

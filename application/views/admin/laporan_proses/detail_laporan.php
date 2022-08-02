@@ -75,7 +75,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="<?php echo base_url() ?>index.php/admin/laporan_proses_controler" class="nav-link">
+                  <a href="<?php echo base_url() ?>index.php/admin/laporan_proses_controler" class="nav-link active">
                     <i class="nav-icon fa fa-tasks"></i>
                     <p>Laporan Proses</p>
                   </a>
@@ -83,7 +83,7 @@
               </ul>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="<?php echo base_url() ?>index.php/admin/laporan_ditangguhkan_controler" class="nav-link active">
+                  <a href="<?php echo base_url() ?>index.php/admin/laporan_ditangguhkan_controler" class="nav-link">
                     <i class="nav-icon fa fa-ban"></i>
                     <p>Laporan Ditangguhkan</p>
                   </a>
@@ -133,8 +133,13 @@
           <div class="row mb-2">
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-left">
-                <li class="breadcrumb-item">Laporan Ditangguhkan</li>
-                <!-- <li class="breadcrumb-item active">Dashboard v3</li> -->
+                <li class="breadcrumb-item">
+                  <a href="<?php echo base_url() ?>index.php/admin/laporan_proses_controler/">
+                    Laporan Proses
+                  </a>
+                </li>
+                <li class="breadcrumb-item active">Detail</li>
+                <li class="breadcrumb-item active">Detail Laporan</li>
               </ol>
             </div>
           </div>
@@ -145,57 +150,72 @@
         <div class="container-fluid">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Laporan Instansi Dalam Proses</h3>
+              <h3 class="card-title">Detail Laporan Proses</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                  <tr>
-                    <th>Instansi</th>
-                    <th>Nomor Telepon</th>
-                    <th>Alamat</th>
-                    <th>Laporan Masuk</th>
-                    <th>Laporan Proses</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  foreach ($instansi->result_array() as $data_instansi) :
+              <div class="card">
+                <?php
+                foreach ($laporan_detail['laporan']->result_array() as $data_laporan) {
+                  $nomor_laporan = $data_laporan['nomor_aduan'];
+                  $tanggal = $data_laporan['tanggal'];
+                  $lokasi = $data_laporan['lokasi'];
+                  $gambar = $data_laporan['gambar'];
+                  // $status = $data_laporan['status'];
+                }
 
-                  ?>
-                    <tr>
-                      <td><?= $data_instansi['nama'] ?></td>
-                      <td><?= $data_instansi['telp'] ?></td>
-                      <td><?= $data_instansi['alamat'] ?></td>
-                      <td>
+                ?>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-2">Nomor Laporan</div>
+                    <div class="col-sm-2">: <?= $nomor_laporan ?></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-2">tanggal</div>
+                    <div class="col-sm-2">: <?= $tanggal ?></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-2">Lokasi</div>
+                    <div class="col-sm-2">: <?= $lokasi ?></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-2">Gambar</div>
+                    <div class="col-sm-2">: <?= $gambar ?></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-2">Status</div>
+                    <div class="col-sm-2">:</div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="timeline">
                         <?php
-                        foreach ($count->result_array() as $data_count) :
-                          if ($data_count['id_instansi'] == $data_instansi['id_instansi']) {
-                            $jumlah = TRUE;
-                          }
-                        endforeach;
-                        if ($jumlah != True) {
-                          echo '0';
-                        } else {
-                          echo $data_count['jumlah'];
-                        }
-                        $jumlah = FALSE;
+                        if ($laporan_detail['status']->result_array() != null) {
+                          foreach ($laporan_detail['status']->result_array() as $data_status) {
                         ?>
-                      </td>
-                      <td>-</td>
-                      <td>
-                        <a href="<?php echo base_url() ?>index.php/admin/laporan_ditangguhkan_controler/detail/<?= $data_instansi['id_instansi'] ?>">
-                          <button type="button" class="btn btn-primary"><i class="fas fa-eye"></i> Detail</button>
-                        </a>
-                      </td>
-                    </tr>
-                  <?php
-                  endforeach
-                  ?>
-                </tbody>
-              </table>
+                            <div>
+                              <i class="fas fa-envelope bg-blue"></i>
+                              <div class="timeline-item">
+                                <span class="time"><i class="fas fa-clock"></i> <?= $data_status["tanggal"] ?> <b> | </b> <?= $data_status["waktu"] ?></span>
+                                <h3 class="timeline-header"><a href="#">Laporan Telah <?= $data_status["keterangan"] ?></a></h3>
+                              </div>
+                            </div>
+                        <?php
+                          }
+                        } else {
+                          echo 'Laporan anda tidak terdapat status';
+                        }
+
+                        ?>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <!-- /.card-body -->
           </div>
@@ -215,44 +235,13 @@
   <script src="<?php echo base_url() ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- AdminLTE -->
   <script src="<?php echo base_url() ?>assets/dist/js/adminlte.js"></script>
-  <!-- DataTables  & Plugins -->
-  <script src="<?php echo base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/plugins/jszip/jszip.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/plugins/pdfmake/pdfmake.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/plugins/pdfmake/vfs_fonts.js"></script>
-  <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
   <!-- OPTIONAL SCRIPTS -->
   <script src="<?php echo base_url() ?>assets/plugins/chart.js/Chart.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="<?php echo base_url() ?>assets/dist/js/demo.js"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="<?php echo base_url() ?>assets/dist/js/pages/dashboard3.js"></script>
-  <script>
-    $(function() {
-      $("#example1").DataTable({
-        "responsive": true,
-        "lengthChange": false,
-        "autoWidth": false,
 
-      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-      $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-      });
-    });
-  </script>
 </body>
 
 </html>

@@ -133,23 +133,69 @@
           <div class="row mb-2">
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-left">
-                <li class="breadcrumb-item">Laporan Proses</li>
-                <!-- <li class="breadcrumb-item active">Dashboard v3</li> -->
+                <li class="breadcrumb-item">Laporan Selesai</li>
               </ol>
             </div>
           </div>
         </div>
       </div>
-
       <div class="content">
         <div class="container-fluid">
           <div class="card">
             <div class="card-header">
-              <div class="card-tools" data-toggle="modal" data-target="#modal-lapor">
-              </div>
+              <h3 class="card-title">Laporan Instansi Selesai</h3>
             </div>
+            <!-- /.card-header -->
             <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>Instansi</th>
+                    <th>Nomor Telepon</th>
+                    <th>Alamat</th>
+                    <th>Laporan Masuk</th>
+                    <th>Laporan Proses</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  foreach ($instansi->result_array() as $data_instansi) :
+
+                  ?>
+                    <tr>
+                      <td><?= $data_instansi['nama'] ?></td>
+                      <td><?= $data_instansi['telp'] ?></td>
+                      <td><?= $data_instansi['alamat'] ?></td>
+                      <td>
+                        <?php
+                        foreach ($count->result_array() as $data_count) :
+                          if ($data_count['id_instansi'] == $data_instansi['id_instansi']) {
+                            $jumlah = TRUE;
+                          }
+                        endforeach;
+                        if ($jumlah != True) {
+                          echo '0';
+                        } else {
+                          echo $data_count['jumlah'];
+                        }
+                        $jumlah = FALSE;
+                        ?>
+                      </td>
+                      <td>-</td>
+                      <td>
+                        <a href="<?php echo base_url() ?>index.php/admin/laporan_selesai_controler/detail/<?= $data_instansi['id_instansi'] ?>">
+                          <button type="button" class="btn btn-primary"><i class="fas fa-eye"></i> Detail</button>
+                        </a>
+                      </td>
+                    </tr>
+                  <?php
+                  endforeach
+                  ?>
+                </tbody>
+              </table>
             </div>
+            <!-- /.card-body -->
           </div>
         </div>
       </div>
@@ -167,16 +213,44 @@
   <script src="<?php echo base_url() ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- AdminLTE -->
   <script src="<?php echo base_url() ?>assets/dist/js/adminlte.js"></script>
-
+  <!-- DataTables  & Plugins -->
+  <script src="<?php echo base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/jszip/jszip.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/pdfmake/pdfmake.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/pdfmake/vfs_fonts.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
   <!-- OPTIONAL SCRIPTS -->
   <script src="<?php echo base_url() ?>assets/plugins/chart.js/Chart.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="<?php echo base_url() ?>assets/dist/js/demo.js"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="<?php echo base_url() ?>assets/dist/js/pages/dashboard3.js"></script>
+  <script>
+    $(function() {
+      $("#example1").DataTable({
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
 
-
-
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+  </script>
 </body>
 
 </html>
