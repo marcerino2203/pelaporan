@@ -18,4 +18,8 @@ class User_controler extends CI_Controller
 		$data['pegawai'] = $this->admin_model->get_pegawai();
 		$this->load->view('admin/user/index', $data);
 	}
+	public function register_user()
+	{
+		$this->load->view('admin/user/register_user');
+	}
 }

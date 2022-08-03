@@ -133,8 +133,12 @@
           <div class="row mb-2">
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-left">
-                <li class="breadcrumb-item">User</li>
-                <!-- <li class="breadcrumb-item active">Dashboard v3</li> -->
+                <li class="breadcrumb-item">
+                  <a href="<?php echo base_url() ?>index.php/admin/user_controler">
+                    User
+                  </a>
+                </li>
+                <li class="breadcrumb-item active">Register User Pegawai</li>
               </ol>
             </div>
           </div>
@@ -142,98 +146,54 @@
       </div>
       <div class="content">
         <div class="container-fluid">
-          <div class="card card-primary card-tabs">
-            <div class="card-header p-0 pt-1">
-              <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
-                <li class="pt-2 px-3">
-                  <h3 class="card-title">User LaporCah.go</h3>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Warga</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="custom-tabs-two-profile-tab" data-toggle="pill" href="#custom-tabs-two-profile" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false">Pegawai</a>
-                </li>
-              </ul>
-            </div>
+          <div class="card">
+            <div class="card-header">Form User Pegawai Baru</div>
             <div class="card-body">
-              <div class="tab-content" id="custom-tabs-two-tabContent">
-                <div class="tab-pane fade show active" id="custom-tabs-two-home" role="tabpanel" aria-labelledby="custom-tabs-two-home-tab">
-                  <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
-                        <th>Nama</th>
-                        <th>Alamat</th>
-                        <th>Nomor Telepon</th>
-                        <th>Akses</th>
-                        <th>Laporan Dibuat</th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                      foreach ($warga->result_array() as $data_warga) :
-
-                      ?>
-                        <tr>
-                          <td><?= $data_warga['nama'] ?></td>
-                          <td><?= $data_warga['alamat'] ?></td>
-                          <td><?= $data_warga['no_telp'] ?></td>
-                          <td><?= $data_warga['akses'] ?></td>
-                          <td>-</td>
-                          <td>
-                            <a href="<?php echo base_url() ?>index.php/admin/user_controler/detail/<?= $data_warga['id_masyarakat'] ?>/<?= $data_warga['id_akses'] ?>">
-                              <button type="button" class="btn btn-primary"><i class="fas fa-eye"></i> Detail</button>
-                            </a>
-                          </td>
-                        </tr>
-                      <?php
-                      endforeach
-                      ?>
-                    </tbody>
-                  </table>
+              <form>
+                <div class="form-group row">
+                  <label for="nomor_pegawai" class="col-sm-2 col-form-label">Nomor Pegawai</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="nomor_pegawai">
+                  </div>
                 </div>
-                <div class="tab-pane fade" id="custom-tabs-two-profile" role="tabpanel" aria-labelledby="custom-tabs-two-profile-tab">
-                  <a href="<?php echo base_url() ?>index.php/admin/user_controler/register_user">
-                    <button type="button" class="btn btn-primary"><i class="fas fa-eye"></i> Buat User Baru</button>
-                  </a>
-                  <table id="example2" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
-                        <th>Nama</th>
-                        <th>Alamat</th>
-                        <th>Nomor Pegawai</th>
-                        <th>Instansi</th>
-                        <th>Akses</th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                      foreach ($pegawai->result_array() as $data_pegawai) :
-
-                      ?>
-                        <tr>
-                          <td><?= $data_pegawai['nama'] ?></td>
-                          <td><?= $data_pegawai['alamat'] ?></td>
-                          <td><?= $data_pegawai['no_pegawai'] ?></td>
-                          <td><?= $data_pegawai['id_instansi'] ?></td>
-                          <td><?= $data_pegawai['akses'] ?></td>
-                          <td>
-                            <a href="<?php echo base_url() ?>index.php/admin/user_controler/detail/<?= $data_pegawai['id_pegawai'] ?>/<?= $data_pegawai['id_akses'] ?>">
-                              <button type="button" class="btn btn-primary"><i class="fas fa-eye"></i> Detail</button>
-                            </a>
-                          </td>
-                        </tr>
-                      <?php
-                      endforeach
-                      ?>
-                    </tbody>
-                  </table>
+                <div class="form-group row">
+                  <label for="nama_lengkap" class="col-sm-2 col-form-label">Nama Lengkap</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="nama_lengkap">
+                  </div>
                 </div>
-              </div>
+                <div class="form-group row">
+                  <label for="nomor_telepon" class="col-sm-2 col-form-label">Nomor Telepon</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="nomor_telepon">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="nama_lengkap" class="col-sm-2 col-form-label">Alamat</label>
+                  <div class="col-sm-10">
+                    <textarea class="form-control" id="nama_lengkap" rows="3"></textarea>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="username" class="col-sm-2 col-form-label">Username</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="usernames">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="password" class="col-sm-2 col-form-label">Password</label>
+                  <div class="col-sm-10">
+                    <input type="password" class="form-control" id="password">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="instansi" class="col-sm-2 col-form-label">Token Instansi</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="instansi">
+                  </div>
+                </div>
+              </form>
             </div>
-            <!-- /.card -->
           </div>
         </div>
       </div>
