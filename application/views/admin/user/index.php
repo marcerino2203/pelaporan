@@ -146,7 +146,7 @@
             <div class="card-header p-0 pt-1">
               <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
                 <li class="pt-2 px-3">
-                  <h3 class="card-title">User Aduan</h3>
+                  <h3 class="card-title">User LaporCah.go</h3>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Warga</a>
@@ -179,10 +179,10 @@
                           <td><?= $data_warga['nama'] ?></td>
                           <td><?= $data_warga['alamat'] ?></td>
                           <td><?= $data_warga['no_telp'] ?></td>
-                          <td><?= $data_warga['id_akses'] ?></td>
+                          <td><?= $data_warga['akses'] ?></td>
                           <td>-</td>
                           <td>
-                            <a href="<?php echo base_url() ?>index.php/admin/user_controler/detail/<?= $data_warga['id_masyarakat'] ?>">
+                            <a href="<?php echo base_url() ?>index.php/admin/user_controler/detail/<?= $data_warga['id_masyarakat'] ?>/<?= $data_warga['id_akses'] ?>">
                               <button type="button" class="btn btn-primary"><i class="fas fa-eye"></i> Detail</button>
                             </a>
                           </td>
@@ -215,8 +215,12 @@
                           <td><?= $data_pegawai['alamat'] ?></td>
                           <td><?= $data_pegawai['no_pegawai'] ?></td>
                           <td><?= $data_pegawai['id_instansi'] ?></td>
-                          <td><?= $data_pegawai['id_akses'] ?></td>
-                          <td>-</td>
+                          <td><?= $data_pegawai['akses'] ?></td>
+                          <td>
+                            <a href="<?php echo base_url() ?>index.php/admin/user_controler/detail/<?= $data_pegawai['id_pegawai'] ?>/<?= $data_pegawai['id_akses'] ?>">
+                              <button type="button" class="btn btn-primary"><i class="fas fa-eye"></i> Detail</button>
+                            </a>
+                          </td>
                         </tr>
                       <?php
                       endforeach

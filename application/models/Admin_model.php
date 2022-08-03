@@ -12,6 +12,7 @@ class Admin_model extends CI_MODEL
     {
         $this->db->select('*');
         $this->db->from('masyarakat');
+        $this->db->join('akses', 'akses.id_akses=masyarakat.id_akses');
         $data = $this->db->get();
         return $data;
     }
@@ -19,6 +20,7 @@ class Admin_model extends CI_MODEL
     {
         $this->db->select('*');
         $this->db->from('Pegawai');
+        $this->db->join('akses', 'akses.id_akses=pegawai.id_akses');
         $data = $this->db->get();
         return $data;
     }
