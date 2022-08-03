@@ -77,4 +77,12 @@ class Admin_model extends CI_MODEL
 
         return $data;
     }
+    function add_user($data)
+    {
+        if ($this->db->insert('pegawai', $data['user'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

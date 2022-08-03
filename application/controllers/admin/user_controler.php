@@ -20,6 +20,22 @@ class User_controler extends CI_Controller
 	}
 	public function register_user()
 	{
-		$this->load->view('admin/user/register_user');
+		$data['instansi'] = $this->admin_model->get_instansi();
+		$this->load->view('admin/user/register_user', $data);
+	}
+	public function add_user()
+	{
+		$data['user'] = array(
+			'no_pegawai' => $this->input->post('nomor_pegawai'),
+			'nama' => $this->input->post('nama_lengkap'),
+			'alamat' => $this->input->post('alamat'),
+			'username' => $this->input->post('username'),
+			'password' => $this->input->post('password'),
+			'id_instansi' => $this->input->post('instansi'),
+			'id_akses' => 2
+		);
+		if ($this->admin_model->add_user($data)) {
+			redirect('admin/user_controler');
+		}
 	}
 }

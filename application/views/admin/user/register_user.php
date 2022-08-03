@@ -149,50 +149,68 @@
           <div class="card">
             <div class="card-header">Form User Pegawai Baru</div>
             <div class="card-body">
-              <form>
+              <form id="form_user" action="<?php echo base_url() ?>index.php/admin/user_controler/add_user" method="POST">
                 <div class="form-group row">
                   <label for="nomor_pegawai" class="col-sm-2 col-form-label">Nomor Pegawai</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="nomor_pegawai">
+                    <input type="text" class="form-control" name="nomor_pegawai" id="nomor_pegawai">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="nama_lengkap" class="col-sm-2 col-form-label">Nama Lengkap</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="nama_lengkap">
+                    <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="nomor_telepon" class="col-sm-2 col-form-label">Nomor Telepon</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="nomor_telepon">
+                    <input type="text" class="form-control" name="nomor_telepon" id="nomor_telepon">
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label for="nama_lengkap" class="col-sm-2 col-form-label">Alamat</label>
+                  <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
                   <div class="col-sm-10">
-                    <textarea class="form-control" id="nama_lengkap" rows="3"></textarea>
+                    <textarea class="form-control" name="alamat" id="alamat" rows="3"></textarea>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="username" class="col-sm-2 col-form-label">Username</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="usernames">
+                    <input type="text" class="form-control" name="username" id="usernames">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="password" class="col-sm-2 col-form-label">Password</label>
                   <div class="col-sm-10">
-                    <input type="password" class="form-control" id="password">
+                    <input type="password" class="form-control" name="password" id="password">
                   </div>
                 </div>
-                <div class="form-group row">
+                <!-- <div class="form-group row">
                   <label for="instansi" class="col-sm-2 col-form-label">Token Instansi</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="instansi">
+                    <input type="text" class="form-control" name="instansi" id="instansi">
+                  </div>
+                </div> -->
+                <div class="form-group row">
+                  <label for="instansi" class="col-sm-2 col-form-label">Instansi</label>
+                  <div class="col-sm-10">
+                    <select class="custom-select" name="instansi" id="instansi">
+                      <option selected>Choose...</option>
+                      <?php
+                      foreach ($instansi->result_array() as $data_instansi) :
+                      ?>
+                        <option value="<?= $data_instansi['id_instansi'] ?>"><?= $data_instansi['nama'] ?></option>
+                      <?php
+                      endforeach
+                      ?>
+                    </select>
                   </div>
                 </div>
               </form>
+            </div>
+            <div class="card-footer">
+              <button type="submit" form="form_user" class="btn btn-primary">Simpan</button>
             </div>
           </div>
         </div>
