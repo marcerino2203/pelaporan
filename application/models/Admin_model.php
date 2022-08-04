@@ -110,6 +110,14 @@ class Admin_model extends CI_MODEL
             return false;
         }
     }
+    function add_instansi($data)
+    {
+        if ($this->db->insert('instansi', $data['data_instansi'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     function edit_user($data)
     {
         $this->db->set($data['data_pegawai']);

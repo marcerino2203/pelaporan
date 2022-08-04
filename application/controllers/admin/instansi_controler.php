@@ -19,4 +19,19 @@ class Instansi_controler extends CI_Controller
 		$data['count'] = $this->admin_model->get_count();
 		$this->load->view('admin/instansi/index', $data);
 	}
+	public function register_instansi()
+	{
+		$this->load->view('admin/instansi/register_instansi');
+	}
+	public function add_instansi()
+	{
+		$data['data_instansi'] = array(
+			'nama' => $this->input->post('nama_instansi'),
+			'telp' => $this->input->post('Telepon'),
+			'alamat' => $this->input->post('alamat')
+		);
+		if ($this->admin_model->add_instansi($data)) {
+			redirect('admin/instansi_controler');
+		}
+	}
 }

@@ -240,7 +240,7 @@
                       ?>
                     </div>
                     <div class="card-footer">
-                      <button form="form_user" class="btn btn-primary">Simpan</button>
+                      <button form="form_user" class="btn btn-primary">Simpan Biodata</button>
                     </div>
                   </div>
                 </div>
@@ -275,7 +275,7 @@
                       ?>
                     </div>
                     <div class="card-footer">
-                      <button form="form_user_setting" class="btn btn-primary">Simpan</button>
+                      <button form="form_user_setting" class="btn btn-primary">Simpan Pengaturan</button>
                     </div>
                   </div>
                 </div>

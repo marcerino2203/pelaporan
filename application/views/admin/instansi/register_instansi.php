@@ -133,88 +133,46 @@
           <div class="row mb-2">
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-left">
-                <li class="breadcrumb-item">Instansi</li>
-                <!-- <li class="breadcrumb-item active">Dashboard v3</li> -->
+                <li class="breadcrumb-item">
+                  <a href="<?php echo base_url() ?>index.php/admin/instansi_controler">
+                    Instansi
+                  </a>
+                </li>
+                <li class="breadcrumb-item active">Register Instansi</li>
               </ol>
             </div>
           </div>
         </div>
       </div>
-
       <div class="content">
         <div class="container-fluid">
           <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">Data Instansi</h3>
-            </div>
-            <!-- /.card-header -->
+            <div class="card-header">Form Instansi</div>
             <div class="card-body">
-              <a href="<?php echo base_url() ?>index.php/admin/instansi_controler/register_instansi">
-                <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Instansi</button>
-              </a>
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                  <tr>
-                    <th>Instansi</th>
-                    <th>Alamat</th>
-                    <th>Telepon</th>
-                    <th>Pegawai Terdaftar</th>
-                    <th>Laporan Masuk</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  foreach ($instansi->result_array() as $data_instansi) :
-
-                  ?>
-                    <tr>
-                      <td><?= $data_instansi['nama'] ?></td>
-                      <td><?= $data_instansi['alamat'] ?></td>
-                      <td><?= $data_instansi['telp'] ?></td>
-                      <td>
-                        <?php
-                        foreach ($count_pegawai->result_array() as $data_count_pegawai) :
-                          if ($data_count_pegawai['id_instansi'] == $data_instansi['id_instansi']) {
-                            $jumlah = TRUE;
-                          }
-                        endforeach;
-                        if ($jumlah != True) {
-                          echo '0';
-                        } else {
-                          echo $data_count_pegawai['jumlah_pegawai'];
-                        }
-                        $jumlah = FALSE;
-                        ?>
-                      </td>
-                      <td>
-                        <?php
-                        foreach ($count->result_array() as $data_count) :
-                          if ($data_count['id_instansi'] == $data_instansi['id_instansi']) {
-                            $jumlah = TRUE;
-                          }
-                        endforeach;
-                        if ($jumlah != True) {
-                          echo '0';
-                        } else {
-                          echo $data_count['jumlah'];
-                        }
-                        $jumlah = FALSE;
-                        ?>
-                      </td>
-                      <td>
-                        <a href="<?php echo base_url() ?>index.php/admin/instansi_controler/detail/<?= $data_instansi['id_instansi'] ?>">
-                          <button type="button" class="btn btn-primary"><i class="fas fa-eye"></i> Detail</button>
-                        </a>
-                      </td>
-                    </tr>
-                  <?php
-                  endforeach
-                  ?>
-                </tbody>
-              </table>
+              <form id="form_instansi" action="<?php echo base_url() ?>index.php/admin/instansi_controler/add_instansi" method="POST">
+                <div class="form-group row">
+                  <label for="nama_instansi" class="col-sm-2 col-form-label">Nama Instansi</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="nama_instansi" id="nama_instansi">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="Telepon" class="col-sm-2 col-form-label">Telepon</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="Telepon" id="Telepon">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
+                  <div class="col-sm-10">
+                    <textarea class="form-control" name="alamat" id="alamat" rows="3"></textarea>
+                  </div>
+                </div>
+              </form>
             </div>
-            <!-- /.card-body -->
+            <div class="card-footer">
+              <button type="submit" form="form_instansi" class="btn btn-primary">Simpan</button>
+            </div>
           </div>
         </div>
       </div>
@@ -245,31 +203,30 @@
   <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
   <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
   <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
   <!-- OPTIONAL SCRIPTS -->
   <script src="<?php echo base_url() ?>assets/plugins/chart.js/Chart.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="<?php echo base_url() ?>assets/dist/js/demo.js"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="<?php echo base_url() ?>assets/dist/js/pages/dashboard3.js"></script>
+
   <script>
     $(function() {
       $("#example1").DataTable({
         "responsive": true,
         "lengthChange": false,
         "autoWidth": false,
-
       }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
       $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
         "responsive": true,
-      });
+        "lengthChange": false,
+        "autoWidth": false,
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');;
     });
   </script>
+
+
 </body>
 
 </html>
