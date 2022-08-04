@@ -196,7 +196,7 @@
                   <label for="instansi" class="col-sm-2 col-form-label">Instansi</label>
                   <div class="col-sm-10">
                     <select class="custom-select" name="instansi" id="instansi">
-                      <option selected>Choose...</option>
+                      <option selected>-</option>
                       <?php
                       foreach ($instansi->result_array() as $data_instansi) :
                       ?>

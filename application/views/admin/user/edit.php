@@ -15,15 +15,12 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/dist/css/adminlte.min.css">
 </head>
-<!--
-`body` tag options:
-
-  Apply one or more of the following classes to to the body tag
-  to get the desired effect
-
-  * sidebar-collapse
-  * sidebar-mini
--->
+<script>
+  // submitForms = function() {
+  //   document.getElementById("form_user").submit();
+  //   document.getElementById("form_user_setting").submit();
+  // }
+</script>
 
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
@@ -127,14 +124,30 @@
         </nav>
       </div>
     </aside>
+    <?php
+    foreach ($detail_user->result_array() as $data_user) :
+      $keterangan_akses = $data_user['akses'];
+      $id_pegawai = $data_user['id_pegawai'];
+      $nomor_pegawai = $data_user['no_pegawai'];
+      $nama = $data_user['nama'];
+      $alamat = $data_user['alamat'];
+      $password = $data_user['password'];
+      $username = $data_user['username'];
+      $id_instansi = $data_user['id_instansi'];
+    endforeach;
+    ?>
     <div class="content-wrapper">
       <div class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-left">
-                <li class="breadcrumb-item">User</li>
-                <!-- <li class="breadcrumb-item active">Dashboard v3</li> -->
+                <li class="breadcrumb-item">
+                  <a href="<?php echo base_url() ?>index.php/admin/user_controler">
+                    User
+                  </a>
+                </li>
+                <li class="breadcrumb-item active">Edit User <?= $keterangan_akses ?></li>
               </ol>
             </div>
           </div>
@@ -146,105 +159,143 @@
             <div class="card-header p-0 pt-1">
               <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
                 <li class="pt-2 px-3">
-                  <h3 class="card-title">User LaporCah.go</h3>
+                  <h3 class="card-title">Edit User LaporCah.go</h3>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Warga</a>
+                  <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Bio Data</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id="custom-tabs-two-profile-tab" data-toggle="pill" href="#custom-tabs-two-profile" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false">Pegawai</a>
+                  <a class="nav-link" id="custom-tabs-two-profile-tab" data-toggle="pill" href="#custom-tabs-two-profile" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false">Pengaturan</a>
                 </li>
               </ul>
             </div>
             <div class="card-body">
               <div class="tab-content" id="custom-tabs-two-tabContent">
                 <div class="tab-pane fade show active" id="custom-tabs-two-home" role="tabpanel" aria-labelledby="custom-tabs-two-home-tab">
-                  <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
-                        <th>Nama</th>
-                        <th>Alamat</th>
-                        <th>Nomor Telepon</th>
-                        <th>Akses</th>
-                        <th>Laporan Dibuat</th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
+                  <div class="card">
+                    <div class="card-body">
                       <?php
-                      foreach ($warga->result_array() as $data_warga) :
-
+                      if ($id_akses != 3) {
                       ?>
-                        <tr>
-                          <td><?= $data_warga['nama'] ?></td>
-                          <td><?= $data_warga['alamat'] ?></td>
-                          <td><?= $data_warga['no_telp'] ?></td>
-                          <td><?= $data_warga['akses'] ?></td>
-                          <td>-</td>
-                          <td>
-                            <a href="<?php echo base_url() ?>index.php/admin/user_controler/detail/<?= $data_warga['id_masyarakat'] ?>/<?= $data_warga['id_akses'] ?>">
-                              <button type="button" class="btn btn-primary"><i class="fas fa-eye"></i> Detail</button>
-                            </a>
-                          </td>
-                        </tr>
+                        <form id="form_user" action="<?php echo base_url() ?>index.php/admin/user_controler/edit_user/1" method="POST">
+                          <input type="text" name="id_pegawai" id="id_pegawai" value="<?= $id_pegawai ?>" hidden>
+                          <input type="text" name="id_akses" id="id_akses" value="<?= $id_akses ?>" hidden>
+                          <div class="form-group row">
+                            <label for="nomor_pegawai" class="col-sm-2 col-form-label">Nomor Pegawai</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" name="nomor_pegawai" id="nomor_pegawai" value="<?= $nomor_pegawai ?>">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="nama_lengkap" class="col-sm-2 col-form-label">Nama Lengkap</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap" value="<?= $nama ?>">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="nomor_telepon" class="col-sm-2 col-form-label">Nomor Telepon</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" name="nomor_telepon" id="nomor_telepon">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
+                            <div class="col-sm-10">
+                              <textarea class="form-control" name="alamat" id="alamat" rows="3"><?= $alamat ?></textarea>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="username" class="col-sm-2 col-form-label">Username</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" name="username" id="usernames" value="<?= $username ?>">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="password" class="col-sm-2 col-form-label">Password</label>
+                            <div class="col-sm-10">
+                              <input type="password" class="form-control" name="password" id="password" value="<?= $password ?>">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="instansi" class="col-sm-2 col-form-label">Instansi</label>
+                            <div class="col-sm-10">
+                              <select class="custom-select" name="instansi" id="instansi">
+                                <?php
+                                foreach ($instansi->result_array() as $data_instansi) :
+                                ?>
+                                  <option <?= $id_instansi == $data_instansi['id_instansi'] ? 'selected' : 'Baik'; ?> value="<?= $data_instansi['id_instansi'] ?>"><?= $data_instansi['nama'] ?></option>
+                                <?php
+                                endforeach
+                                ?>
+                              </select>
+                            </div>
+                          </div>
+                        </form>
                       <?php
-                      endforeach
+                      } else {
                       ?>
-                    </tbody>
-                  </table>
+                        ini <?= $keterangan_akses ?>
+                      <?php
+                      }
+                      ?>
+                    </div>
+                    <div class="card-footer">
+                      <button form="form_user" class="btn btn-primary">Simpan</button>
+                    </div>
+                  </div>
                 </div>
                 <div class="tab-pane fade" id="custom-tabs-two-profile" role="tabpanel" aria-labelledby="custom-tabs-two-profile-tab">
-                  <a href="<?php echo base_url() ?>index.php/admin/user_controler/register_user">
-                    <button type="button" class="btn btn-primary"><i class="fas fa-eye"></i> Buat User Baru</button>
-                  </a>
-                  <table id="example2" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
-                        <th>Nama</th>
-                        <th>Alamat</th>
-                        <th>Nomor Pegawai</th>
-                        <th>Instansi</th>
-                        <th>Akses</th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
+                  <div class="card">
+                    <div class="card-body">
                       <?php
-                      foreach ($pegawai->result_array() as $data_pegawai) :
-
+                      if ($id_akses != 3) {
                       ?>
-                        <tr>
-                          <td><?= $data_pegawai['nama'] ?></td>
-                          <td><?= $data_pegawai['alamat'] ?></td>
-                          <td><?= $data_pegawai['no_pegawai'] ?></td>
-                          <td><?= $data_pegawai['id_instansi'] ?></td>
-                          <td><?= $data_pegawai['akses'] ?></td>
-                          <td>
-                            <a href="<?php echo base_url() ?>index.php/admin/user_controler/detail/<?= $data_pegawai['id_pegawai'] ?>/<?= $data_pegawai['id_akses'] ?>">
-                              <button type="button" class="btn btn-primary"><i class="fas fa-eye"></i> Detail</button>
-                            </a>
-                            <a href="<?php echo base_url() ?>index.php/admin/user_controler/edit/<?= $data_pegawai['id_pegawai'] ?>/<?= $data_pegawai['id_akses'] ?>">
-                              <button type="button" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Edit</button>
-                            </a>
-                          </td>
-                        </tr>
+                        <form id="form_user_setting" action="<?php echo base_url() ?>index.php/admin/user_controler/edit_user/2" method="POST">
+                          <input type="text" name="id_pegawai" id="id_pegawai" value="<?= $id_pegawai ?>" hidden>
+                          <div class="form-group row">
+                            <label for="akses" class="col-sm-2 col-form-label">Akses User</label>
+                            <div class="col-sm-10">
+                              <?php
+                              foreach ($akses->result_array() as $data_akses) :
+                              ?>
+                                <div class="form-check-inline">
+                                  <input class="form-check-input" type="radio" name="akses" id="akses" value="<?= $data_akses['id_akses'] ?>" <?= $id_akses == $data_akses['id_akses'] ? 'checked' : ''; ?>>
+                                  <label class="form-check-label" for="akses">
+                                    <?= $data_akses['akses'] ?>
+                                  </label>
+                                </div>
+                              <?php
+                              endforeach
+                              ?>
+                            </div>
+                          </div>
+                        </form>
                       <?php
-                      endforeach
+                      }
                       ?>
-                    </tbody>
-                  </table>
+                    </div>
+                    <div class="card-footer">
+                      <button form="form_user_setting" class="btn btn-primary">Simpan</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <!-- /.card -->
           </div>
+          <div class="card-footer">
+            <!-- <button form="form_user" onclick="submitForms()" class="btn btn-primary">Simpan</button> -->
+            <!-- <input type="button" class="btn btn-primary" value="Simpan" onclick="submitForms()" /> -->
+          </div>
+          <!-- /.card -->
         </div>
+
       </div>
     </div>
-    <aside class="control-sidebar control-sidebar-dark">
-    </aside>
-    <footer class="main-footer">
-    </footer>
+  </div>
+  <aside class="control-sidebar control-sidebar-dark">
+  </aside>
+  <footer class="main-footer">
+  </footer>
   </div>
   <!-- ChartJS -->
   <script src="<?php echo base_url() ?>assets/plugins/chart.js/Chart.min.js"></script>

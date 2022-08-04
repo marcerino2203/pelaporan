@@ -24,6 +24,31 @@ class Admin_model extends CI_MODEL
         $data = $this->db->get();
         return $data;
     }
+    function get_akses()
+    {
+        $this->db->select('*');
+        $this->db->from('akses');
+        $data = $this->db->get();
+        return $data;
+    }
+    function get_user_details($id_user, $id_akses)
+    {
+        if ($id_akses != 3) {
+            $this->db->select('*');
+            $this->db->from('Pegawai');
+            $this->db->join('akses', 'akses.id_akses=pegawai.id_akses');
+            $this->db->where('pegawai.id_pegawai', $id_user);
+            $data = $this->db->get();
+            return $data;
+        } else {
+            $this->db->select('*');
+            $this->db->from('masyarakat');
+            $this->db->join('akses', 'akses.id_akses=masyarakat.id_akses');
+            $this->db->where('masyarakat.id_masyarakat', $id_user);
+            $data = $this->db->get();
+            return $data;
+        }
+    }
     function get_count()
     {
         $this->db->select('instansi.id_instansi,count(nomor_aduan) as jumlah');
@@ -84,5 +109,12 @@ class Admin_model extends CI_MODEL
         } else {
             return false;
         }
+    }
+    function edit_user($data)
+    {
+        $this->db->set($data['data_pegawai']);
+        $this->db->where($data['id_pegawai']);
+        $this->db->update('pegawai');
+        return true;
     }
 }
