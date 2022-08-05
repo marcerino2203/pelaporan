@@ -176,15 +176,9 @@
                         <?php
                         foreach ($count_pegawai->result_array() as $data_count_pegawai) :
                           if ($data_count_pegawai['id_instansi'] == $data_instansi['id_instansi']) {
-                            $jumlah = TRUE;
+                            echo $data_count_pegawai['jumlah_pegawai'];
                           }
                         endforeach;
-                        if ($jumlah != True) {
-                          echo '0';
-                        } else {
-                          echo $data_count_pegawai['jumlah_pegawai'];
-                        }
-                        $jumlah = FALSE;
                         ?>
                       </td>
                       <td>

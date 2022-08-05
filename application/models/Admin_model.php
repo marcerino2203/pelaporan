@@ -58,11 +58,18 @@ class Admin_model extends CI_MODEL
         $data = $this->db->get();
         return $data;
     }
-    function get_count_pegawai()
+    function get_count_pegawai_DISABLE()
     {
         $this->db->select('instansi.id_instansi,count(pegawai.id_pegawai) as jumlah_pegawai');
-        $this->db->from('instansi');
+        $this->db->from('instans');
         $this->db->join('pegawai', 'pegawai.id_instansi=instansi.id_instansi');
+        $data = $this->db->get();
+        return $data;
+    }
+    function get_count_pegawai()
+    {
+        $this->db->select('instansi.id_instansi,(SELECT COUNT(id_pegawai)FROM pegawai WHERE pegawai.id_instansi=instansi.id_instansi ) as jumlah_pegawai');
+        $this->db->from('instansi');
         $data = $this->db->get();
         return $data;
     }
