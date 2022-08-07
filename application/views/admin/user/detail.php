@@ -155,6 +155,86 @@
             <div class="card-header">Bio Data <?= $akses ?></div>
             <div class="card-body">
 
+              <?php
+              if ($id_akses != 3) {
+                foreach ($detail_user->result_array() as $data_user) :
+                  $keterangan_akses = $data_user['akses'];
+                  $id_pegawai = $data_user['id_pegawai'];
+                  $nomor_pegawai = $data_user['no_pegawai'];
+                  $nama = $data_user['nama'];
+                  $alamat = $data_user['alamat'];
+                  $password = $data_user['password'];
+                  $username = $data_user['username'];
+                  $id_instansi = $data_user['id_instansi'];
+                endforeach;
+              ?>
+                <div class="form-group row">
+                  <label for="nomor_pegawai" class="col-sm-2 col-form-label">Nomor Pegawai</label>
+                  <div class="col-sm-10">
+                    : <?= $nomor_pegawai ?>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="nama_lengkap" class="col-sm-2 col-form-label">Nama Lengkap</label>
+                  <div class="col-sm-10">
+                    : <?= $nama ?>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="nomor_telepon" class="col-sm-2 col-form-label">Nomor Telepon</label>
+                  <div class="col-sm-10">
+                    : -
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="username" class="col-sm-2 col-form-label">Username</label>
+                  <div class="col-sm-10">
+                    : <?= $username ?>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="password" class="col-sm-2 col-form-label">Password</label>
+                  <div class="col-sm-10">
+                    : <?= $password ?>
+                  </div>
+                </div>
+              <?php
+              } else {
+                foreach ($detail_user->result_array() as $data_user) :
+                  $keterangan_akses = $data_user['akses'];
+                  $id_masyarakat = $data_user['id_masyarakat'];
+                  $nik = $data_user['nik'];
+                  $nama = $data_user['nama'];
+                  $alamat = $data_user['alamat'];
+                  $no_telp = $data_user['no_telp'];
+                endforeach;
+              ?>
+                <div class="form-group row">
+                  <label for="nomor_pegawai" class="col-sm-2 col-form-label">NIK</label>
+                  <div class="col-sm-10">
+                    : <?= $nik ?>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="nama_lengkap" class="col-sm-2 col-form-label">Nama Lengkap</label>
+                  <div class="col-sm-10">
+                    : <?= $nama ?>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="nomor_telepon" class="col-sm-2 col-form-label">Nomor Telepon</label>
+                  <div class="col-sm-10">
+                    : <?= $no_telp ?>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="nomor_telepon" class="col-sm-2 col-form-label">Alamat</label>
+                  <div class="col-sm-10">
+                    : <?= $alamat ?>
+                  </div>
+                </div>
+              <?php
+              } ?>
             </div>
             <div class="card-footer">
 
