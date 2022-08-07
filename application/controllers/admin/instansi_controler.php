@@ -34,4 +34,9 @@ class Instansi_controler extends CI_Controller
 			redirect('admin/instansi_controler');
 		}
 	}
+	public function detail($id_instansi)
+	{
+		$data['detail_instansi'] = $this->admin_model->get_instansi($id_instansi);
+		$this->load->view('admin/instansi/detail', $data);
+	}
 }

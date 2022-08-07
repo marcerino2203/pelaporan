@@ -8,6 +8,14 @@ class Admin_model extends CI_MODEL
         $data = $this->db->get();
         return $data;
     }
+    function get_instansi_detail($id_instansi)
+    {
+        $this->db->select('id_instansi,nama,alamat,alamat,telp');
+        $this->db->from('instansi');
+        $this->db->where('id_instansi', $id_instansi);
+        $data = $this->db->get();
+        return $data;
+    }
     function get_warga()
     {
         $this->db->select('*');
