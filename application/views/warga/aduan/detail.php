@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LaporCah.go || Dashboard</title>
+  <title>LaporCah.go || Detail</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -38,9 +38,8 @@
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
-
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url() ?>index.php/login_controler/log_out" role="button">
+          <a class="nav-link" href="#" role="button">
             <i class="fas fa-power-off"></i>
           </a>
         </li>
@@ -55,13 +54,13 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
-              <a href="<?php echo base_url() ?>index.php/warga/dashboard_controler" class="nav-link active">
+              <a href="<?php echo base_url() ?>index.php/warga/dashboard_controler" class="nav-link">
                 <i class="fas fa-tachometer-alt nav-icon"></i>
                 <p>Dashboard</p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url() ?>index.php/warga/aduan_controler" class="nav-link ">
+            <li class="nav-item active">
+              <a href="<?php echo base_url() ?>index.php/warga/aduan_controler" class="nav-link active">
                 <i class="fas fa-flag nav-icon"></i>
                 <p>Aduan</p>
               </a>
@@ -76,7 +75,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="<?php echo base_url() ?>index.php/admin/akun_controler" class="nav-link">
+                  <a href="<?php echo base_url() ?>index.php/admin/user_controler" class="nav-link">
                     <i class="nav-icon far fa-user"></i>
                     <p>Akun</p>
                   </a>
@@ -93,8 +92,12 @@
           <div class="row mb-2">
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-left">
-                <li class="breadcrumb-item">Dashboard</li>
-                <!-- <li class="breadcrumb-item active">Dashboard v3</li> -->
+                <li class="breadcrumb-item">
+                  <a href="<?php echo base_url() ?>index.php/warga/aduan_controler">
+                    Aduan
+                  </a>
+                </li>
+                <li class="breadcrumb-item active">Detail Laporan</li>
               </ol>
             </div>
           </div>
@@ -104,14 +107,75 @@
         <div class="container-fluid">
           <div class="card">
             <div class="card-header">
-              <!-- <div class="card-title">Laporan</div> -->
-              <div class="card-tools" data-toggle="modal" data-target="#modal-lapor">
-
-              </div>
-
+              Detail Laporan
             </div>
             <div class="card-body">
+              <div class="card">
+                <div class="card-body">
+                  <div class="card">
+                    <?php
+                    foreach ($laporan->result_array() as $data_laporan) {
+                      $nomor_laporan = $data_laporan['nomor_aduan'];
+                      $tanggal = $data_laporan['tanggal'];
+                      $lokasi = $data_laporan['lokasi'];
+                      $gambar = $data_laporan['gambar'];
+                      // $status = $data_laporan['status'];
+                    }
 
+                    ?>
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-sm-2">Nomor Laporan</div>
+                        <div class="col-sm-2">: <?= $nomor_laporan ?></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-2">tanggal</div>
+                        <div class="col-sm-2">: <?= $tanggal ?></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-2">Lokasi</div>
+                        <div class="col-sm-2">: <?= $lokasi ?></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-2">Gambar</div>
+                        <div class="col-sm-2">: <?= $gambar ?></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-2">Status</div>
+                        <div class="col-sm-2">:</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="timeline">
+                            <?php
+                            if ($status->result_array() != null) {
+                              foreach ($status->result_array() as $data_status) {
+                            ?>
+                                <div>
+                                  <i class="fas fa-envelope bg-blue"></i>
+                                  <div class="timeline-item">
+                                    <span class="time"><i class="fas fa-clock"></i> <?= $data_status["tanggal"] ?> <b> | </b> <?= $data_status["waktu"] ?></span>
+                                    <h3 class="timeline-header"><a href="#">Laporan Anda Telah <?= $data_status["keterangan"] ?></a></h3>
+                                  </div>
+                                </div>
+                            <?php
+                              }
+                            } else {
+                              echo 'Laporan anda tidak terdapat status';
+                            }
+
+                            ?>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -126,9 +190,6 @@
       </div>
     </footer>
   </div>
-
-
-
 
   <!-- jQuery -->
   <script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
