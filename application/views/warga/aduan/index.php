@@ -107,7 +107,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="<?php echo base_url() ?>index.php/admin/user_controler" class="nav-link">
+                  <a href="<?php echo base_url() ?>index.php/warga/akun_controler" class="nav-link">
                     <i class="nav-icon far fa-user"></i>
                     <p>Akun</p>
                   </a>
