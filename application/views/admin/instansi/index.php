@@ -183,6 +183,7 @@
                       </td>
                       <td>
                         <?php
+                        $jumlah = FALSE;
                         foreach ($count->result_array() as $data_count) :
                           if ($data_count['id_instansi'] == $data_instansi['id_instansi']) {
                             $jumlah = TRUE;
