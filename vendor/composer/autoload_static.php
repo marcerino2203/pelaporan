@@ -12,17 +12,8 @@ class ComposerStaticInit5396439faa7415efc877a1948dd72bd2
     );
 
     public static $prefixLengthsPsr4 = array (
-        'p' => 
-        array (
-            'phpDocumentor\\Reflection\\' => 25,
-        ),
-        'W' => 
-        array (
-            'Webmozart\\Assert\\' => 17,
-        ),
         'P' => 
         array (
-            'Prophecy\\' => 9,
             'PhpParser\\' => 10,
         ),
         'D' => 
@@ -33,20 +24,6 @@ class ComposerStaticInit5396439faa7415efc877a1948dd72bd2
     );
 
     public static $prefixDirsPsr4 = array (
-        'phpDocumentor\\Reflection\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-        ),
-        'Webmozart\\Assert\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/webmozart/assert/src',
-        ),
-        'Prophecy\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy',
-        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
