@@ -63,6 +63,7 @@ class Admin_model extends CI_MODEL
         $this->db->from('instansi');
         $this->db->join('jenis_aduan', 'jenis_aduan.id_instansi=instansi.id_instansi');
         $this->db->join('aduan', 'aduan.id_jenis_aduan=jenis_aduan.id_jenis_aduan');
+        $this->db->group_by('instansi.id_instans');
         $data = $this->db->get();
         return $data;
     }
