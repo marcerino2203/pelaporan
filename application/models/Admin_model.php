@@ -59,7 +59,7 @@ class Admin_model extends CI_MODEL
     }
     function get_count()
     {
-        $this->db->select('instansi.id_instansi, COUNT(nomor_aduan) AS jumlah');
+        $this->db->select('instansi.id_instans, COUNT(nomor_aduan) AS jumlah');
         $this->db->from('instansi');
         $this->db->join('jenis_aduan', 'jenis_aduan.id_instansi=instansi.id_instansi');
         $this->db->join('aduan', 'aduan.id_jenis_aduan=jenis_aduan.id_jenis_aduan');
