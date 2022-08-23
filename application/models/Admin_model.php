@@ -27,7 +27,7 @@ class Admin_model extends CI_MODEL
     function get_pegawai()
     {
         $this->db->select('*');
-        $this->db->from('Pegawai');
+        $this->db->from('pegawai');
         $this->db->join('akses', 'akses.id_akses=pegawai.id_akses');
         $data = $this->db->get();
         return $data;
@@ -43,7 +43,7 @@ class Admin_model extends CI_MODEL
     {
         if ($id_akses != 3) {
             $this->db->select('*');
-            $this->db->from('Pegawai');
+            $this->db->from('pegawai');
             $this->db->join('akses', 'akses.id_akses=pegawai.id_akses');
             $this->db->where('pegawai.id_pegawai', $id_user);
             $data = $this->db->get();
