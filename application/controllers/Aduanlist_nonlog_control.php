@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Daftar_controler extends CI_Controller
+class Aduanlist_nonlog_control extends CI_Controller
 {
 
 	public function __construct()

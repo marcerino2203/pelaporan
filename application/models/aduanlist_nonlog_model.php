@@ -1,6 +1,6 @@
 <?php
 
-class Home_model extends CI_Model{
+class Aduanlist_nonlog_model extends CI_Model{
     
     public function get_list($data)
     {

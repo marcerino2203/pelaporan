@@ -106,13 +106,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="row">
           <div class="col-lg-8">
           </div>
-          <div class="col-lg-4 float-right">
-            <div class="card">
-              <div class="card-header">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Lokasi</th>
+                    <th>Kerusakan</th>
+                  </tr>
+                </thead>
                 
-            </div>
-          </div>
-        </div>
+              </table>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
       
