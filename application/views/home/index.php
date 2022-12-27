@@ -52,7 +52,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?php echo base_url() ?>aduan.php">
+            <a href="<?php echo base_url() ?>index.php/aduanlist_nonlog_control" class="">
               <div class="nav-link">
                 Aduan Masuk
               </div>
@@ -92,25 +92,64 @@ scratch. This page gets rid of all links and provides the needed markup only.
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    
+    <div class="content-header">
+      <div class="container">
+        <div class="row mb-2">
+          
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <!-- Main content -->
+    <div class="content">
+      <div class="container overflow-auto">
+        <div class="row">
+          <div class="col-lg-8">
+          </div>
+          <div class="col-lg-4 float-right">
+            <div class="card">
+              <div class="card-header">
+                <div class="d-flex justify-content-center">
+                  Lapor Kerusakan
+                </div>
+              </div>
+              <div class="card-body">
+                <form id="laporan" action="<?php echo base_url() ?>index.php/home_controler/add_aduan" method="POST">
+                  <div class="form-group">
+                    <label for="nama">Nama Pelapor</label>
+                    <input type="text" class="form-control" id="nama_pelapor" name="nama_pelapor">
+                  </div>
+                  <div class="form-group">
+                    <label for="nomor_telepon">Nomor Telepon</label>
+                    <input type="text" class="form-control" id="no_pelapor" name="no_pelapor">
+                  </div>
+                  <div class="form-group">
+                    <label for="lokasi">Lokasi Kerusakan</label>
+                    <input type="text" class="form-control" id="lokasi_kerusakan" name="lokasi_kerusakan">
+                  </div>
+                  <!-- <div class="form-group">
+                    <label for="gambar">Gambar</label>
+                    <input type="file" class="form-control" id="gbr_lokasi" name="gbr_lokasi">
+                  </div> -->
+                  <div class="form-group">
+                    <label for="keterangan">Keterangan</label>
+                    <textarea id="keterangan" name="keterangan" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                  </div>
+                  <div class="form-group">
+                    <button id="submit"class="form-control">Kirim</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- /.row -->
-  </div><!-- /.container-fluid -->
+      </div><!-- /.container-fluid -->
       
     </div>
     <!-- /.content -->
   </div>
-  <!-- /.content-wrapper --> 
- -->
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-
-  <!-- Main Footer -->
-  
-</div>
-<!-- ./wrapper -->
+  <!-- /.content-wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
 <div class="modal fade" id="modal-login" data-backdrop="static">

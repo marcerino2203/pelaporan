@@ -46,6 +46,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <ul class="navbar-nav">
           <li class="nav-item">
             <div class="nav-link">
+              <a href="<?php echo base_url() ?>index.php">
               Home
             </div>
           </li>
