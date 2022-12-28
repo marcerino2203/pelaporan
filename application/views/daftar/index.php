@@ -51,9 +51,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
           </li>
           <li class="nav-item">
-            <div class="nav-link">
-              Tentang Kami
-            </div>
+            <a href="<?php echo base_url() ?>index.php/aduanlist_nonlog_control" class="">
+              <div class="nav-link">
+                Aduan Masuk
+              </div>
+            </a>
           </li>
         </ul>
       </div>      

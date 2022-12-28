@@ -11,7 +11,8 @@ class Aduanlist_nonlog_control extends CI_Controller
 	}
 	public function index()
 	{
-		$this->load->view('aduanlist/index.php');
+		$x['data']=$this->aduanlist_nonlog_model->get_list();
+		$this->load->view('aduanlist/index.php', $x);
 	}
 
 }

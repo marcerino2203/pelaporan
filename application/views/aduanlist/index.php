@@ -110,11 +110,45 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <thead>
                   <tr>
                     <th>No</th>
+                    <th>Tanggal</th>
                     <th>Nama</th>
                     <th>Lokasi</th>
                     <th>Kerusakan</th>
                   </tr>
                 </thead>
+                <tbody>
+                  <?php
+
+                        $nomor=0;
+                        foreach($data->result_array() as $i):
+                          $tanggal=$i['tgl_lapor'];
+                          $nama=$i['nama_pelapor'];
+                          $lokasi=$i['lokasi_kerusakan'];
+                          $kerusakan=$i['keterangan'];
+
+                          $nomor++;
+
+                    ?>
+
+
+                    <tr>
+
+                        <td><?php echo $nomor ?> </td>
+
+                        <td><?php echo $tanggal;?> </td>
+
+                        <td><?php echo $nama;?> </td>
+
+                        <td><?php echo $lokasi;?> </td>
+
+                        <td><?php echo $kerusakan;?></td>
+
+                  </tr>
+
+                  <?php endforeach;?>
+
+
+                </tbody>
                 
               </table>
         <!-- /.row -->

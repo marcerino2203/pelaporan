@@ -114,7 +114,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
               </div>
               <div class="card-body">
-                <form id="laporan" action="<?php echo base_url() ?>index.php/home_controler/add_aduan" method="POST">
+                <?php echo form_open_multipart('home_controler/add_aduan') ?>
+                <!-- <form id="laporan" action="<?php echo base_url() ?>index.php/home_controler/add_aduan" method="POST"> -->
                   <div class="form-group">
                     <label for="nama">Nama Pelapor</label>
                     <input type="text" class="form-control" id="nama_pelapor" name="nama_pelapor">
@@ -127,16 +128,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <label for="lokasi">Lokasi Kerusakan</label>
                     <input type="text" class="form-control" id="lokasi_kerusakan" name="lokasi_kerusakan">
                   </div>
-                  <!-- <div class="form-group">
-                    <label for="gambar">Gambar</label>
-                    <input type="file" class="form-control" id="gbr_lokasi" name="gbr_lokasi">
-                  </div> -->
                   <div class="form-group">
                     <label for="keterangan">Keterangan</label>
-                    <textarea id="keterangan" name="keterangan" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                    <textarea id="keterangan" name="keterangan" class="form-control" rows="3" placeholder="Masukkan kerusakan ..."></textarea>
                   </div>
                   <div class="form-group">
-                    <button id="submit"class="form-control">Kirim</button>
+                    <label for="gambar">Gambar</label>
+                    <input type="file" class="form-control" id="gbr_lokasi" name="gambar">
+                  </div>
+                  <div class="form-group">
+                    <button id="submit" name="submit" class="form-control">Kirim</button>
                   </div>
                 </form>
               </div>

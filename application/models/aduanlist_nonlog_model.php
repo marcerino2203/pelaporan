@@ -2,12 +2,11 @@
 
 class Aduanlist_nonlog_model extends CI_Model{
     
-    public function get_list($data)
+    public function get_list()
     {
-        $this->db->select('*');
-        $this->db->from('nonlog_aduan');
-        $data = $this->db->get();
-        return $data;
+        $hasil=$this->db->query("SELECT * FROM nonlog_aduan");
+
+        return $hasil;
     }
 
 }
