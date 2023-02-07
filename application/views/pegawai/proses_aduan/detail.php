@@ -44,32 +44,6 @@
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-bell"></i>
-            <span class="badge badge-warning navbar-badge">15</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-item dropdown-header">15 Notifications</span>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> 4 new messages
-              <span class="float-right text-muted text-sm">3 mins</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-users mr-2"></i> 8 friend requests
-              <span class="float-right text-muted text-sm">12 hours</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> 3 new reports
-              <span class="float-right text-muted text-sm">2 days</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-          </div>
-        </li>
         <li class="nav-item">
           <a class="nav-link" href="#" role="button">
             <i class="fas fa-power-off"></i>
@@ -145,81 +119,84 @@
             </div>
             <div class="card-body">
               <div class="card">
-                <div class="card-body">
-                  <div class="card">
-                    <?php
-                    foreach ($laporan->result_array() as $data_laporan) {
-                      $nomor_laporan = $data_laporan['nomor_aduan'];
-                      $tanggal = $data_laporan['tanggal'];
-                      $lokasi = $data_laporan['lokasi'];
-                      $gambar = $data_laporan['gambar'];
-                      $isi = $data_laporan['isi'];
-                      $id_aduan = $data_laporan['id_aduan'];
-                      $keterangan = $data_laporan['keterangan'];
-                    }
+                <?php
+                foreach ($laporan->result_array() as $data_laporan) {
+                  $nomor_laporan = $data_laporan['nomor_aduan'];
+                  $tanggal = $data_laporan['tanggal'];
+                  $lokasi = $data_laporan['lokasi'];
+                  $gambar = $data_laporan['gambar'];
+                  $pelapor = $data_laporan['nama'];
+                  $id_aduan = $data_laporan['id_aduan'];
+                  $keterangan = $data_laporan['keterangan'];
+                  $jenis_kerusakan = $data_laporan['jenis_aduan'];
+                }
 
-                    ?>
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-sm-2">Nomor Laporan</div>
-                        <div class="col-sm-2">: <?= $nomor_laporan ?></div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-2">tanggal</div>
-                        <div class="col-sm-2">: <?= $tanggal ?></div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-2">Lokasi</div>
-                        <div class="col-sm-2">: <?= $lokasi ?></div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-2">Keterangan</div>
-                        <div class="col-sm-2">: <?= $keterangan ?></div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-2">isi</div>
-                        <div class="col-sm-2">: <?= $isi ?></div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-2">Status</div>
-                        <div class="col-sm-2">:</div>
-                      </div>
-                    </div>
+                ?>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-2">Nomor Laporan</div>
+                    <div class="col-sm-2">: <?= $nomor_laporan ?></div>
                   </div>
                   <div class="row">
-                    <div class="col">
-                      <div class="card">
-                        <div class="card-body">
-                          Ini Gambar
-                          <div class="timeline">
-                          </div>
-                        </div>
+                    <div class="col-sm-2">tanggal</div>
+                    <div class="col-sm-2">: <?= $tanggal ?></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-2">Pelapor</div>
+                    <div class="col-sm-2">: <?= $pelapor ?></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-2">Lokasi</div>
+                    <div class="col-sm-2">: <?= $lokasi ?></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-2">Jenis Kerusakan</div>
+                    <div class="col-sm-5">: <?= $jenis_kerusakan ?></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-2">Keterangan</div>
+                    <div class="col-sm-10">: <?= $keterangan ?></div>
+                  </div>
+                  <!-- <div class="row">
+                    <div class="col-sm-2">Status</div>
+                    <div class="col-sm-2">:</div>
+                  </div> -->
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="card">
+                    <div class="card-body">
+                      <img src="<?= base_url('./assets/gambar/' . $gambar) ?>" style="width:200px">
+                      <div class="timeline">
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="card-footer">
-                  <a href="<?php echo base_url() ?>index.php/pegawai/proses_controler/laporan_selesai/<?= $id_aduan ?>" class="">
-                    <button type="button" class="btn btn-primary">Laporan Selesai</button>
-                  </a>
-                  <a href="<?php echo base_url() ?>index.php//pegawai/proses_controler/batal_proses/<?= $id_aduan ?>" class="">
-                    <button type="button" class="btn btn-danger">Batalkan Proses</button>
-                  </a>
-                </div>
               </div>
+            </div>
+            <div class="card-footer">
+              <a href="<?php echo base_url() ?>index.php/pegawai/proses_controler/laporan_selesai/<?= $id_aduan ?>" class="">
+                <button type="button" class="btn btn-primary">Laporan Selesai</button>
+              </a>
+              <a href="<?php echo base_url() ?>index.php//pegawai/proses_controler/batal_proses/<?= $id_aduan ?>" class="">
+                <button type="button" class="btn btn-danger">Batalkan Proses</button>
+              </a>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <aside class="control-sidebar control-sidebar-dark">
-    </aside>
-    <footer class="main-footer">
-      <strong>Copyright &copy; 2022 Dream Project.</strong>
-      <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 1.0.0
-      </div>
-    </footer>
+  </div>
+  </div>
+  <aside class="control-sidebar control-sidebar-dark">
+  </aside>
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2022 Dream Project.</strong>
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 1.0.0
+    </div>
+  </footer>
   </div>
 
   <!-- jQuery -->

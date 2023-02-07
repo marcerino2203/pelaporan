@@ -179,7 +179,7 @@
                       <td><?= $data_laporan['nomor_aduan'] ?></td>
                       <td><?= $data_laporan['tanggal'] ?></td>
                       <td><?= $data_laporan['lokasi'] ?></td>
-                      <td>Terkirim</td>
+                      <td><?= $data_laporan['status'] ?></td>
                       <th>
                         <div class="btn-group" role="group" aria-label="Basic example">
                           <a href="<?php echo base_url() ?>index.php/warga/aduan_controler/detail/<?= $data_laporan['id_aduan'] ?>" class="">

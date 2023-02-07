@@ -194,12 +194,12 @@
     </div>
     <aside class="control-sidebar control-sidebar-dark">
     </aside>
-    <footer class="main-footer">
+    <!-- <footer class="main-footer">
       <strong>Copyright &copy; 2022 Dream Project.</strong>
       <div class="float-right d-none d-sm-inline-block">
         <b>Version</b> 1.0.0
       </div>
-    </footer>
+    </footer> -->
   </div>
 
   <div class="modal fade" id="modal-lapor" data-backdrop="static">
@@ -241,7 +241,11 @@
                 </div>
                 <div class="form-group">
                   <label for="keterangan">Keterangan</label>
-                  <textarea name="keterangan" id="keterangan" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                  <textarea name="keterangan" id="keterangan" class="form-control" rows="3" placeholder="Keterangan ..."></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="gambar">Gambar</label>
+                  <input type="file" class="form-control" id="gbr_lokasi" name="gambar">
                 </div>
               </form>
             </div>

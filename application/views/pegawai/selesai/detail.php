@@ -130,7 +130,9 @@
           <div class="row mb-2">
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-left">
-                <li class="breadcrumb-item">Aduan Selesai</li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url() ?>index.php/warga/aduan_controler">
+                    Aduan Selesai</a>
+                </li>
                 <li class="breadcrumb-item active">Detail</li>
               </ol>
             </div>
@@ -145,88 +147,85 @@
             </div>
             <div class="card-body">
               <div class="card">
-                <div class="card-body">
-                  <div class="card">
-                    <?php
-                    foreach ($laporan->result_array() as $data_laporan) {
-                      $nomor_laporan = $data_laporan['nomor_aduan'];
-                      $tanggal = $data_laporan['tanggal'];
-                      $lokasi = $data_laporan['lokasi'];
-                      $gambar = $data_laporan['gambar'];
-                      $isi = $data_laporan['isi'];
-                      $id_aduan = $data_laporan['id_aduan'];
-                      $keterangan = $data_laporan['keterangan'];
-                    }
+                <?php
+                foreach ($laporan->result_array() as $data_laporan) {
+                  $nomor_laporan = $data_laporan['nomor_aduan'];
+                  $tanggal = $data_laporan['tanggal'];
+                  $lokasi = $data_laporan['lokasi'];
+                  $gambar = $data_laporan['gambar'];
+                  $pelapor = $data_laporan['nama'];
+                  $id_aduan = $data_laporan['id_aduan'];
+                  $keterangan = $data_laporan['keterangan'];
+                  $jenis_kerusakan = $data_laporan['jenis_aduan'];
+                }
 
-                    ?>
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-sm-2">Nomor Laporan</div>
-                        <div class="col-sm-2">: <?= $nomor_laporan ?></div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-2">tanggal</div>
-                        <div class="col-sm-2">: <?= $tanggal ?></div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-2">Lokasi</div>
-                        <div class="col-sm-2">: <?= $lokasi ?></div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-2">Keterangan</div>
-                        <div class="col-sm-2">: <?= $keterangan ?></div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-2">isi</div>
-                        <div class="col-sm-2">: <?= $isi ?></div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-2">Status</div>
-                        <div class="col-sm-2">:</div>
-                      </div>
-                    </div>
+                ?>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-2">Nomor Laporan</div>
+                    <div class="col-sm-2">: <?= $nomor_laporan ?></div>
                   </div>
                   <div class="row">
-                    <div class="col">
-                      <div class="card">
-                        <div class="card-body">
-                          Ini Gambar
-                          <div class="timeline">
-                          </div>
-                        </div>
+                    <div class="col-sm-2">tanggal</div>
+                    <div class="col-sm-2">: <?= $tanggal ?></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-2">Pelapor</div>
+                    <div class="col-sm-2">: <?= $pelapor ?></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-2">Lokasi</div>
+                    <div class="col-sm-2">: <?= $lokasi ?></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-2">Jenis Kerusakan</div>
+                    <div class="col-sm-5">: <?= $jenis_kerusakan ?></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-2">Keterangan</div>
+                    <div class="col-sm-10">: <?= $keterangan ?></div>
+                  </div>
+                  <!-- <div class="row">
+                    <div class="col-sm-2">Status</div>
+                    <div class="col-sm-2">:</div>
+                  </div> -->
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="card">
+                    <div class="card-body">
+                      <img src="<?= base_url('./assets/gambar/' . $gambar) ?>" style="width:200px">
+                      <div class="timeline">
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <aside class="control-sidebar control-sidebar-dark">
+            </aside>
+            <footer class="main-footer">
+              <strong>Copyright &copy; 2022 Dream Project.</strong>
+              <div class="float-right d-none d-sm-inline-block">
+                <b>Version</b> 1.0.0
+              </div>
+            </footer>
           </div>
-        </div>
-      </div>
-    </div>
-    <aside class="control-sidebar control-sidebar-dark">
-    </aside>
-    <footer class="main-footer">
-      <strong>Copyright &copy; 2022 Dream Project.</strong>
-      <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 1.0.0
-      </div>
-    </footer>
-  </div>
 
-  <!-- jQuery -->
-  <script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap -->
-  <script src="<?php echo base_url() ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- AdminLTE -->
-  <script src="<?php echo base_url() ?>assets/dist/js/adminlte.js"></script>
+          <!-- jQuery -->
+          <script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
+          <!-- Bootstrap -->
+          <script src="<?php echo base_url() ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+          <!-- AdminLTE -->
+          <script src="<?php echo base_url() ?>assets/dist/js/adminlte.js"></script>
 
-  <!-- OPTIONAL SCRIPTS -->
-  <script src="<?php echo base_url() ?>assets/plugins/chart.js/Chart.min.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="<?php echo base_url() ?>assets/dist/js/demo.js"></script>
-  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  <script src="<?php echo base_url() ?>assets/dist/js/pages/dashboard3.js"></script>
+          <!-- OPTIONAL SCRIPTS -->
+          <script src="<?php echo base_url() ?>assets/plugins/chart.js/Chart.min.js"></script>
+          <!-- AdminLTE for demo purposes -->
+          <script src="<?php echo base_url() ?>assets/dist/js/demo.js"></script>
+          <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+          <script src="<?php echo base_url() ?>assets/dist/js/pages/dashboard3.js"></script>
 </body>
 
 </html>

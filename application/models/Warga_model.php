@@ -19,8 +19,9 @@ class Warga_model extends CI_MODEL
     }
     function get_laporan($data)
     {
-        $this->db->select('*');
+        $this->db->select('*, keterangan_status.keterangan as status');
         $this->db->from('aduan');
+        $this->db->join('keterangan_status', 'aduan.id_keterangan_status=keterangan_status.id_keterangan_status');
         $this->db->where('id_masyarakat', $data);
         $data = $this->db->get();
         return $data;
