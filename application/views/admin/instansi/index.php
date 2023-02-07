@@ -197,11 +197,11 @@
                         $jumlah = FALSE;
                         ?>
                       </td>
-                      <td>
+                      <!-- <td>
                         <a href="<?php echo base_url() ?>index.php/admin/instansi_controler/detail/<?= $data_instansi['id_instansi'] ?>">
                           <button type="button" class="btn btn-primary"><i class="fas fa-eye"></i> Detail</button>
                         </a>
-                      </td>
+                      </td> -->
                     </tr>
                   <?php
                   endforeach

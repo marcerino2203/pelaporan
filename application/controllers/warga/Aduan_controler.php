@@ -23,6 +23,8 @@ class Aduan_controler extends CI_Controller
 	{
 		$data['laporan'] = $this->warga_model->get_detail_laporan($id);
 		$data['status'] = $this->warga_model->get_status_laporan($id);
+		$data['gambar'] = $this->warga_model->get_status_laporan($id);
+		$data['keterangan'] = $this->warga_model->get_status_laporan($id);
 		$this->load->view('warga/aduan/detail', $data);
 	}
 	public function edit($id)
@@ -31,7 +33,41 @@ class Aduan_controler extends CI_Controller
 		$data['status'] = $this->warga_model->get_status_laporan($id);
 		$this->load->view('warga/aduan/edit', $data);
 	}
+
 	public function buat_laporan()
+	{
+		$config['upload_path']      = './assets/gambar/';
+		$config['allowed_types']    = 'jpg|png|jpeg';
+		$config['max_size']         = '10000';
+		$config['remove_space']     = TRUE;
+		//$config['file_name']		= 'gbr-' . date('y-m-d') . '-' . substr(md5(rand()), 0, 10);
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('gambar')) {
+
+			date_default_timezone_set('Asia/Jakarta');
+			$data['aduan'] = array(
+				'nomor_aduan' => $this->input->post('nomor_aduan'),
+				'tanggal' => date('Y-m-d'),
+				'id_masyarakat' => $this->session->userdata('id'),
+				'lokasi' => $this->input->post('lokasi'),
+				'keterangan' => $this->input->post('keterangan'),
+				'gambar' => $_FILES['gambar']['name'],
+				'id_jenis_aduan' => $this->input->post('jenis_aduan'),
+				'id_keterangan_status' => 1
+			);
+			$data['status'] = array(
+				'tanggal' => date('Y-m-d'),
+				'id_keterangan_status' => 1,
+				'waktu' => date("H:i")
+			);
+			if ($this->warga_model->add_laporan($data)) {
+				redirect('warga/aduan_controler');
+			}
+		}
+	}
+
+	/* public function buat_laporan()
 	{
 		date_default_timezone_set('Asia/Jakarta');
 		$data['aduan'] = array(
@@ -39,7 +75,8 @@ class Aduan_controler extends CI_Controller
 			'tanggal' => date('Y-m-d'),
 			'id_masyarakat' => $this->session->userdata('id'),
 			'lokasi' => $this->input->post('lokasi'),
-			'isi' => $this->input->post('keterangan'),
+			'keterangan' => $this->input->post('keterangan'),
+			'gambar' => $_FILES['gambar']['name'],
 			'id_jenis_aduan' => $this->input->post('jenis_aduan'),
 			'id_keterangan_status' => 1
 		);
@@ -51,7 +88,7 @@ class Aduan_controler extends CI_Controller
 		if ($this->warga_model->add_laporan($data)) {
 			redirect('warga/aduan_controler');
 		}
-	}
+	} */
 	public function hapus_laporan($id)
 	{
 		if ($this->warga_model->delete_laporan($id)) {

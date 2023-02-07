@@ -118,6 +118,7 @@
                       $nomor_laporan = $data_laporan['nomor_aduan'];
                       $tanggal = $data_laporan['tanggal'];
                       $lokasi = $data_laporan['lokasi'];
+                      $keterangan = $data_laporan['keterangan'];
                       $gambar = $data_laporan['gambar'];
                       // $status = $data_laporan['status'];
                     }
@@ -137,19 +138,20 @@
                         <div class="col-sm-2">: <?= $lokasi ?></div>
                       </div>
                       <div class="row">
-                        <div class="col-sm-2">Gambar</div>
-                        <div class="col-sm-2">: <?= $gambar ?></div>
+                        <div class="col-sm-2">Keterangan</div>
+                        <div class="col-sm-10">: <?= $keterangan ?></div>
                       </div>
                       <div class="row">
-                        <div class="col-sm-2">Status</div>
-                        <div class="col-sm-2">:</div>
+                        <div class="col-sm-2">Gambar</div>
                       </div>
+                      <div class="col-sm-2"><img src="<?= base_url('./assets/gambar/' . $gambar) ?>" style="width:200px"></div>
                     </div>
                   </div>
-                  <div class="row">
+                  <div class=" row">
                     <div class="col">
                       <div class="card">
                         <div class="card-body">
+                          Status :
                           <div class="timeline">
                             <?php
                             if ($status->result_array() != null) {

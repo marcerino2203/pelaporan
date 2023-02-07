@@ -238,7 +238,7 @@
         <div class="modal-body">
           <div class="card">
             <div class="card-body">
-              <form id="laporan" action="<?php echo base_url() ?>index.php/warga/aduan_controler/buat_laporan" method="POST">
+              <form id="laporan" action="<?php echo base_url() ?>index.php/warga/aduan_controler/buat_laporan" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                   <label for="lokasi">Nomor Aduan</label>
                   <input type="text" class="form-control" name="nomor_aduan" id="nomor_aduan" value="<?= $nomor_aduan ?>" readonly>
@@ -263,7 +263,11 @@
                 </div>
                 <div class="form-group">
                   <label for="keterangan">Keterangan</label>
-                  <textarea name="keterangan" id="keterangan" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                  <textarea name="keterangan" id="keterangan" class="form-control" rows="3" placeholder="Berikan keterangan ..."></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="gambar">Gambar</label>
+                  <input type="file" class="form-control" id="gambar" name="gambar">
                 </div>
               </form>
             </div>
