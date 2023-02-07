@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2022 at 12:01 PM
+-- Generation Time: Feb 07, 2023 at 11:08 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -32,7 +32,7 @@ CREATE TABLE `aduan` (
   `nomor_aduan` varchar(50) DEFAULT NULL,
   `tanggal` date DEFAULT NULL,
   `lokasi` varchar(50) DEFAULT NULL,
-  `isi` text DEFAULT NULL,
+  `keterangan` text DEFAULT NULL,
   `gambar` varchar(255) DEFAULT NULL,
   `id_masyarakat` int(11) DEFAULT NULL,
   `id_keterangan_status` int(11) DEFAULT NULL,
@@ -43,12 +43,15 @@ CREATE TABLE `aduan` (
 -- Dumping data for table `aduan`
 --
 
-INSERT INTO `aduan` (`id_aduan`, `nomor_aduan`, `tanggal`, `lokasi`, `isi`, `gambar`, `id_masyarakat`, `id_keterangan_status`, `id_jenis_aduan`) VALUES
+INSERT INTO `aduan` (`id_aduan`, `nomor_aduan`, `tanggal`, `lokasi`, `keterangan`, `gambar`, `id_masyarakat`, `id_keterangan_status`, `id_jenis_aduan`) VALUES
 (24, 'AD/005', '2022-07-14', 'Desa Gabru', 'Pohon mahoni tumbang menutupi akses jalan dan merusak kabel', NULL, 2, 4, 1),
 (26, 'AD/006', '2022-07-14', 'Ponggok', 'Jalan berlubang membahayakan pengendara', NULL, 3, 1, 2),
 (27, 'AD/007', '2022-07-14', 'Bence, Garum', 'Beberapa lampu penerangan jalan mati ', NULL, 3, 1, 4),
 (28, 'AD/008', '2022-07-18', 'Kademangan', 'Kerusakan bangku ruang tunggu di terminal kademangan', NULL, 2, 1, 5),
-(29, 'AD/009', '2022-08-03', 'Ngadirejo', 'Lampu penerangan lepas', NULL, 3, 3, 4);
+(29, 'AD/009', '2022-08-03', 'Ngadirejo', 'Lampu penerangan lepas', NULL, 3, 3, 4),
+(58, 'AD/010', '2023-02-07', 'dfasdasd', 'asdasdasd', NULL, 2, 1, 3),
+(60, 'AD/011', '2023-02-07', 'Kademangan', 'Jalan berlubang', 'a90a0f082e9f158d3a1229131bff05b4.jpg', 2, 4, 2),
+(61, 'AD/012', '2023-02-07', 'Jeding', 'Jalan berlubang', 'e40a4599cd5a686378ad61769384f1ac.jpg', 2, 4, 2);
 
 -- --------------------------------------------------------
 
@@ -132,10 +135,10 @@ CREATE TABLE `keterangan_status` (
 --
 
 INSERT INTO `keterangan_status` (`id_keterangan_status`, `keterangan`) VALUES
-(1, 'terkirim'),
-(2, 'dilihat'),
-(3, 'diproses'),
-(4, 'selesai');
+(1, 'Terkirim'),
+(2, 'Dilihat'),
+(3, 'Diproses'),
+(4, 'Selesai');
 
 -- --------------------------------------------------------
 
@@ -174,16 +177,19 @@ CREATE TABLE `nonlog_aduan` (
   `nama_pelapor` varchar(30) DEFAULT NULL,
   `no_pelapor` varchar(13) DEFAULT NULL,
   `lokasi_kerusakan` varchar(50) DEFAULT NULL,
-  `keterangan` text DEFAULT NULL
+  `keterangan` text DEFAULT NULL,
+  `gbr_lokasi` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `nonlog_aduan`
 --
 
-INSERT INTO `nonlog_aduan` (`id_nl_aduan`, `tgl_lapor`, `nama_pelapor`, `no_pelapor`, `lokasi_kerusakan`, `keterangan`) VALUES
-(4, '2022-12-15', 'Angga', '08775684843', 'Krajan', 'Kerusakan lampu penerangan'),
-(5, '2022-12-15', 'Sukarji', '085755', 'Kademangan', 'Jalan rusak dekat jembatan kademangan');
+INSERT INTO `nonlog_aduan` (`id_nl_aduan`, `tgl_lapor`, `nama_pelapor`, `no_pelapor`, `lokasi_kerusakan`, `keterangan`, `gbr_lokasi`) VALUES
+(8, '2022-12-27', 'Ajeng', '089765463', 'Binangun', 'Jalan berlubang parah, belum ada peninjauan', NULL),
+(9, '2022-12-27', 'Bahru', '082234675112', 'Sumber', 'Jembatan rusak', NULL),
+(10, '2022-12-28', 'Satria', '089679890', 'Kademangan', 'Jalan berlubang dekat belokan jembatan kademangan sisi utara', NULL),
+(14, '2022-12-28', 'Gandhi', '087756551805', 'Sutojayan', 'Jemabtan ambrol diterjang banjir', NULL);
 
 -- --------------------------------------------------------
 
@@ -233,7 +239,14 @@ CREATE TABLE `status_aduan` (
 INSERT INTO `status_aduan` (`id_status`, `tanggal`, `waktu`, `id_keterangan_status`, `id_aduan`, `catatan`, `id_pegawai`) VALUES
 (37, '2022-07-18', '10:31:00', 1, 28, NULL, NULL),
 (38, '2022-08-03', '16:57:00', 1, 29, NULL, NULL),
-(39, '2022-08-03', '17:05:00', 3, 29, NULL, NULL);
+(39, '2022-08-03', '17:05:00', 3, 29, NULL, NULL),
+(66, '2023-02-07', '14:16:00', 1, 58, NULL, NULL),
+(68, '2023-02-07', '14:37:00', 1, 60, NULL, NULL),
+(69, '2023-02-07', '15:07:00', 1, 61, NULL, NULL),
+(70, '2023-02-07', '15:09:00', 3, 60, NULL, NULL),
+(71, '2023-02-07', '15:10:00', 3, 61, NULL, NULL),
+(72, '2023-02-07', '15:37:00', 4, 61, NULL, NULL),
+(73, '2023-02-07', '16:48:00', 4, 60, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -246,7 +259,8 @@ ALTER TABLE `aduan`
   ADD PRIMARY KEY (`id_aduan`),
   ADD KEY `id_masyarakat` (`id_masyarakat`),
   ADD KEY `keterangan_status` (`id_keterangan_status`),
-  ADD KEY `id_keterangan_aduan_aduan` (`id_jenis_aduan`);
+  ADD KEY `id_keterangan_aduan_aduan` (`id_jenis_aduan`),
+  ADD KEY `id_jenis_aduan` (`id_jenis_aduan`);
 
 --
 -- Indexes for table `akses`
@@ -311,7 +325,7 @@ ALTER TABLE `status_aduan`
 -- AUTO_INCREMENT for table `aduan`
 --
 ALTER TABLE `aduan`
-  MODIFY `id_aduan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_aduan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `akses`
@@ -347,7 +361,7 @@ ALTER TABLE `masyarakat`
 -- AUTO_INCREMENT for table `nonlog_aduan`
 --
 ALTER TABLE `nonlog_aduan`
-  MODIFY `id_nl_aduan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_nl_aduan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `pegawai`
@@ -359,7 +373,7 @@ ALTER TABLE `pegawai`
 -- AUTO_INCREMENT for table `status_aduan`
 --
 ALTER TABLE `status_aduan`
-  MODIFY `id_status` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id_status` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- Constraints for dumped tables
