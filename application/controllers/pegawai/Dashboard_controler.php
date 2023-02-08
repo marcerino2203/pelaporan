@@ -55,6 +55,24 @@ class Dashboard_controler extends CI_Controller
 		// $this->load->view('dashboard_pegawai/index');
 		redirect('pegawai/dashboard_controler');
 	}
+
+	public function batal_proses($id)
+	{
+		date_default_timezone_set('Asia/Jakarta');
+		$data['status'] = array(
+			'tanggal' => date('Y-m-d'),
+			'id_keterangan_status' => 1,
+			'waktu' => date("H:i"),
+			'id_keterangan_status' => '5',
+			'id_aduan' => $id
+		);
+		$data['new_status'] = array(
+			'id_keterangan_status' => 5
+		);
+		$data['status'] = $this->dashboard_pegawai_model->proses($data, $id);
+		// $this->load->view('dashboard_pegawai/index');
+		redirect('pegawai/dashboard_controler');
+	}
 	// public function hapus_laporan($id)
 	// {
 	// 	if ($this->dashboard_model->delete_laporan($id)) {
