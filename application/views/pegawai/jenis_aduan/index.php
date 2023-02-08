@@ -44,32 +44,6 @@
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-bell"></i>
-            <span class="badge badge-warning navbar-badge">15</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-item dropdown-header">15 Notifications</span>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> 4 new messages
-              <span class="float-right text-muted text-sm">3 mins</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-users mr-2"></i> 8 friend requests
-              <span class="float-right text-muted text-sm">12 hours</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> 3 new reports
-              <span class="float-right text-muted text-sm">2 days</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-          </div>
-        </li>
         <li class="nav-item">
           <a class="nav-link" href="<?php echo base_url() ?>index.php/login_controler/log_out" role="button">
             <i class="fas fa-power-off"></i>
@@ -101,6 +75,12 @@
               <a href="<?php echo base_url() ?>index.php/pegawai/selesai_controler" class="nav-link">
                 <i class="fas fa-circle nav-icon"></i>
                 <p>Aduan Selesai</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo base_url() ?>index.php/pegawai/ditangguhkan_controler" class="nav-link">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Aduan Ditangguhkan</p>
               </a>
             </li>
             <li class="nav-item has-treeview menu-open">
@@ -153,8 +133,6 @@
                   <tr>
                     <th>No</th>
                     <th>Jenis Aduan</th>
-                    <th>Status</th>
-                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -167,15 +145,7 @@
                     <tr>
                       <td><?= $nomor ?></td>
                       <td><?= $Keterangan ?></td>
-                      <td></td>
-                      <th>
-                        <!-- <a href="<?php echo base_url() ?>index.php/jenis_aduan_pegawai_controler/detail/<?= $data_jenis_aduan['id_jenis_aduan'] ?>" class="">
-                          <button type="button" class="btn btn-primary">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                            Lihat
-                          </button>
-                        </a> -->
-                      </th>
+
                     </tr>
                   <?php
                   endforeach

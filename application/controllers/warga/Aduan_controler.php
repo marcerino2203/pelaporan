@@ -40,7 +40,6 @@ class Aduan_controler extends CI_Controller
 		$config['allowed_types']    = 'jpg|png|jpeg';
 		$config['max_size']         = '10000';
 		$config['remove_space']     = TRUE;
-		//$config['file_name']		= 'gbr-' . date('y-m-d') . '-' . substr(md5(rand()), 0, 10);
 		$this->load->library('upload', $config);
 
 		if ($this->upload->do_upload('gambar')) {

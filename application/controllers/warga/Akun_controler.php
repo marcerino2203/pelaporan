@@ -7,6 +7,7 @@ class Akun_controler extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->model('warga_model');
 		if ($this->session->userdata('akses') != "warga" && $this->session->userdata('akses') != "master") {
 			redirect('login_controler');
 		};

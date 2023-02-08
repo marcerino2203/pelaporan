@@ -47,10 +47,6 @@ class Dashboard_controler extends CI_Controller
 			'id_keterangan_status' => 3
 		);
 
-
-
-
-
 		$data['status'] = $this->dashboard_pegawai_model->proses($data, $id);
 		// $this->load->view('dashboard_pegawai/index');
 		redirect('pegawai/dashboard_controler');
@@ -69,6 +65,7 @@ class Dashboard_controler extends CI_Controller
 		$data['new_status'] = array(
 			'id_keterangan_status' => 5
 		);
+
 		$data['status'] = $this->dashboard_pegawai_model->proses($data, $id);
 		// $this->load->view('dashboard_pegawai/index');
 		redirect('pegawai/dashboard_controler');

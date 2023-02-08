@@ -188,11 +188,11 @@
                               <!-- Detail -->
                             </button>
                           </a>
-                          <a href="<?php echo base_url() ?>index.php/warga/aduan_controler/edit/<?= $data_laporan['id_aduan'] ?>" class="">
+                          <!-- <a href="<?php echo base_url() ?>index.php/warga/aduan_controler/edit/<?= $data_laporan['id_aduan'] ?>" class="">
                             <button type="button" class="btn btn-secondary">
                               <i class="fas fa-pencil-alt" aria-hidden="true"></i>
                             </button>
-                          </a>
+                          </a> -->
                           <div class="card-tools" data-toggle="modal" data-target="#modal-hapus">
                             <button type="button" class="btn btn-danger">
                               <i class="fa fa-trash" aria-hidden="true"></i>

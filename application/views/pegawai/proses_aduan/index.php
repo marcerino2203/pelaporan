@@ -78,6 +78,12 @@
                 <p>Aduan Selesai</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="<?php echo base_url() ?>index.php/pegawai/ditangguhkan_controler" class="nav-link">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Aduan Ditangguhkan</p>
+              </a>
+            </li>
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-database"></i>

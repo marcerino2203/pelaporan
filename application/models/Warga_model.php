@@ -25,8 +25,6 @@ class Warga_model extends CI_MODEL
         $this->db->where('id_masyarakat', $data);
         $data = $this->db->get();
         return $data;
-        // $query = $this->db->get();
-        // return $query->result();
     }
     function get_code()
     {
@@ -78,9 +76,9 @@ class Warga_model extends CI_MODEL
 
     function get_detail_warga($id_user)
     {
-        $this->db->select('masyarakt.nik,masyarakat.nama,masyarakat.alamat,masyarakat.no_telp');
+        $this->db->select('masyarakat.nik,masyarakat.nama,masyarakat.alamat,masyarakat.no_telp');
         $this->db->from('masyarakat');
-        $this->db->where('masyarakat.id_masyarakat', $id_user);
+        $this->db->where($id_user['id_masyarakat']);
         $data = $this->db->get();
         return $data;
     }

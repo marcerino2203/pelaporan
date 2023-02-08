@@ -27,6 +27,5 @@ class Daftar_controler extends CI_Controller
 		if ($this->daftar_model->add($data)) {
 			redirect('home_controler');
 		}
-		// $this->daftar_model->add($data);
 	}
 }

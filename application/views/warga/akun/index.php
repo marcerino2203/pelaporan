@@ -60,7 +60,7 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item active">
-              <a href="<?php echo base_url() ?>index.php/admin/dashboard_controler" class="nav-link">
+              <a href="<?php echo base_url() ?>index.php/warga/dashboard_controler" class="nav-link">
                 <i class="fas fa-tachometer-alt nav-icon"></i>
                 <p>Dashboard</p>
               </a>
@@ -81,7 +81,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="<?php echo base_url() ?>index.php/warga/akun_controler" class="nav-link active">
+                  <a href="<?php echo base_url() ?>index.php/warga/detail_user<?= $id_user ?>" class="nav-link active">
                     <i class="nav-icon far fa-user"></i>
                     <p>Akun</p>
                   </a>
@@ -115,36 +115,35 @@
             <div class="card-body">
 
               <?php
-              foreach ($detail_user->result_array() as $data_user) :
-                $id_masyarakat = $data_user['id_masyarakat'];
+              foreach ($detail_user->result_array() as $data_user) {
                 $nik = $data_user['nik'];
                 $nama = $data_user['nama'];
                 $alamat = $data_user['alamat'];
                 $no_telp = $data_user['no_telp'];
-              endforeach;
+              }
               ?>
               <div class="form-group row">
-                <label for="nomor_pegawai" class="col-sm-2 col-form-label">NIK</label>
+                <label for="nik" class="col-sm-2 col-form-label">NIK</label>
                 <div class="col-sm-10">
                   : <?= $nik ?>
                 </div>
               </div>
               <div class="form-group row">
-                <label for="nama_lengkap" class="col-sm-2 col-form-label">Nama Lengkap</label>
+                <label for="nama" class="col-sm-2 col-form-label">Nama Lengkap</label>
                 <div class="col-sm-10">
                   : <?= $nama ?>
                 </div>
               </div>
               <div class="form-group row">
-                <label for="nomor_telepon" class="col-sm-2 col-form-label">Nomor Telepon</label>
+                <label for="alamat" class="col-sm-2 col-form-label">Nama Lengkap</label>
                 <div class="col-sm-10">
-                  : <?= $no_telp ?>
+                  : <?= $alamat ?>
                 </div>
               </div>
               <div class="form-group row">
-                <label for="nomor_telepon" class="col-sm-2 col-form-label">Alamat</label>
+                <label for="nomor_telp" class="col-sm-2 col-form-label">Nomor Telepon</label>
                 <div class="col-sm-10">
-                  : <?= $alamat ?>
+                  : <?= $no_telp ?>
                 </div>
               </div>
             </div>
