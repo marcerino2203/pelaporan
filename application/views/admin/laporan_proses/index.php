@@ -77,7 +77,7 @@
                 <li class="nav-item">
                   <a href="<?php echo base_url() ?>index.php/admin/laporan_proses_controler" class="nav-link active">
                     <i class="nav-icon fa fa-tasks"></i>
-                    <p>Laporan Proses</p>
+                    <p>Laporan Masuk</p>
                   </a>
                 </li>
               </ul>
@@ -156,7 +156,6 @@
                     <th>Nomor Telepon</th>
                     <th>Alamat</th>
                     <th>Laporan Masuk</th>
-                    <th>Laporan Proses</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -185,7 +184,6 @@
                         $jumlah = FALSE;
                         ?>
                       </td>
-                      <td>-</td>
                       <td>
                         <a href="<?php echo base_url() ?>index.php/admin/laporan_proses_controler/detail/<?= $data_instansi['id_instansi'] ?>">
                           <button type="button" class="btn btn-primary"><i class="fas fa-eye"></i> Detail</button>

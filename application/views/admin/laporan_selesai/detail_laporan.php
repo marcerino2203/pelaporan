@@ -159,8 +159,11 @@
                 foreach ($laporan_detail['laporan']->result_array() as $data_laporan) {
                   $nomor_laporan = $data_laporan['nomor_aduan'];
                   $tanggal = $data_laporan['tanggal'];
+                  $pelapor = $data_laporan['nama'];
                   $lokasi = $data_laporan['lokasi'];
                   $gambar = $data_laporan['gambar'];
+                  $jenis_kerusakan = $data_laporan['jenis_aduan'];
+                  $keterangan = $data_laporan['keterangan'];
                   // $status = $data_laporan['status'];
                 }
 
@@ -175,72 +178,79 @@
                     <div class="col-sm-2">: <?= $tanggal ?></div>
                   </div>
                   <div class="row">
+                    <div class="col-sm-2">Pelapor</div>
+                    <div class="col-sm-2">: <?= $pelapor ?></div>
+                  </div>
+                  <div class="row">
                     <div class="col-sm-2">Lokasi</div>
                     <div class="col-sm-2">: <?= $lokasi ?></div>
                   </div>
                   <div class="row">
-                    <div class="col-sm-2">Gambar</div>
-                    <div class="col-sm-2">: <?= $gambar ?></div>
+                    <div class="col-sm-2">Jenis Kerusakan</div>
+                    <div class="col-sm-5">: <?= $jenis_kerusakan ?></div>
                   </div>
                   <div class="row">
-                    <div class="col-sm-2">Status</div>
-                    <div class="col-sm-2">:</div>
+                    <div class="col-sm-2">Keterangan</div>
+                    <div class="col-sm-10">: <?= $keterangan ?></div>
+                  </div>
+                  <div>
+                    <img src="<?= base_url('./assets/gambar/' . $gambar) ?>" style="width:300px">
                   </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="timeline">
-                        <?php
-                        if ($laporan_detail['status']->result_array() != null) {
-                          foreach ($laporan_detail['status']->result_array() as $data_status) {
-                        ?>
-                            <div>
-                              <i class="fas fa-envelope bg-blue"></i>
-                              <div class="timeline-item">
-                                <span class="time"><i class="fas fa-clock"></i> <?= $data_status["tanggal"] ?> <b> | </b> <?= $data_status["waktu"] ?></span>
-                                <h3 class="timeline-header"><a href="#">Laporan Telah <?= $data_status["keterangan"] ?></a></h3>
+                <div class="row">
+                  <div class="col">
+                    <div class="card">
+                      <div class="card-body">
+                        Status Laporan :
+                        <div class="timeline">
+                          <?php
+                          if ($laporan_detail['status']->result_array() != null) {
+                            foreach ($laporan_detail['status']->result_array() as $data_status) {
+                          ?>
+                              <div>
+                                <i class="fas fa-envelope bg-blue"></i>
+                                <div class="timeline-item">
+                                  <span class="time"><i class="fas fa-clock"></i> <?= $data_status["tanggal"] ?> <b> | </b> <?= $data_status["waktu"] ?></span>
+                                  <h3 class="timeline-header"><a href="#">Laporan Telah <?= $data_status["keterangan"] ?></a></h3>
+                                </div>
                               </div>
-                            </div>
-                        <?php
+                          <?php
+                            }
+                          } else {
+                            echo 'Laporan anda tidak terdapat status';
                           }
-                        } else {
-                          echo 'Laporan anda tidak terdapat status';
-                        }
 
-                        ?>
+                          ?>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <!-- /.card-body -->
             </div>
-            <!-- /.card-body -->
           </div>
         </div>
       </div>
+      <aside class="control-sidebar control-sidebar-dark">
+      </aside>
+      <footer class="main-footer">
+      </footer>
     </div>
-    <aside class="control-sidebar control-sidebar-dark">
-    </aside>
-    <footer class="main-footer">
-    </footer>
-  </div>
-  <!-- ChartJS -->
-  <script src="<?php echo base_url() ?>assets/plugins/chart.js/Chart.min.js"></script>
-  <!-- jQuery -->
-  <script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap -->
-  <script src="<?php echo base_url() ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- AdminLTE -->
-  <script src="<?php echo base_url() ?>assets/dist/js/adminlte.js"></script>
-  <!-- OPTIONAL SCRIPTS -->
-  <script src="<?php echo base_url() ?>assets/plugins/chart.js/Chart.min.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="<?php echo base_url() ?>assets/dist/js/demo.js"></script>
-  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  <script src="<?php echo base_url() ?>assets/dist/js/pages/dashboard3.js"></script>
+    <!-- ChartJS -->
+    <script src="<?php echo base_url() ?>assets/plugins/chart.js/Chart.min.js"></script>
+    <!-- jQuery -->
+    <script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="<?php echo base_url() ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE -->
+    <script src="<?php echo base_url() ?>assets/dist/js/adminlte.js"></script>
+    <!-- OPTIONAL SCRIPTS -->
+    <script src="<?php echo base_url() ?>assets/plugins/chart.js/Chart.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="<?php echo base_url() ?>assets/dist/js/demo.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="<?php echo base_url() ?>assets/dist/js/pages/dashboard3.js"></script>
 
 </body>
 

@@ -159,8 +159,11 @@
                 foreach ($laporan_detail['laporan']->result_array() as $data_laporan) {
                   $nomor_laporan = $data_laporan['nomor_aduan'];
                   $tanggal = $data_laporan['tanggal'];
+                  $pelapor = $data_laporan['nama'];
                   $lokasi = $data_laporan['lokasi'];
                   $gambar = $data_laporan['gambar'];
+                  $jenis_kerusakan = $data_laporan['jenis_aduan'];
+                  $keterangan = $data_laporan['keterangan'];
                   // $status = $data_laporan['status'];
                 }
 
@@ -175,16 +178,23 @@
                     <div class="col-sm-2">: <?= $tanggal ?></div>
                   </div>
                   <div class="row">
+                    <div class="col-sm-2">Pelapor</div>
+                    <div class="col-sm-2">: <?= $pelapor ?></div>
+                  </div>
+                  <div class="row">
                     <div class="col-sm-2">Lokasi</div>
                     <div class="col-sm-2">: <?= $lokasi ?></div>
                   </div>
                   <div class="row">
-                    <div class="col-sm-2">Gambar</div>
-                    <div class="col-sm-2">: <?= $gambar ?></div>
+                    <div class="col-sm-2">Jenis Kerusakan</div>
+                    <div class="col-sm-5">: <?= $jenis_kerusakan ?></div>
                   </div>
                   <div class="row">
-                    <div class="col-sm-2">Status</div>
-                    <div class="col-sm-2">:</div>
+                    <div class="col-sm-2">Keterangan</div>
+                    <div class="col-sm-10">: <?= $keterangan ?></div>
+                  </div>
+                  <div>
+                    <img src="<?= base_url('./assets/gambar/' . $gambar) ?>" style="width:300px">
                   </div>
                 </div>
               </div>

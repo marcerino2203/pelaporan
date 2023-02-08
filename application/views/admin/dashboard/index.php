@@ -148,7 +148,7 @@
               <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
-                  <h3>0</h3>
+
 
                   <p>Laporan Masuk</p>
                 </div>
@@ -163,8 +163,6 @@
               <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
-                  <h3>0<sup style="font-size: 20px">%</sup></h3>
-
                   <p>Laporan Selesai</p>
                 </div>
                 <div class="icon">
@@ -178,7 +176,7 @@
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h3>0<sup style="font-size: 20px">%</sup></h3>
+
 
                   <p>Laporan Ditangguhkan</p>
                 </div>
@@ -191,17 +189,17 @@
             <!-- ./col -->
             <div class="col-lg-3 col-6">
               <!-- small box -->
-              <div class="small-box bg-danger">
+              <!-- <div class="small-box bg-danger">
                 <div class="inner">
-                  <h3>0<sup style="font-size: 20px">%</sup></h3>
+                  <h3>0</h3>
 
                   <p>Kepuasan</p>
                 </div>
-                <div class="icon">
-                  <!-- <i class="ion ion-pie-graph"></i> -->
-                </div>
+                <div class="icon"> -->
+              <!-- <i class="ion ion-pie-graph"></i> -->
+              <!-- </div>
                 <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
+              </div> -->
             </div>
             <!-- ./col -->
           </div>
@@ -210,8 +208,8 @@
               <div class="card-tools" data-toggle="modal" data-target="#modal-lapor">
               </div>
             </div> -->
-            <!-- <div class="card-body"> -->
-              <!-- <div class="card bg-gradient-info">
+          <!-- <div class="card-body"> -->
+          <!-- <div class="card bg-gradient-info">
                 <div class="card-header border-0">
                   <h3 class="card-title">
                     <i class="fas fa-th mr-1"></i>
@@ -233,7 +231,7 @@
                  /.card-body
                 /.card-footer
               </div> -->
-            <!-- </div> -->
+          <!-- </div> -->
           <!-- </div> -->
         </div>
       </div>

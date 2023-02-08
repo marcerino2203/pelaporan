@@ -160,7 +160,6 @@
                     <th>Telepon</th>
                     <th>Pegawai Terdaftar</th>
                     <th>Laporan Masuk</th>
-                    <th></th>
                   </tr>
                 </thead>
                 <tbody>

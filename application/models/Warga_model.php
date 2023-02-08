@@ -75,4 +75,13 @@ class Warga_model extends CI_MODEL
         $data = $this->db->get();
         return $data;
     }
+
+    function get_detail_warga($id_user)
+    {
+        $this->db->select('masyarakt.nik,masyarakat.nama,masyarakat.alamat,masyarakat.no_telp');
+        $this->db->from('masyarakat');
+        $this->db->where('masyarakat.id_masyarakat', $id_user);
+        $data = $this->db->get();
+        return $data;
+    }
 }

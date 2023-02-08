@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LaporCah.go || Dashboard</title>
+  <title>LaporCah.go || Admin</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -34,11 +34,16 @@
         <li class="nav-item">
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
+        <!-- <li class="nav-item d-none d-sm-inline-block">
+          <a href="index3.html" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="#" class="nav-link">Contact</a>
+        </li> -->
       </ul>
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
-
         <li class="nav-item">
           <a class="nav-link" href="<?php echo base_url() ?>index.php/login_controler/log_out" role="button">
             <i class="fas fa-power-off"></i>
@@ -54,14 +59,14 @@
       <div class="sidebar">
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item">
-              <a href="<?php echo base_url() ?>index.php/warga/dashboard_controler" class="nav-link">
+            <li class="nav-item active">
+              <a href="<?php echo base_url() ?>index.php/admin/dashboard_controler" class="nav-link">
                 <i class="fas fa-tachometer-alt nav-icon"></i>
                 <p>Dashboard</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo base_url() ?>index.php/warga/aduan_controler" class="nav-link ">
+              <a href="<?php echo base_url() ?>index.php/warga/aduan_controler" class="nav-link">
                 <i class="fas fa-flag nav-icon"></i>
                 <p>Aduan</p>
               </a>
@@ -93,8 +98,11 @@
           <div class="row mb-2">
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-left">
-                <li class="breadcrumb-item">Akun</li>
-                <!-- <li class="breadcrumb-item active">Dashboard v3</li> -->
+                <li class="breadcrumb-item">
+                  <a href="<?php echo base_url() ?>index.php/warga/Akun_controler">
+                    User
+                  </a>
+                </li>
               </ol>
             </div>
           </div>
@@ -103,15 +111,44 @@
       <div class="content">
         <div class="container-fluid">
           <div class="card">
-            <div class="card-header">
-              <!-- <div class="card-title">Laporan</div> -->
-              <div class="card-tools" data-toggle="modal" data-target="#modal-lapor">
-
-              </div>
-
-            </div>
+            <div class="card-header">User Data</div>
             <div class="card-body">
 
+              <?php
+              foreach ($detail_user->result_array() as $data_user) :
+                $id_masyarakat = $data_user['id_masyarakat'];
+                $nik = $data_user['nik'];
+                $nama = $data_user['nama'];
+                $alamat = $data_user['alamat'];
+                $no_telp = $data_user['no_telp'];
+              endforeach;
+              ?>
+              <div class="form-group row">
+                <label for="nomor_pegawai" class="col-sm-2 col-form-label">NIK</label>
+                <div class="col-sm-10">
+                  : <?= $nik ?>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="nama_lengkap" class="col-sm-2 col-form-label">Nama Lengkap</label>
+                <div class="col-sm-10">
+                  : <?= $nama ?>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="nomor_telepon" class="col-sm-2 col-form-label">Nomor Telepon</label>
+                <div class="col-sm-10">
+                  : <?= $no_telp ?>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="nomor_telepon" class="col-sm-2 col-form-label">Alamat</label>
+                <div class="col-sm-10">
+                  : <?= $alamat ?>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
             </div>
           </div>
         </div>
@@ -120,22 +157,29 @@
     <aside class="control-sidebar control-sidebar-dark">
     </aside>
     <footer class="main-footer">
-      <strong>Copyright &copy; 2022 Dream Project.</strong>
-      <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 1.0.0
-      </div>
     </footer>
   </div>
-
-
-
-
+  <!-- ChartJS -->
+  <script src="<?php echo base_url() ?>assets/plugins/chart.js/Chart.min.js"></script>
   <!-- jQuery -->
   <script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap -->
   <script src="<?php echo base_url() ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- AdminLTE -->
   <script src="<?php echo base_url() ?>assets/dist/js/adminlte.js"></script>
+  <!-- DataTables  & Plugins -->
+  <script src="<?php echo base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/jszip/jszip.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/pdfmake/pdfmake.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/pdfmake/vfs_fonts.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
   <!-- OPTIONAL SCRIPTS -->
   <script src="<?php echo base_url() ?>assets/plugins/chart.js/Chart.min.js"></script>
@@ -143,6 +187,23 @@
   <script src="<?php echo base_url() ?>assets/dist/js/demo.js"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="<?php echo base_url() ?>assets/dist/js/pages/dashboard3.js"></script>
+
+  <script>
+    $(function() {
+      $("#example1").DataTable({
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+      $('#example2').DataTable({
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');;
+    });
+  </script>
+
+
 </body>
 
 </html>

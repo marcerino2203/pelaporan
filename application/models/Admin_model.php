@@ -103,9 +103,10 @@ class Admin_model extends CI_MODEL
     }
     function get_laporan_detail($id_aduan)
     {
-        $this->db->select('*');
+        $this->db->select('aduan.id_aduan,aduan.nomor_aduan,aduan.tanggal,aduan.lokasi,aduan.gambar,aduan.id_masyarakat,aduan.id_keterangan_status,aduan.keterangan,jenis_aduan.keterangan as jenis_aduan, masyarakat.nama');
         $this->db->from('aduan');
         $this->db->join('jenis_aduan', 'jenis_aduan.id_jenis_aduan=aduan.id_jenis_aduan');
+        $this->db->join('masyarakat', 'aduan.id_masyarakat=masyarakat.id_masyarakat');
         $this->db->where('id_aduan', $id_aduan);
         $data['laporan'] = $this->db->get();
 

@@ -166,8 +166,6 @@
                         <th>Alamat</th>
                         <th>Nomor Telepon</th>
                         <th>Akses</th>
-                        <th>Laporan Dibuat</th>
-                        <th></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -180,7 +178,6 @@
                           <td><?= $data_warga['alamat'] ?></td>
                           <td><?= $data_warga['no_telp'] ?></td>
                           <td><?= $data_warga['akses'] ?></td>
-                          <td>-</td>
                           <td>
                             <a href="<?php echo base_url() ?>index.php/admin/user_controler/detail/<?= $data_warga['id_masyarakat'] ?>/<?= $data_warga['id_akses'] ?>">
                               <button type="button" class="btn btn-primary"><i class="fas fa-eye"></i> Detail</button>

@@ -15,4 +15,10 @@ class Akun_controler extends CI_Controller
 	{
 		$this->load->view('warga/akun/index');
 	}
+
+	public function detail_user($id_user)
+	{
+		$data['detail_user'] = $this->warga_model->get_detail_warga($id_user);
+		$this->load->view('warga/akun/index', $data);
+	}
 }

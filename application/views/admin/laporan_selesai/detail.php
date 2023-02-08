@@ -189,7 +189,6 @@
                     <th>Nomor Aduan</th>
                     <th>Tanggal</th>
                     <th>Lokasi</th>
-                    <th>isi</th>
                     <th>Keterangan</th>
                     <th></th>
                   </tr>
@@ -203,7 +202,6 @@
                         <td><?= $data_laporan['nomor_aduan'] ?></td>
                         <td><?= $data_laporan['tanggal'] ?></td>
                         <td><?= $data_laporan['lokasi'] ?></td>
-                        <td><?= $data_laporan['isi'] ?></td>
                         <td><?= $data_laporan['keterangan'] ?></td>
                         <td>
                           <a href="<?php echo base_url() ?>index.php/admin/laporan_selesai_controler/detail_laporan/<?= $data_laporan['id_aduan'] ?>">

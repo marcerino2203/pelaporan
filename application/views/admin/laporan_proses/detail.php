@@ -189,9 +189,7 @@
                     <th>Nomor Aduan</th>
                     <th>Tanggal</th>
                     <th>Lokasi</th>
-                    <th>Jenis</th>
                     <th>Keterangan</th>
-                    <th>Kerusakan</th>
                     <th></th>
                   </tr>
                 </thead>
