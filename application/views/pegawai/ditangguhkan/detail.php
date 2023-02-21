@@ -66,7 +66,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php echo base_url() ?>index.php/pegawai/proses_controler" class="nav-link active">
+                            <a href="<?php echo base_url() ?>index.php/pegawai/proses_controler" class="nav-link">
                                 <i class="fas fa-circle nav-icon"></i>
                                 <p>Aduan Proses</p>
                             </a>
@@ -78,7 +78,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php echo base_url() ?>index.php/pegawai/ditangguhkan_controler" class="nav-link">
+                            <a href="<?php echo base_url() ?>index.php/pegawai/ditangguhkan_controler" class="nav-link active">
                                 <i class="fas fa-circle nav-icon"></i>
                                 <p>Aduan Ditangguhkan</p>
                             </a>
@@ -110,7 +110,7 @@
                     <div class="row mb-2">
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-left">
-                                <li class="breadcrumb-item">Aduan Proses</li>
+                                <li class="breadcrumb-item">Aduan Ditangguhkan</li>
                                 <li class="breadcrumb-item active">Detail</li>
                             </ol>
                         </div>
@@ -181,14 +181,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer">
-                            <a href="<?php echo base_url() ?>index.php/pegawai/proses_controler/laporan_selesai/<?= $id_aduan ?>" class="">
+                        <!-- <div class="card-footer">
+                            <a href="<?php echo base_url() ?>index.php/pegawai/ditangguhkan_controler/laporan_selesai/<?= $id_aduan ?>" class="">
                                 <button type="button" class="btn btn-primary">Laporan Selesai</button>
                             </a>
-                            <a href="<?php echo base_url() ?>index.php//pegawai/proses_controler/batal_proses/<?= $id_aduan ?>" class="">
+                            <a href="<?php echo base_url() ?>index.php//pegawai/ditangguhkan_controler/batal_proses/<?= $id_aduan ?>" class="">
                                 <button type="button" class="btn btn-danger">Batalkan Proses</button>
                             </a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

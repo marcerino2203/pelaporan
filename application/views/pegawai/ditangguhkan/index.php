@@ -67,7 +67,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php echo base_url() ?>index.php/pegawai/proses_controler" class="nav-link active">
+                            <a href="<?php echo base_url() ?>index.php/pegawai/proses_controler" class="nav-link">
                                 <i class="fas fa-circle nav-icon"></i>
                                 <p>Aduan Proses</p>
                             </a>
@@ -110,7 +110,7 @@
                     <div class="row mb-2">
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-left">
-                                <li class="breadcrumb-item">Aduan Proses</li>
+                                <li class="breadcrumb-item">Aduan Ditangguhkan</li>
                                 <!-- <li class="breadcrumb-item active">Dashboard v3</li> -->
                             </ol>
                         </div>

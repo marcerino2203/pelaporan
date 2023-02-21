@@ -1,5 +1,5 @@
 <?php
-class Selesai_pegawai_model extends CI_MODEL
+class Ditangguhkan_pegawai_model extends CI_MODEL
 {
     function get_laporan($data)
     {
